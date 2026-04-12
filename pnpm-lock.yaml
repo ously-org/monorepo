@@ -188,6 +188,19 @@ importers:
         specifier: ^5.4.5
         version: 5.9.3
 
+  packages/payments:
+    dependencies:
+      '@polar-sh/sdk':
+        specifier: ^0.8.1
+        version: 0.8.2(zod@4.3.6)
+    devDependencies:
+      '@ously/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.3
+
   packages/tsconfig: {}
 
   packages/types:
@@ -1029,6 +1042,11 @@ packages:
   '@opentelemetry/semantic-conventions@1.40.0':
     resolution: {integrity: sha512-cifvXDhcqMwwTlTK04GBNeIe7yyo28Mfby85QXFe1Yk8nmi36Ab/5UQwptOx84SsoGNRg+EVSjwzfSZMy6pmlw==, tarball: https://registry.npmjs.org/@opentelemetry/semantic-conventions/-/semantic-conventions-1.40.0.tgz}
     engines: {node: '>=14'}
+
+  '@polar-sh/sdk@0.8.2':
+    resolution: {integrity: sha512-zUaJvMesmXOYhYN+r+Jx1tRtY3VdwBt+DjSvgtE++DiwWLO8oiCqwW+mFIGhCNXHFP7nv/J/gK3We0xaWdshMg==, tarball: https://registry.npmjs.org/@polar-sh/sdk/-/sdk-0.8.2.tgz}
+    peerDependencies:
+      zod: '>= 3'
 
   '@radix-ui/react-compose-refs@1.1.2':
     resolution: {integrity: sha512-z4eqJvfiNnFMHIIvXP3CY57y2WJs5g2v3X0zm9mEJkrkNv4rDxu+sg9Jh8EkXyeqBkB7SOcboo9dMVqhyrACIg==, tarball: https://registry.npmjs.org/@radix-ui/react-compose-refs/-/react-compose-refs-1.1.2.tgz}
@@ -2502,6 +2520,10 @@ snapshots:
   '@opentelemetry/api@1.9.1': {}
 
   '@opentelemetry/semantic-conventions@1.40.0': {}
+
+  '@polar-sh/sdk@0.8.2(zod@4.3.6)':
+    dependencies:
+      zod: 4.3.6
 
   '@radix-ui/react-compose-refs@1.1.2(@types/react@18.3.28)(react@18.3.1)':
     dependencies:
