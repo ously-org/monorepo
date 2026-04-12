@@ -1,0 +1,7 @@
+name = "web-prosper"
+compatibility_date = "2024-05-29"
+pages_build_output_dir = ".next"
+
+[env.production]
+name = "web-prosper-prod"
+route = "prosper.ously.com"
