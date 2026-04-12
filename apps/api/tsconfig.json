@@ -1,0 +1,7 @@
+{
+  "extends": "@ously/tsconfig/base.json",
+  "compilerOptions": {
+    "types": ["@cloudflare/workers-types"]
+  },
+  "include": ["src"]
+}
