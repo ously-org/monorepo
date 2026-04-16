@@ -44,7 +44,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/web-main'
-          command: pages deploy .next --project-name=ously-main
+          command: pages deploy .next --project-name=web-main-prod
 
       - name: Deploy Prosper Web (Pages)
         uses: cloudflare/wrangler-action@v3
@@ -53,3 +53,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/web-prosper'
           command: pages deploy .next --project-name=prosper-web
+d
+prosper-web
