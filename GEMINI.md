@@ -27,3 +27,6 @@ The scope of the initial Gemini CLI task was strictly to **setup the monorepo fo
 - Apps MUST use `packages/types` for data shapes.
 - UI components MUST be abstract and theme-injected.
 - `packages/ui` only exposes wrapped components; raw shadcn components are kept internal.
+- NO cross-package relative imports allowed; apps and packages MUST use absolute imports for workspace dependencies (e.g., `@ously/ui`, `@ously/types`).
+- Internal package imports SHOULD use relative paths to ensure compatibility with standard build and resolution tools.
+
