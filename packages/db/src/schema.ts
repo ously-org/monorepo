@@ -1,3 +1,7 @@
+/**
+ * This schema is based on the Better Auth requirements for the Drizzle adapter.
+ * Reference: https://www.better-auth.com/docs/adapters/drizzle
+ */
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("user", {

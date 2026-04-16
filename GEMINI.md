@@ -7,7 +7,11 @@
 
 ## Monorepo Layout
 - `apps/`: Deployable units (Hono, Next.js)
-- `packages/`: Shared libraries (DB, Auth, UI)
+- `packages/`: Shared libraries
+    - `db`: Drizzle schema (based on Better Auth requirements)
+    - `auth`: Better Auth configuration
+    - `ui`: Shared UI components (shadcn)
+
 
 ## Critical Constraints
 - Apps MUST use `packages/types` for data shapes.
