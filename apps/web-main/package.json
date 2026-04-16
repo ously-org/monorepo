@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ously/auth": "workspace:*",
     "@ously/db": "workspace:*",
     "@ously/ui": "workspace:*",
     "@ously/types": "workspace:*",

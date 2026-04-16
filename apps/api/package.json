@@ -7,7 +7,6 @@
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "@ously/auth": "workspace:*",
     "@ously/db": "workspace:*",
     "@ously/types": "workspace:*",
     "drizzle-orm": "^0.30.10",
