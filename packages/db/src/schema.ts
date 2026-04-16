@@ -1,6 +1,9 @@
 /**
  * This schema is based on the Better Auth requirements for the Drizzle adapter.
  * Reference: https://www.better-auth.com/docs/adapters/drizzle
+ * 
+ * To update this schema using the Better Auth CLI, run:
+ * pnpm dlx @better-auth/cli generate --output ./src/schema.ts
  */
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 

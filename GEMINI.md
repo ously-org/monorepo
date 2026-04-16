@@ -8,7 +8,7 @@
 ## Monorepo Layout
 - `apps/`: Deployable units (Hono, Next.js)
 - `packages/`: Shared libraries
-    - `db`: Drizzle schema (based on Better Auth requirements)
+    - `db`: Drizzle schema (derived from Better Auth; update via `pnpm dlx @better-auth/cli generate`)
     - `auth`: Better Auth configuration
     - `ui`: Shared UI components (shadcn)
 
