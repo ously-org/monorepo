@@ -1,0 +1,10 @@
+# CodeRabbit Configuration
+# Reference: https://docs.coderabbit.ai/getting-started/configure-coderabbit
+
+reviews:
+  path_filters:
+    - "!docs/**"
+    - "!packages/ui/src/internal/**"
+    - "!**/pnpm-lock.yaml"
+    - "!**/.wrangler/**"
+    - "**"
