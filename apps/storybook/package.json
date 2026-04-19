@@ -1,0 +1,29 @@
+{
+  "name": "storybook-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build"
+  },
+  "dependencies": {
+    "@ously/config-tailwind": "workspace:*",
+    "@ously/ods": "workspace:*",
+    "@ously/tsconfig": "workspace:*",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "next": "^14.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.0.0",
+    "@storybook/addon-interactions": "^8.0.0",
+    "@storybook/addon-links": "^8.0.0",
+    "@storybook/blocks": "^8.0.0",
+    "@storybook/nextjs": "^8.0.0",
+    "@storybook/react": "^8.0.0",
+    "@storybook/test": "^8.0.0",
+    "storybook": "^8.0.0",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.0.0"
+  }
+}
