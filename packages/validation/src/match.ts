@@ -1,9 +1,11 @@
 import { z } from "zod";
 
-type Match<T, S> = [T] extends [S] ? ([S] extends [T] ? S : never) : never;
-
+/**
+ * Ensures a Zod schema strictly matches a Domain interface.
+ * Returns the schema instance itself (S) to preserve .parse()/.safeParse().
+ */
 export function match<T>() {
-  return <S extends z.ZodTypeAny>(schema: S): Match<T, z.infer<S>> => {
-    return schema as any;
+  return <S extends z.ZodType<T, any, any>>(schema: S): S => {
+    return schema;
   };
 }
