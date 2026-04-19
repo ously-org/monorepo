@@ -43,6 +43,7 @@ export async function fetchBranchLineage(db: any, branchId: string) {
   const branchGoals = await db.query.goals.findMany({
     where: (table: any, { inArray }: any) => inArray(table.branchId, branchIds),
   });
+  const accountingEntities = await db.query.accountingEntities.findMany();
 
-  return { commits, actions, envVars, goals: branchGoals };
+  return { commits, actions, envVars, goals: branchGoals, accountingEntities };
 }

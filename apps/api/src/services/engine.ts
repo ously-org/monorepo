@@ -110,43 +110,61 @@ export class ReplayEngine {
   }
 
   private evaluateGoals(month: number) {
-    for (const goal of this.state.goals.values()) {
-      if (goal.isMet) continue;
+    // Sort goals by ID for consistent evaluation order
+    const sortedGoals = Array.from(this.state.goals.values()).sort((a, b) => a.id.localeCompare(b.id));
 
-      let met = false;
-      if (goal.type === "TIME_FIX") {
-        if (goal.targetDate && this.state.date >= goal.targetDate) {
-          met = true;
-        }
-      } else if (goal.type === "MEASUREMENT") {
-        if (goal.targetEntityId && goal.targetValue !== undefined) {
-          const entity = this.state.entities.get(goal.targetEntityId);
-          if (entity && entity.currentValue >= goal.targetValue) {
+    let anyNewGoalMet = true;
+    while (anyNewGoalMet) {
+      anyNewGoalMet = false;
+
+      for (const goal of sortedGoals) {
+        if (this.state.isFrozen) break;
+        if (goal.isMet) continue;
+
+        let met = false;
+        if (goal.type === "TIME_FIX") {
+          if (goal.targetDate && this.state.date >= goal.targetDate) {
             met = true;
           }
-        }
-      } else if (goal.type === "COMMITMENT") {
-        if (goal.dependencyGoalId) {
-          const depGoal = this.state.goals.get(goal.dependencyGoalId);
-          if (depGoal && depGoal.isMet) {
-            met = true;
+        } else if (goal.type === "MEASUREMENT") {
+          if (goal.targetEntityId && goal.targetValue !== undefined) {
+            const entity = this.state.entities.get(goal.targetEntityId);
+            if (entity) {
+              if (entity.type === "LIABILITY") {
+                if (entity.currentValue <= goal.targetValue) {
+                  met = true;
+                }
+              } else {
+                if (entity.currentValue >= goal.targetValue) {
+                  met = true;
+                }
+              }
+            }
+          }
+        } else if (goal.type === "COMMITMENT") {
+          if (goal.dependencyGoalId) {
+            const depGoal = this.state.goals.get(goal.dependencyGoalId);
+            if (depGoal && depGoal.isMet) {
+              met = true;
+            }
           }
         }
-      }
 
-      if (met) {
-        goal.isMet = true;
-        goal.metAtMonth = month;
-        
-        // Handle trigger
-        if (goal.type === "COMMITMENT" && goal.triggerCommitId) {
-          if (!this.appliedCommitIds.has(goal.triggerCommitId)) {
-            const triggerCommit = this.allCommits.find(c => c.id === goal.triggerCommitId);
-            if (triggerCommit) {
-              this.appliedCommitIds.add(triggerCommit.id);
-              const triggerActions = this.allActions.filter(a => a.commitId === triggerCommit.id);
-              for (const action of triggerActions) {
-                this.applyAction(action, triggerCommit);
+        if (met) {
+          goal.isMet = true;
+          goal.metAtMonth = month;
+          anyNewGoalMet = true;
+          
+          // Handle trigger
+          if (goal.type === "COMMITMENT" && goal.triggerCommitId) {
+            if (!this.appliedCommitIds.has(goal.triggerCommitId)) {
+              const triggerCommit = this.allCommits.find(c => c.id === goal.triggerCommitId);
+              if (triggerCommit) {
+                this.appliedCommitIds.add(triggerCommit.id);
+                const triggerActions = this.allActions.filter(a => a.commitId === triggerCommit.id);
+                for (const action of triggerActions) {
+                  this.applyAction(action, triggerCommit);
+                }
               }
             }
           }
@@ -179,8 +197,18 @@ export class ReplayEngine {
     const key = `${this.state.date.getFullYear()}-${this.state.date.getMonth()}`;
     const monthCommits = this.commitGroups.get(key) || [];
 
+    // Collect all triggerCommitIds to prevent applying them based on timestamp
+    const triggerCommitIds = new Set<string>();
+    for (const goal of this.state.goals.values()) {
+      if (goal.triggerCommitId) {
+        triggerCommitIds.add(goal.triggerCommitId);
+      }
+    }
+
     for (const commit of monthCommits) {
       if (this.appliedCommitIds.has(commit.id)) continue;
+      // Do not apply goal triggers just because we reached their timestamp
+      if (triggerCommitIds.has(commit.id)) continue;
       
       this.appliedCommitIds.add(commit.id);
       const commitActions = this.allActions.filter(a => a.commitId === commit.id);
@@ -204,13 +232,23 @@ export class ReplayEngine {
             growthBaseValue: 0,
             growthMode: "ABSOLUTE",
             currentValue: action.valueNum || 0,
+            refEnvVarId: action.refEnvVarId || undefined,
           };
           this.state.entities.set(action.targetId, entity);
-          // Don't return, allow further properties to be set if there are other actions in the same commit
+          return;
         } else {
           this.state.isFrozen = true;
           return;
         }
+      }
+
+      if (action.actionType === "ADD") {
+        // Entity exists (likely pre-loaded from DB), so we just set its initial values
+        entity.currentValue = action.valueNum || 0;
+        if (action.valueStr) entity.name = action.valueStr;
+        if (action.key) entity.type = action.key as AccountingEntityType;
+        if (action.refEnvVarId) entity.refEnvVarId = action.refEnvVarId;
+        return;
       }
 
       let value = action.valueNum || 0;
@@ -272,7 +310,7 @@ export class ReplayEngine {
         if (action.actionType === "ADD") {
           goal = {
             id: action.targetId,
-            branchId: "", // Placeholder
+            branchId: commit?.branchId || "",
             type: (action.key as GoalType) || "MEASUREMENT",
             isMet: false,
           } as GoalState;

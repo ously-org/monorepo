@@ -4,6 +4,7 @@ import * as schema from "@ously/db";
 import { fetchBranchLineage } from "./services/data";
 import { ReplayEngine } from "./services/engine";
 import { ProjectRequestSchema, CompareRequestSchema } from "@ously/validation";
+import { EnvVar, Goal, AccountingEntity } from "@ously/domain";
 
 type Bindings = {
   DB: D1Database;
@@ -34,20 +35,37 @@ app.post("/branches/:id/project", async (c) => {
   }
 
   const db = drizzle(c.env.DB, { schema });
-  const { commits, actions, envVars, goals } = await fetchBranchLineage(db, branchId);
+  const { commits, actions, envVars, goals, accountingEntities } = await fetchBranchLineage(db, branchId);
   
   if (commits.length === 0) {
     return c.json({ error: "Branch not found or has no history" }, 404);
   }
 
-  // Initialize engine at Month 0
+  // Find the earliest commit date
+  const earliestCommit = commits.reduce((earliest, current) => 
+    new Date(current.timestamp) < new Date(earliest.timestamp) ? current : earliest
+  , commits[0]);
+  const startDate = new Date(earliestCommit.timestamp);
+  
+  // Set to first day of the month for consistent monthly steps
+  startDate.setDate(1);
+  startDate.setHours(0, 0, 0, 0);
+
+  // Initialize engine with the earliest start date
   const engine = new ReplayEngine({
-    envVars: new Map(envVars.map(v => [v.id, v.baseValue])),
-    goals: new Map(goals.map(g => [g.id, { ...g, isMet: false }])),
+    date: startDate,
+    envVars: new Map(envVars.map((v: EnvVar) => [v.id, v.baseValue])),
+    goals: new Map(goals.map((g: Goal) => [g.id, { ...g, isMet: false }])),
+    entities: new Map(accountingEntities.map((e: AccountingEntity) => [e.id, { ...e, currentValue: 0 }])),
   });
 
+  // Total simulation months = historical months + future durationMonths
+  const now = new Date();
+  const historicalMonths = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+  const totalMonths = Math.max(0, historicalMonths) + parsed.data.durationMonths;
+
   // Replay historical commits + project into the future
-  const snapshots = engine.project(commits, actions, parsed.data.durationMonths);
+  const snapshots = engine.project(commits, actions, totalMonths);
   
   return c.json({ snapshots });
 });
@@ -74,17 +92,44 @@ app.post("/branches/compare", async (c) => {
     return c.json({ error: "One or both branches not found" }, 404);
   }
 
+  const earliestCommitA = dataA.commits.reduce((earliest, current) => 
+    new Date(current.timestamp) < new Date(earliest.timestamp) ? current : earliest
+  , dataA.commits[0]);
+  const startDateA = new Date(earliestCommitA.timestamp);
+  startDateA.setDate(1);
+  startDateA.setHours(0, 0, 0, 0);
+
   const engineA = new ReplayEngine({
-    envVars: new Map(dataA.envVars.map(v => [v.id, v.baseValue])),
-    goals: new Map(dataA.goals.map(g => [g.id, { ...g, isMet: false }])),
+    date: startDateA,
+    envVars: new Map(dataA.envVars.map((v: EnvVar) => [v.id, v.baseValue])),
+    goals: new Map(dataA.goals.map((g: Goal) => [g.id, { ...g, isMet: false }])),
+    entities: new Map(dataA.accountingEntities.map((e: AccountingEntity) => [e.id, { ...e, currentValue: 0 }])),
   });
-  const snapshotsA = engineA.project(dataA.commits, dataA.actions, parsed.data.durationMonths);
+
+  const now = new Date();
+  const historicalMonthsA = (now.getFullYear() - startDateA.getFullYear()) * 12 + (now.getMonth() - startDateA.getMonth());
+  const totalMonthsA = Math.max(0, historicalMonthsA) + parsed.data.durationMonths;
+
+  const snapshotsA = engineA.project(dataA.commits, dataA.actions, totalMonthsA);
+
+  const earliestCommitB = dataB.commits.reduce((earliest, current) => 
+    new Date(current.timestamp) < new Date(earliest.timestamp) ? current : earliest
+  , dataB.commits[0]);
+  const startDateB = new Date(earliestCommitB.timestamp);
+  startDateB.setDate(1);
+  startDateB.setHours(0, 0, 0, 0);
 
   const engineB = new ReplayEngine({
-    envVars: new Map(dataB.envVars.map(v => [v.id, v.baseValue])),
-    goals: new Map(dataB.goals.map(g => [g.id, { ...g, isMet: false }])),
+    date: startDateB,
+    envVars: new Map(dataB.envVars.map((v: EnvVar) => [v.id, v.baseValue])),
+    goals: new Map(dataB.goals.map((g: Goal) => [g.id, { ...g, isMet: false }])),
+    entities: new Map(dataB.accountingEntities.map((e: AccountingEntity) => [e.id, { ...e, currentValue: 0 }])),
   });
-  const snapshotsB = engineB.project(dataB.commits, dataB.actions, parsed.data.durationMonths);
+  
+  const historicalMonthsB = (now.getFullYear() - startDateB.getFullYear()) * 12 + (now.getMonth() - startDateB.getMonth());
+  const totalMonthsB = Math.max(0, historicalMonthsB) + parsed.data.durationMonths;
+
+  const snapshotsB = engineB.project(dataB.commits, dataB.actions, totalMonthsB);
 
   const finalA = snapshotsA[snapshotsA.length - 1];
   const finalB = snapshotsB[snapshotsB.length - 1];
