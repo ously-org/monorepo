@@ -5,7 +5,9 @@ import {
   CommitAction, 
   Branch, 
   Commit,
-  AccountingEntityType
+  AccountingEntityType,
+  GrowthMode,
+  GoalType
 } from "@ously/domain";
 
 export interface AccountingEntityState extends AccountingEntity {
@@ -40,6 +42,9 @@ export interface Snapshot {
 export class ReplayEngine {
   private state: EngineState;
   private appliedCommitIds: Set<string> = new Set();
+  private commitGroups: Map<string, Commit[]> = new Map();
+  private allCommits: Commit[] = [];
+  private allActions: CommitAction[] = [];
 
   constructor(initialState: Partial<EngineState>) {
     this.state = {
@@ -55,6 +60,19 @@ export class ReplayEngine {
   public project(futureCommits: Commit[], actions: CommitAction[], durationMonths: number = 120): Snapshot[] {
     const snapshots: Snapshot[] = [];
     this.appliedCommitIds.clear();
+    this.commitGroups.clear();
+    this.allCommits = futureCommits;
+    this.allActions = actions;
+
+    // Pre-index commits by YYYY-MM
+    for (const commit of futureCommits) {
+      const date = new Date(commit.timestamp);
+      const key = `${date.getFullYear()}-${date.getMonth()}`;
+      if (!this.commitGroups.has(key)) {
+        this.commitGroups.set(key, []);
+      }
+      this.commitGroups.get(key)!.push(commit);
+    }
     
     // Initial snapshot before any month passes (Month 0)
     snapshots.push(this.createSnapshot());
@@ -65,7 +83,7 @@ export class ReplayEngine {
         continue;
       }
 
-      this.processMonth(i, futureCommits, actions);
+      this.processMonth(i);
 
       // Advance date by one month AFTER processing
       this.state.month++;
@@ -79,11 +97,11 @@ export class ReplayEngine {
     return snapshots;
   }
 
-  private processMonth(month: number, commits: Commit[], actions: CommitAction[]) {
+  private processMonth(month: number) {
     this.resolveMarketForces();
     this.applyGrowth();
-    this.applyActions(month, commits, actions);
-    this.evaluateGoals(month, commits, actions);
+    this.applyActions();
+    this.evaluateGoals(month);
   }
 
   private resolveMarketForces() {
@@ -91,7 +109,7 @@ export class ReplayEngine {
     // In a real implementation, this might involve complex logic or external data.
   }
 
-  private evaluateGoals(month: number, commits: Commit[], actions: CommitAction[]) {
+  private evaluateGoals(month: number) {
     for (const goal of this.state.goals.values()) {
       if (goal.isMet) continue;
 
@@ -123,12 +141,12 @@ export class ReplayEngine {
         // Handle trigger
         if (goal.type === "COMMITMENT" && goal.triggerCommitId) {
           if (!this.appliedCommitIds.has(goal.triggerCommitId)) {
-            const triggerCommit = commits.find(c => c.id === goal.triggerCommitId);
+            const triggerCommit = this.allCommits.find(c => c.id === goal.triggerCommitId);
             if (triggerCommit) {
               this.appliedCommitIds.add(triggerCommit.id);
-              const triggerActions = actions.filter(a => a.commitId === triggerCommit.id);
+              const triggerActions = this.allActions.filter(a => a.commitId === triggerCommit.id);
               for (const action of triggerActions) {
-                this.applyAction(action);
+                this.applyAction(action, triggerCommit);
               }
             }
           }
@@ -157,26 +175,23 @@ export class ReplayEngine {
     }
   }
 
-  private applyActions(month: number, commits: Commit[], actions: CommitAction[]) {
-    const monthCommits = commits.filter(c => {
-      const commitDate = new Date(c.timestamp);
-      return commitDate.getFullYear() === this.state.date.getFullYear() &&
-             commitDate.getMonth() === this.state.date.getMonth();
-    });
+  private applyActions() {
+    const key = `${this.state.date.getFullYear()}-${this.state.date.getMonth()}`;
+    const monthCommits = this.commitGroups.get(key) || [];
 
     for (const commit of monthCommits) {
       if (this.appliedCommitIds.has(commit.id)) continue;
       
       this.appliedCommitIds.add(commit.id);
-      const commitActions = actions.filter(a => a.commitId === commit.id);
+      const commitActions = this.allActions.filter(a => a.commitId === commit.id);
       for (const action of commitActions) {
-        this.applyAction(action);
+        this.applyAction(action, commit);
         if (this.state.isFrozen) return;
       }
     }
   }
 
-  private applyAction(action: CommitAction) {
+  private applyAction(action: CommitAction, commit?: Commit) {
     if (action.targetType === "ENTITY") {
       let entity = this.state.entities.get(action.targetId);
       
