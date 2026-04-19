@@ -1,4 +1,5 @@
 import { DrizzleD1Database } from "drizzle-orm/d1";
+import { InferSelectModel } from "drizzle-orm";
 import * as schema from "@ously/db";
 import { Commit, CommitAction, Goal, EnvVar, AccountingEntity } from "@ously/domain";
 
@@ -11,7 +12,7 @@ function chunkArray<T>(array: T[], size: number): T[][] {
 }
 
 // Utility to remove nulls and return objects with undefined instead
-function mapCommit(c: any): Commit {
+function mapCommit(c: InferSelectModel<typeof schema.commits>): Commit {
   return {
     id: c.id,
     branchId: c.branchId,
@@ -20,7 +21,7 @@ function mapCommit(c: any): Commit {
   };
 }
 
-function mapAction(a: any): CommitAction {
+function mapAction(a: InferSelectModel<typeof schema.commitActions>): CommitAction {
   return {
     id: a.id,
     commitId: a.commitId,
@@ -35,7 +36,7 @@ function mapAction(a: any): CommitAction {
   };
 }
 
-function mapGoal(g: any): Goal {
+function mapGoal(g: InferSelectModel<typeof schema.goals>): Goal {
   return {
     id: g.id,
     branchId: g.branchId,
@@ -48,7 +49,7 @@ function mapGoal(g: any): Goal {
   };
 }
 
-function mapEntity(e: any): AccountingEntity {
+function mapEntity(e: InferSelectModel<typeof schema.accountingEntities>): AccountingEntity {
   return {
     id: e.id,
     name: e.name,
