@@ -53,5 +53,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/web-prosper'
           command: pages deploy .vercel/output/static --project-name=web-prosper-prod
-d
-prosper-web

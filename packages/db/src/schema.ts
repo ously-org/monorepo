@@ -6,6 +6,8 @@
  * pnpm dlx @better-auth/cli generate --output ./src/schema.ts
  */
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { type User, type Session, type Account, type Verification } from "@ously/domain";
+import { matchTable } from "./match-table";
 
 export const users = sqliteTable("user", {
   id: text("id").primaryKey(),
@@ -56,3 +58,8 @@ export const verifications = sqliteTable("verification", {
   createdAt: integer("created_at", { mode: "timestamp" }),
   updatedAt: integer("updated_at", { mode: "timestamp" }),
 });
+
+matchTable<User>()(users);
+matchTable<Session>()(sessions);
+matchTable<Account>()(accounts);
+matchTable<Verification>()(verifications);

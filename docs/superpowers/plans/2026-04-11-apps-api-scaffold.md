@@ -4,7 +4,7 @@
 
 **Goal:** Implement the backend API scaffolding for `apps/api` using Hono and Cloudflare Workers.
 
-**Architecture:** Hono-based API running on Cloudflare Workers (D1 binding). Integrates with `@ously/auth`, `@ously/db`, and `@ously/types`.
+**Architecture:** Hono-based API running on Cloudflare Workers (D1 binding). Integrates with `@ously/auth`, `@ously/db`, and `@ously/validation`.
 
 **Tech Stack:** Hono, Cloudflare Workers, Better Auth, D1 Database, pnpm workspaces.
 
