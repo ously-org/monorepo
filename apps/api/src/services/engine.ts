@@ -78,6 +78,50 @@ export class ReplayEngine {
   private processMonth(month: number, commits: Commit[], actions: CommitAction[]) {
     this.applyGrowth();
     this.applyActions(month, commits, actions);
+    this.evaluateGoals(month, commits, actions);
+  }
+
+  private evaluateGoals(month: number, commits: Commit[], actions: CommitAction[]) {
+    for (const goal of this.state.goals.values()) {
+      if (goal.isMet) continue;
+
+      let met = false;
+      if (goal.type === "TIME_FIX") {
+        if (goal.targetDate && this.state.date >= goal.targetDate) {
+          met = true;
+        }
+      } else if (goal.type === "MEASUREMENT") {
+        if (goal.targetEntityId && goal.targetValue !== undefined) {
+          const entity = this.state.entities.get(goal.targetEntityId);
+          if (entity && entity.currentValue >= goal.targetValue) {
+            met = true;
+          }
+        }
+      } else if (goal.type === "COMMITMENT") {
+        if (goal.dependencyGoalId) {
+          const depGoal = this.state.goals.get(goal.dependencyGoalId);
+          if (depGoal && depGoal.isMet) {
+            met = true;
+          }
+        }
+      }
+
+      if (met) {
+        goal.isMet = true;
+        goal.metAtMonth = month;
+        
+        // Handle trigger
+        if (goal.type === "COMMITMENT" && goal.triggerCommitId) {
+          const triggerCommit = commits.find(c => c.id === goal.triggerCommitId);
+          if (triggerCommit) {
+            const triggerActions = actions.filter(a => a.commitId === triggerCommit.id);
+            for (const action of triggerActions) {
+              this.applyAction(action);
+            }
+          }
+        }
+      }
+    }
   }
 
   private applyGrowth() {
