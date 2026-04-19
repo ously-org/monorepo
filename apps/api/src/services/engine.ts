@@ -73,7 +73,77 @@ export class ReplayEngine {
   }
 
   private processMonth(month: number, commits: Commit[], actions: CommitAction[]) {
-    // Logic will be added in subsequent tasks
+    this.applyGrowth();
+    this.applyActions(month, commits, actions);
+  }
+
+  private applyGrowth() {
+    for (const entity of this.state.entities.values()) {
+      if (entity.type !== "ASSET" && entity.type !== "LIABILITY") continue;
+
+      let growthRate = entity.growthBaseValue;
+      if (entity.refEnvVarId) {
+        const envVarValue = this.state.envVars.get(entity.refEnvVarId);
+        if (envVarValue !== undefined) {
+          growthRate = envVarValue;
+        }
+      }
+
+      if (entity.growthMode === "RELATIVE") {
+        entity.currentValue *= (1 + growthRate);
+      } else {
+        entity.currentValue += growthRate;
+      }
+    }
+  }
+
+  private applyActions(month: number, commits: Commit[], actions: CommitAction[]) {
+    const monthCommits = commits.filter(c => {
+      const commitDate = new Date(c.timestamp);
+      return commitDate.getFullYear() === this.state.date.getFullYear() &&
+             commitDate.getMonth() === this.state.date.getMonth();
+    });
+
+    for (const commit of monthCommits) {
+      const commitActions = actions.filter(a => a.commitId === commit.id);
+      for (const action of commitActions) {
+        this.applyAction(action);
+        if (this.state.isFrozen) return;
+      }
+    }
+  }
+
+  private applyAction(action: CommitAction) {
+    if (action.targetType === "ENTITY") {
+      const entity = this.state.entities.get(action.targetId);
+      if (!entity) {
+        if (action.actionType !== "ADD") {
+          this.state.isFrozen = true;
+          return;
+        }
+        // Handle ADD later if needed
+        return;
+      }
+
+      const value = action.valueNum || 0;
+      if (action.actionType === "UPDATE") {
+        entity.currentValue += value;
+      } else if (action.actionType === "REPLACE") {
+        entity.currentValue = value;
+      } else if (action.actionType === "DELETE") {
+        this.state.entities.delete(action.targetId);
+      }
+    } else if (action.targetType === "ENV_VAR") {
+      const value = action.valueNum || 0;
+      if (action.actionType === "UPDATE") {
+        const current = this.state.envVars.get(action.targetId) || 0;
+        this.state.envVars.set(action.targetId, current + value);
+      } else if (action.actionType === "REPLACE") {
+        this.state.envVars.set(action.targetId, value);
+      } else if (action.actionType === "DELETE") {
+        this.state.envVars.delete(action.targetId);
+      }
+    }
   }
 
   private createSnapshot(): Snapshot {
