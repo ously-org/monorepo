@@ -1,0 +1,12 @@
+{
+  "extends": "@ously/tsconfig/base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "@ously/ui/*": ["./src/*"]
+    }
+  },
+  "include": ["src"]
+}
