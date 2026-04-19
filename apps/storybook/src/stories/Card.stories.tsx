@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from '@ously/ods/components/card';
-import { Button } from '@ously/ods/components/button';
+import { Card } from '@ously/ods';
+import { Button } from '@ously/ods';
 
 const meta = {
   title: 'Components/Card',

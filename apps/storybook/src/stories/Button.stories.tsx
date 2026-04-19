@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '@ously/ods/components/button';
+import { Button } from '@ously/ods';
 
 const meta = {
   title: 'Components/Button',

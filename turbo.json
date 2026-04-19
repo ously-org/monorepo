@@ -3,7 +3,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", ".vercel/**", "dist/**"]
+      "outputs": [".next/**", ".vercel/**", "dist/**", "storybook-static/**"]
     },
     "lint": {
       "cache": false

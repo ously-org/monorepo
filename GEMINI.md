@@ -4,7 +4,7 @@
 **Status:** Monorepo Setup Complete.
 The scope of the initial Gemini CLI task was strictly to **setup the monorepo foundation**. This includes the Turborepo orchestration, shared configurations, and the basic scaffolding of apps and packages. 
 
-**Note to future agents:** Do not expand the infrastructure unless explicitly instructed. Focus on feature development within the established boundaries.
+**Note to future agents:** Do not expand the infrastructure unless explicitly instructed. Focus on feature development within the established boundaries. If planning use gemini pro.
 
 ## 🧠 The Vibe Coding Framework
 We operate under a 3-Pillar Framework to prevent technical debt and strategic fatigue:
