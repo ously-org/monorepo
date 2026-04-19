@@ -6,5 +6,6 @@ reviews:
     - "!docs/**"
     - "!packages/ui/src/internal/**"
     - "!**/pnpm-lock.yaml"
+    - "!**/.vercel/**"
     - "!**/.wrangler/**"
     - "**"
