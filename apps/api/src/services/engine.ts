@@ -4,7 +4,8 @@ import {
   Goal, 
   CommitAction, 
   Branch, 
-  Commit 
+  Commit,
+  AccountingEntityType
 } from "@ously/domain";
 
 export interface AccountingEntityState extends AccountingEntity {
@@ -162,17 +163,38 @@ export class ReplayEngine {
 
   private applyAction(action: CommitAction) {
     if (action.targetType === "ENTITY") {
-      const entity = this.state.entities.get(action.targetId);
+      let entity = this.state.entities.get(action.targetId);
+      
       if (!entity) {
-        if (action.actionType !== "ADD") {
+        if (action.actionType === "ADD") {
+          entity = {
+            id: action.targetId,
+            name: action.valueStr || "New Entity",
+            type: (action.key as AccountingEntityType) || "ASSET",
+            growthBaseValue: 0,
+            growthMode: "ABSOLUTE",
+            currentValue: action.valueNum || 0,
+          };
+          this.state.entities.set(action.targetId, entity);
+          return;
+        } else {
           this.state.isFrozen = true;
           return;
         }
-        // Handle ADD later if needed
-        return;
       }
 
-      const value = action.valueNum || 0;
+      let value = action.valueNum || 0;
+      if (action.refEnvVarId) {
+        const envVarValue = this.state.envVars.get(action.refEnvVarId);
+        if (envVarValue !== undefined) {
+          value = envVarValue;
+        }
+      }
+
+      if (action.isRelative) {
+        value = entity.currentValue * value;
+      }
+
       if (action.actionType === "UPDATE") {
         entity.currentValue += value;
       } else if (action.actionType === "REPLACE") {
@@ -181,14 +203,48 @@ export class ReplayEngine {
         this.state.entities.delete(action.targetId);
       }
     } else if (action.targetType === "ENV_VAR") {
-      const value = action.valueNum || 0;
+      let current = this.state.envVars.get(action.targetId);
+      if (current === undefined) {
+        if (action.actionType === "ADD") {
+          this.state.envVars.set(action.targetId, action.valueNum || 0);
+          return;
+        } else {
+          this.state.isFrozen = true;
+          return;
+        }
+      }
+
+      let value = action.valueNum || 0;
+      if (action.isRelative) {
+        value = current * value;
+      }
+
       if (action.actionType === "UPDATE") {
-        const current = this.state.envVars.get(action.targetId) || 0;
         this.state.envVars.set(action.targetId, current + value);
       } else if (action.actionType === "REPLACE") {
         this.state.envVars.set(action.targetId, value);
       } else if (action.actionType === "DELETE") {
         this.state.envVars.delete(action.targetId);
+      }
+    } else if (action.targetType === "GOAL") {
+      const goal = this.state.goals.get(action.targetId);
+      if (!goal) {
+        if (action.actionType !== "ADD") {
+          this.state.isFrozen = true;
+        }
+        return;
+      }
+      
+      if (action.actionType === "UPDATE") {
+        if (action.key === "targetValue" && action.valueNum !== undefined) {
+          goal.targetValue = (goal.targetValue || 0) + action.valueNum;
+        }
+      } else if (action.actionType === "REPLACE") {
+        if (action.key === "targetValue" && action.valueNum !== undefined) {
+          goal.targetValue = action.valueNum;
+        }
+      } else if (action.actionType === "DELETE") {
+        this.state.goals.delete(action.targetId);
       }
     }
   }
