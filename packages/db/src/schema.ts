@@ -6,7 +6,7 @@
  * pnpm dlx @better-auth/cli generate --output ./src/schema.ts
  */
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { type User } from "@ously/domain";
+import { type User, type Session, type Account, type Verification } from "@ously/domain";
 import { matchTable } from "./match-table";
 
 export const users = sqliteTable("user", {
@@ -60,3 +60,6 @@ export const verifications = sqliteTable("verification", {
 });
 
 matchTable<User>()(users);
+matchTable<Session>()(sessions);
+matchTable<Account>()(accounts);
+matchTable<Verification>()(verifications);
