@@ -7,10 +7,10 @@ The scope of the initial Gemini CLI task was strictly to **setup the monorepo fo
 **Note to future agents:** Do not expand the infrastructure unless explicitly instructed. Focus on feature development within the established boundaries.
 
 ## 🧠 The Vibe Coding Framework
-We operate under a 3-Pillar Framework to prevent technical debt:
+We operate under a 3-Pillar Framework to prevent technical debt and strategic fatigue:
 1. **Rules:** Enforce strict architectural boundaries (Domain-First).
 2. **Human:** Externalize decision-making to this document and Agent Prompts.
-3. **AI:** Mandatory orchestration (TSC, Lint, Format) in every feedback loop.
+3. **AI:** Mandatory orchestration (TSC, Lint, Format) in every feedback loop. **Milestone-Level Pushing:** To conserve CI/CD and CodeRabbit review limits, AI agents MUST commit locally after each task but ONLY push to the remote repository once the entire implementation plan is complete and verified.
 
 ## 🏗️ AI-Native Architecture
 1. **Domain (@ously/domain):** Pure TS Interfaces. Zero dependencies. The "Skeleton."
