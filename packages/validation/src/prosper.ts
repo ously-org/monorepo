@@ -89,3 +89,13 @@ export const EnvVarSchema = match<EnvVar>()(
     baseValue: z.number(),
   })
 );
+
+export const ProjectRequestSchema = z.object({
+  durationMonths: z.number().int().positive().optional().default(120),
+});
+
+export const CompareRequestSchema = z.object({
+  branchIdA: z.string(),
+  branchIdB: z.string(),
+  durationMonths: z.number().int().positive().optional().default(120),
+});
