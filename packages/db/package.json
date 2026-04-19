@@ -6,10 +6,12 @@
   "types": "./src/index.ts",
   "scripts": {
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "drizzle-orm": "^0.30.10"
+    "drizzle-orm": "^0.30.10",
+    "@ously/domain": "workspace:*"
   },
   "devDependencies": {
     "@ously/tsconfig": "workspace:*",
