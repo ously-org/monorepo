@@ -4,7 +4,7 @@ import path from "path";
 const config: StorybookConfig = {
   stories: [
     "../../../packages/ods/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "../../apps/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../../../apps/*/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
@@ -23,7 +23,7 @@ const config: StorybookConfig = {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
-        "@": path.resolve(__dirname, "../../apps/web-prosper/src"),
+        "@": path.resolve(__dirname, "../../../apps/web-prosper/src"),
         "@ously/ods": path.resolve(__dirname, "../../../packages/ods/src"),
       };
     }
