@@ -4,4 +4,4 @@ pages_build_output_dir = ".next"
 
 [env.production]
 name = "web-prosper-prod"
-route = "prosper.ously.com"
+route = "prosper.ously.tech"

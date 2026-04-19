@@ -10,5 +10,5 @@ database_id = "your-database-id-here" # TBD in production
 [env.production]
 name = "api-prod"
 routes = [
-	{ pattern = "api.ously.com", custom_domain = true }
+	{ pattern = "api.ously.tech", custom_domain = true }
 ]

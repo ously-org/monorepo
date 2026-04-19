@@ -4,4 +4,4 @@ pages_build_output_dir = ".next"
 
 [env.production]
 name = "web-main-prod"
-route = "ously.com"
+route = "ously.tech"
