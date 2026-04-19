@@ -10,4 +10,5 @@ export const UserSchema = match<User>()(
   })
 );
 
+export * from "./prosper";
 export { type User };
