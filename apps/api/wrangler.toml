@@ -8,8 +8,9 @@ binding = "DB"
 database_name = "ously-db"
 database_id = "50d47be8-dd12-4755-af1f-eee54743a3a1"
 
-[env.production]
-name = "api-prod"
 routes = [
 	{ pattern = "api.ously.tech", custom_domain = true }
 ]
+
+[env.production]
+name = "api-prod"
