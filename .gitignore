@@ -47,4 +47,5 @@ Thumbs.db
 .vercel/
 
 # Worktrees
+worktrees/
 .worktrees/

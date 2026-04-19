@@ -36,6 +36,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/api'
+          packageManager: pnpm
           command: deploy
 
       - name: Deploy Ously Web (Pages)
@@ -44,6 +45,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/web-main'
+          packageManager: pnpm
           command: pages deploy .vercel/output/static --project-name=web-main-prod
 
       - name: Deploy Prosper Web (Pages)
@@ -52,4 +54,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           workingDirectory: 'apps/web-prosper'
+          packageManager: pnpm
           command: pages deploy .vercel/output/static --project-name=web-prosper-prod
