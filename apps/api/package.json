@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ously/db": "workspace:*",
+    "@ously/domain": "workspace:*",
     "@ously/validation": "workspace:*",
     "drizzle-orm": "^0.30.10",
     "hono": "^4.4.7"
