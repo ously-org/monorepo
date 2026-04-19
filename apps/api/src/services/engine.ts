@@ -50,10 +50,19 @@ export class ReplayEngine {
     };
   }
 
-  public run(futureCommits: Commit[], actions: CommitAction[], durationMonths: number = 120): Snapshot[] {
+  public project(futureCommits: Commit[], actions: CommitAction[], durationMonths: number = 120): Snapshot[] {
     const snapshots: Snapshot[] = [];
     
-    for (let i = 0; i <= durationMonths; i++) {
+    // Initial snapshot before any month passes (Month 0)
+    snapshots.push(this.createSnapshot());
+
+    for (let i = 1; i <= durationMonths; i++) {
+      // Advance date by one month
+      this.state.month++;
+      const nextDate = new Date(this.state.date);
+      nextDate.setMonth(nextDate.getMonth() + 1);
+      this.state.date = nextDate;
+
       if (this.state.isFrozen) {
         snapshots.push(this.createSnapshot());
         continue;
@@ -61,12 +70,6 @@ export class ReplayEngine {
 
       this.processMonth(i, futureCommits, actions);
       snapshots.push(this.createSnapshot());
-      
-      // Advance date by one month
-      this.state.month++;
-      const nextDate = new Date(this.state.date);
-      nextDate.setMonth(nextDate.getMonth() + 1);
-      this.state.date = nextDate;
     }
 
     return snapshots;
