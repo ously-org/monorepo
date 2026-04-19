@@ -1,4 +1,4 @@
-# Ously UI: Design System
+# Oously Design System (ODS)
 
 ## Scope
 Shared UI components (Internal shadcn components wrapped for public use).

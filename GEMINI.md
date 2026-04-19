@@ -48,7 +48,7 @@ To maximize context efficiency and project speed, we delegate tasks between the 
 - `packages/`: Shared libraries
     - `tsconfig`: Shared TypeScript rules
     - `config-tailwind`: Shared design tokens & themes
-    - `ui`: Shared UI components (Internal shadcn components wrapped for public use)
+    - `ods`: Shared UI components (Internal shadcn components wrapped for public use)
     - `db`: D1/SQLite schemas mapped to Domain via `matchTable<T>`.
     - `domain`: Pure TS Interfaces. Zero dependencies. The "Skeleton."
     - `validation`: Zod schemas mapped to Domain via `match<T>`.
@@ -56,8 +56,8 @@ To maximize context efficiency and project speed, we delegate tasks between the 
 ## Critical Constraints
 - Apps MUST use `packages/validation` for data shapes.
 - UI components MUST be abstract and theme-injected.
-- `packages/ui` only exposes wrapped components; raw shadcn components are kept internal.
-- NO cross-package relative imports allowed; apps and packages MUST use absolute imports for workspace dependencies (e.g., `@ously/ui`, `@ously/validation`).
+- `packages/ods` only exposes wrapped components; raw shadcn components are kept internal.
+- NO cross-package relative imports allowed; apps and packages MUST use absolute imports for workspace dependencies (e.g., `@ously/ods`, `@ously/validation`).
 - Internal package imports SHOULD use relative paths to ensure compatibility with standard build and resolution tools.
 
 ## Platform-Specific Constraints

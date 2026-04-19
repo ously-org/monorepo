@@ -51,9 +51,9 @@ importers:
       '@ously/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@ously/ui':
+      '@ously/ods':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ods
       '@ously/validation':
         specifier: workspace:*
         version: link:../../packages/validation
@@ -103,9 +103,9 @@ importers:
       '@ously/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@ously/ui':
+      '@ously/ods':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../packages/ods
       '@ously/validation':
         specifier: workspace:*
         version: link:../../packages/validation
@@ -187,9 +187,7 @@ importers:
         specifier: ^5.4.5
         version: 5.9.3
 
-  packages/tsconfig: {}
-
-  packages/ui:
+  packages/ods:
     dependencies:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
@@ -230,7 +228,7 @@ importers:
         version: 18.3.7(@types/react@18.3.28)
       autoprefixer:
         specifier: ^10.4.19
-        version: 10.4.27(postcss@8.5.9)
+        version: 10.5.0(postcss@8.5.9)
       postcss:
         specifier: ^8.4.38
         version: 8.5.9
@@ -240,6 +238,8 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.9.3
+
+  packages/tsconfig: {}
 
   packages/validation:
     dependencies:

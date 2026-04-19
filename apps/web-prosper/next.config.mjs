@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ["@ously/ui"],
+  transpilePackages: ["@ously/ods"],
 };
 
 export default nextConfig;

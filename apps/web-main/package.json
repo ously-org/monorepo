@@ -12,7 +12,7 @@
   "dependencies": {
     "@ously/db": "workspace:*",
     "@ously/validation": "workspace:*",
-    "@ously/ui": "workspace:*",
+    "@ously/ods": "workspace:*",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18"
