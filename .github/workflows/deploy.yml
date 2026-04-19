@@ -39,6 +39,16 @@ jobs:
           packageManager: pnpm
           command: deploy
 
+      - name: Create Ously Web Project
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: 'apps/web-main'
+          packageManager: pnpm
+          command: pages project create web-main-prod --production-branch main
+
       - name: Deploy Ously Web (Pages)
         uses: cloudflare/wrangler-action@v3
         with:
@@ -47,6 +57,16 @@ jobs:
           workingDirectory: 'apps/web-main'
           packageManager: pnpm
           command: pages deploy .vercel/output/static --project-name=web-main-prod
+
+      - name: Create Prosper Web Project
+        uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: 'apps/web-prosper'
+          packageManager: pnpm
+          command: pages project create web-prosper-prod --production-branch main
 
       - name: Deploy Prosper Web (Pages)
         uses: cloudflare/wrangler-action@v3
