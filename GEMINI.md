@@ -32,6 +32,8 @@ The scope of the initial Gemini CLI task was strictly to **setup the monorepo fo
 
 ## Platform-Specific Constraints
 - **Cloudflare Pages:** NEVER use `route` or `custom_domain` keys in `wrangler.toml` for Pages projects. These are Workers-only features.
+- **Cloudflare Compatibility:** ALL projects (`wrangler.toml`) MUST include `compatibility_flags = ["nodejs_compat"]` and a `compatibility_date` of `2024-09-23` or newer.
 - **Next.js on Cloudflare:** ALWAYS use `@cloudflare/next-on-pages` for deployment. Build directory MUST be `.vercel/output/static`.
+
 - **Research First:** Before configuring infrastructure for specific platforms (Cloudflare, Polar, etc.), ALWAYS use `web_search` to verify the latest official configuration schema.
 
