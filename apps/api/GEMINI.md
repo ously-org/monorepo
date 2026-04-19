@@ -10,6 +10,6 @@ Shared Hono backend for all Ously webapps.
 - D1 Database
 
 ## Coding Rules
-- Use `@ously/types` for all request/response schemas.
+- Use `@ously/validation` for all request/response schemas.
 - All auth logic should use `@ously/auth`.
 - Database access through Drizzle with `@ously/db` schema.

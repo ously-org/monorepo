@@ -4,7 +4,7 @@
     "lib": ["esnext"],
     "baseUrl": ".",
     "paths": {
-      "@ously/types/*": ["./src/*"]
+      "@ously/validation/*": ["./src/*"]
     }
   },
   "include": ["src"]

@@ -1,5 +1,5 @@
 {
-  "name": "@ously/types",
+  "name": "@ously/validation",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",
@@ -12,6 +12,7 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@ously/domain": "workspace:*",
     "zod": "^3.23.8"
   }
 }

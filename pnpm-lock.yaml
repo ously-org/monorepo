@@ -23,9 +23,9 @@ importers:
       '@ously/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@ously/types':
+      '@ously/validation':
         specifier: workspace:*
-        version: link:../../packages/types
+        version: link:../../packages/validation
       drizzle-orm:
         specifier: ^0.30.10
         version: 0.30.10(@cloudflare/workers-types@4.20260412.1)(@opentelemetry/api@1.9.1)(@types/react@18.3.28)(kysely@0.28.16)(react@18.3.1)
@@ -51,12 +51,12 @@ importers:
       '@ously/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@ously/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@ously/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@ously/validation':
+        specifier: workspace:*
+        version: link:../../packages/validation
       next:
         specifier: 14.2.3
         version: 14.2.3(@opentelemetry/api@1.9.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -103,12 +103,12 @@ importers:
       '@ously/db':
         specifier: workspace:*
         version: link:../../packages/db
-      '@ously/types':
-        specifier: workspace:*
-        version: link:../../packages/types
       '@ously/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@ously/validation':
+        specifier: workspace:*
+        version: link:../../packages/validation
       next:
         specifier: 14.2.3
         version: 14.2.3(@opentelemetry/api@1.9.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -161,6 +161,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@ously/domain':
+        specifier: workspace:*
+        version: link:../domain
       drizzle-orm:
         specifier: ^0.30.10
         version: 0.30.10(@cloudflare/workers-types@4.20260412.1)(@opentelemetry/api@1.9.1)(@types/react@18.3.28)(kysely@0.28.16)(react@18.3.1)
@@ -175,13 +178,7 @@ importers:
         specifier: ^5.4.5
         version: 5.9.3
 
-  packages/tsconfig: {}
-
-  packages/types:
-    dependencies:
-      zod:
-        specifier: ^3.23.8
-        version: 3.25.76
+  packages/domain:
     devDependencies:
       '@ously/tsconfig':
         specifier: workspace:*
@@ -189,6 +186,8 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.9.3
+
+  packages/tsconfig: {}
 
   packages/ui:
     dependencies:
@@ -238,6 +237,22 @@ importers:
       tailwindcss:
         specifier: ^3.4.1
         version: 3.4.19
+      typescript:
+        specifier: ^5.4.5
+        version: 5.9.3
+
+  packages/validation:
+    dependencies:
+      '@ously/domain':
+        specifier: workspace:*
+        version: link:../domain
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.76
+    devDependencies:
+      '@ously/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       typescript:
         specifier: ^5.4.5
         version: 5.9.3
