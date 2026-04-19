@@ -26,14 +26,14 @@
 Run: `mv packages/ui packages/ods`
 
 - [ ] **Step 2: Update `packages/ods/package.json`**
-Change `"name": "@ously/ui"` to `"name": "@ously/ods"`.
+Change `"name": "@ously/ods"` to `"name": "@ously/ods"`.
 
 - [ ] **Step 3: Update `pnpm-workspace.yaml`**
 Ensure it includes `packages/*` (already does).
 
 - [ ] **Step 4: Update all workspace references**
-Search for `@ously/ui` and replace with `@ously/ods`.
-Run: `grep -r "@ously/ui" .`
+Search for `@ously/ods` and replace with `@ously/ods`.
+Run: `grep -r "@ously/ods" .`
 
 - [ ] **Step 5: Verify build**
 Run: `pnpm install && turbo build --filter=@ously/ods`
@@ -41,7 +41,7 @@ Run: `pnpm install && turbo build --filter=@ously/ods`
 - [ ] **Step 6: Commit**
 ```bash
 git add .
-git commit -m "refactor: rename @ously/ui to @ously/ods"
+git commit -m "refactor: rename @ously/ods to @ously/ods"
 ```
 
 ### Task 2: Initialize Shadcn Theme for Prosper

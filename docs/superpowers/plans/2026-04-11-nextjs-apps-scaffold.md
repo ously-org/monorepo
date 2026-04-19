@@ -35,7 +35,7 @@
   "dependencies": {
     "@ously/auth": "workspace:*",
     "@ously/db": "workspace:*",
-    "@ously/ui": "workspace:*",
+    "@ously/ods": "workspace:*",
     "@ously/types": "workspace:*",
     "next": "14.2.3",
     "react": "^18",
@@ -175,7 +175,7 @@ export default config;
   "dependencies": {
     "@ously/auth": "workspace:*",
     "@ously/db": "workspace:*",
-    "@ously/ui": "workspace:*",
+    "@ously/ods": "workspace:*",
     "@ously/types": "workspace:*",
     "next": "14.2.3",
     "react": "^18",
@@ -326,7 +326,7 @@ export default function RootLayout({
 - [ ] **Step 2: Create `apps/web-main/app/page.tsx`**
 
 ```tsx
-import { Button } from "@ously/ui";
+import { Button } from "@ously/ods";
 
 export default function Home() {
   return (
@@ -376,7 +376,7 @@ export default function RootLayout({
 - [ ] **Step 2: Create `apps/web-prosper/app/page.tsx`**
 
 ```tsx
-import { Button } from "@ously/ui";
+import { Button } from "@ously/ods";
 
 export default function Home() {
   return (
