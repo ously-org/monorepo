@@ -30,3 +30,8 @@ The scope of the initial Gemini CLI task was strictly to **setup the monorepo fo
 - NO cross-package relative imports allowed; apps and packages MUST use absolute imports for workspace dependencies (e.g., `@ously/ui`, `@ously/types`).
 - Internal package imports SHOULD use relative paths to ensure compatibility with standard build and resolution tools.
 
+## Platform-Specific Constraints
+- **Cloudflare Pages:** NEVER use `route` or `custom_domain` keys in `wrangler.toml` for Pages projects. These are Workers-only features.
+- **Next.js on Cloudflare:** ALWAYS use `@cloudflare/next-on-pages` for deployment. Build directory MUST be `.vercel/output/static`.
+- **Research First:** Before configuring infrastructure for specific platforms (Cloudflare, Polar, etc.), ALWAYS use `web_search` to verify the latest official configuration schema.
+
