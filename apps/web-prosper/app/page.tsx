@@ -1,10 +1,13 @@
 import { Button } from "@ously/ods";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
       <h1 className="text-4xl font-bold mb-8">Welcome to Prosper</h1>
-      <Button>Prosper Button</Button>
+      <Link href="/login">
+        <Button>Go to Login</Button>
+      </Link>
     </main>
   );
 }
