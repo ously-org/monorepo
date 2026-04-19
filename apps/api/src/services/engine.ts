@@ -39,6 +39,7 @@ export interface Snapshot {
 
 export class ReplayEngine {
   private state: EngineState;
+  private appliedCommitIds: Set<string> = new Set();
 
   constructor(initialState: Partial<EngineState>) {
     this.state = {
@@ -53,23 +54,25 @@ export class ReplayEngine {
 
   public project(futureCommits: Commit[], actions: CommitAction[], durationMonths: number = 120): Snapshot[] {
     const snapshots: Snapshot[] = [];
+    this.appliedCommitIds.clear();
     
     // Initial snapshot before any month passes (Month 0)
     snapshots.push(this.createSnapshot());
 
     for (let i = 1; i <= durationMonths; i++) {
-      // Advance date by one month
-      this.state.month++;
-      const nextDate = new Date(this.state.date);
-      nextDate.setMonth(nextDate.getMonth() + 1);
-      this.state.date = nextDate;
-
       if (this.state.isFrozen) {
         snapshots.push(this.createSnapshot());
         continue;
       }
 
       this.processMonth(i, futureCommits, actions);
+
+      // Advance date by one month AFTER processing
+      this.state.month++;
+      const nextDate = new Date(this.state.date);
+      nextDate.setMonth(nextDate.getMonth() + 1);
+      this.state.date = nextDate;
+
       snapshots.push(this.createSnapshot());
     }
 
@@ -77,9 +80,15 @@ export class ReplayEngine {
   }
 
   private processMonth(month: number, commits: Commit[], actions: CommitAction[]) {
+    this.resolveMarketForces();
     this.applyGrowth();
     this.applyActions(month, commits, actions);
     this.evaluateGoals(month, commits, actions);
+  }
+
+  private resolveMarketForces() {
+    // Placeholder for fetching/resolving current market forces (EnvVars)
+    // In a real implementation, this might involve complex logic or external data.
   }
 
   private evaluateGoals(month: number, commits: Commit[], actions: CommitAction[]) {
@@ -113,11 +122,14 @@ export class ReplayEngine {
         
         // Handle trigger
         if (goal.type === "COMMITMENT" && goal.triggerCommitId) {
-          const triggerCommit = commits.find(c => c.id === goal.triggerCommitId);
-          if (triggerCommit) {
-            const triggerActions = actions.filter(a => a.commitId === triggerCommit.id);
-            for (const action of triggerActions) {
-              this.applyAction(action);
+          if (!this.appliedCommitIds.has(goal.triggerCommitId)) {
+            const triggerCommit = commits.find(c => c.id === goal.triggerCommitId);
+            if (triggerCommit) {
+              this.appliedCommitIds.add(triggerCommit.id);
+              const triggerActions = actions.filter(a => a.commitId === triggerCommit.id);
+              for (const action of triggerActions) {
+                this.applyAction(action);
+              }
             }
           }
         }
@@ -153,6 +165,9 @@ export class ReplayEngine {
     });
 
     for (const commit of monthCommits) {
+      if (this.appliedCommitIds.has(commit.id)) continue;
+      
+      this.appliedCommitIds.add(commit.id);
       const commitActions = actions.filter(a => a.commitId === commit.id);
       for (const action of commitActions) {
         this.applyAction(action);
@@ -176,7 +191,7 @@ export class ReplayEngine {
             currentValue: action.valueNum || 0,
           };
           this.state.entities.set(action.targetId, entity);
-          return;
+          // Don't return, allow further properties to be set if there are other actions in the same commit
         } else {
           this.state.isFrozen = true;
           return;
@@ -191,14 +206,24 @@ export class ReplayEngine {
         }
       }
 
-      if (action.isRelative) {
-        value = entity.currentValue * value;
-      }
-
       if (action.actionType === "UPDATE") {
-        entity.currentValue += value;
+        if (action.key === "value" || action.key === "currentValue") {
+          entity.currentValue += action.isRelative ? entity.currentValue * value : value;
+        } else if (action.key === "growthBaseValue") {
+          entity.growthBaseValue += value;
+        }
       } else if (action.actionType === "REPLACE") {
-        entity.currentValue = value;
+        if (action.key === "value" || action.key === "currentValue") {
+          entity.currentValue = action.isRelative ? entity.currentValue * value : value;
+        } else if (action.key === "growthBaseValue") {
+          entity.growthBaseValue = value;
+        } else if (action.key === "growthMode") {
+          entity.growthMode = action.valueStr as GrowthMode;
+        } else if (action.key === "name") {
+          entity.name = action.valueStr || entity.name;
+        } else if (action.key === "refEnvVarId") {
+          entity.refEnvVarId = action.valueStr;
+        }
       } else if (action.actionType === "DELETE") {
         this.state.entities.delete(action.targetId);
       }
@@ -227,12 +252,21 @@ export class ReplayEngine {
         this.state.envVars.delete(action.targetId);
       }
     } else if (action.targetType === "GOAL") {
-      const goal = this.state.goals.get(action.targetId);
+      let goal = this.state.goals.get(action.targetId);
       if (!goal) {
-        if (action.actionType !== "ADD") {
+        if (action.actionType === "ADD") {
+          goal = {
+            id: action.targetId,
+            branchId: "", // Placeholder
+            type: (action.key as GoalType) || "MEASUREMENT",
+            isMet: false,
+          } as GoalState;
+          this.state.goals.set(action.targetId, goal);
+          // Don't return
+        } else {
           this.state.isFrozen = true;
+          return;
         }
-        return;
       }
       
       if (action.actionType === "UPDATE") {
@@ -242,6 +276,14 @@ export class ReplayEngine {
       } else if (action.actionType === "REPLACE") {
         if (action.key === "targetValue" && action.valueNum !== undefined) {
           goal.targetValue = action.valueNum;
+        } else if (action.key === "targetDate" && action.valueStr) {
+          goal.targetDate = new Date(action.valueStr);
+        } else if (action.key === "targetEntityId") {
+          goal.targetEntityId = action.valueStr;
+        } else if (action.key === "dependencyGoalId") {
+          goal.dependencyGoalId = action.valueStr;
+        } else if (action.key === "triggerCommitId") {
+          goal.triggerCommitId = action.valueStr;
         }
       } else if (action.actionType === "DELETE") {
         this.state.goals.delete(action.targetId);
