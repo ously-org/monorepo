@@ -18,6 +18,23 @@ We operate under a 3-Pillar Framework to prevent technical debt:
 3. **DB (@ously/db):** D1/SQLite schemas mapped to Domain via `matchTable<T>`.
 4. **API (apps/api):** Hono Gateway. The ONLY entry point to DB. Exports RPC `AppType`.
 
+## 🤖 Jules & Local Delegation (Pillar 3: AI)
+To maximize context efficiency and project speed, we delegate tasks between the **Local Agent (Superpowers)** and **Remote Agent (Jules)** based on the **Volume vs. Complexity** ratio.
+
+### Delegation Heuristic
+| Aspect | **Local (Superpowers)** | **Remote (Jules)** |
+| :--- | :--- | :--- |
+| **Focus** | **Surgical & Architectural** | **Horizontal & Mechanical** |
+| **Task Size** | 1–5 related files. | 10+ files or project-wide. |
+| **Complexity** | High (Deep reasoning, new patterns). | Low-Medium (Pattern-matching, batching). |
+| **Examples** | New API feature, bug fix, UI component. | Unit tests for all files, linting, upgrades. |
+| **Benefit** | Instant feedback, precise control. | Preserves local context, offloads heavy work. |
+
+### Jules Integration Workflow
+1. **Triage:** During brainstorming, if a task meets the "Remote (Jules)" criteria, the AI MUST suggest: *"This looks like a great fit for /jules! Would you like to use the /jules extension for this?"*
+2. **Hybrid Planning:** Use `writing-plans` to create a plan that includes a `start_new_jules_task` step for the remote portion.
+3. **Local Review:** After Jules completes its remote task, the local agent MUST verify the changes using Pillar 3 orchestration (TSC, Lint, Format) to ensure architectural integrity.
+
 ## Project Goals
 - Multi-app frontend (Ously Main + Prosper)
 - Shared Hono Backend on Cloudflare Workers
