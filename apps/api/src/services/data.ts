@@ -1,8 +1,66 @@
-import { eq, inArray } from "drizzle-orm";
+import { DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@ously/db";
-import { Commit, CommitAction } from "@ously/domain";
+import { Commit, CommitAction, Goal, EnvVar, AccountingEntity } from "@ously/domain";
 
-export async function fetchBranchLineage(db: any, branchId: string) {
+function chunkArray<T>(array: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < array.length; i += size) {
+    result.push(array.slice(i, i + size));
+  }
+  return result;
+}
+
+// Utility to remove nulls and return objects with undefined instead
+function mapCommit(c: any): Commit {
+  return {
+    id: c.id,
+    branchId: c.branchId,
+    timestamp: c.timestamp,
+    message: c.message ?? undefined,
+  };
+}
+
+function mapAction(a: any): CommitAction {
+  return {
+    id: a.id,
+    commitId: a.commitId,
+    actionType: a.actionType,
+    targetType: a.targetType,
+    targetId: a.targetId,
+    key: a.key,
+    valueNum: a.valueNum ?? undefined,
+    valueStr: a.valueStr ?? undefined,
+    isRelative: a.isRelative,
+    refEnvVarId: a.refEnvVarId ?? undefined,
+  };
+}
+
+function mapGoal(g: any): Goal {
+  return {
+    id: g.id,
+    branchId: g.branchId,
+    type: g.type,
+    targetDate: g.targetDate ?? undefined,
+    targetValue: g.targetValue ?? undefined,
+    targetEntityId: g.targetEntityId ?? undefined,
+    dependencyGoalId: g.dependencyGoalId ?? undefined,
+    triggerCommitId: g.triggerCommitId ?? undefined,
+  };
+}
+
+function mapEntity(e: any): AccountingEntity {
+  return {
+    id: e.id,
+    name: e.name,
+    type: e.type,
+    parentEntityId: e.parentEntityId ?? undefined,
+    growthBaseValue: e.growthBaseValue,
+    growthMode: e.growthMode,
+    refEnvVarId: e.refEnvVarId ?? undefined,
+  };
+}
+
+export async function fetchBranchLineage(db: DrizzleD1Database<typeof schema>, branchId: string) {
   const commits: Commit[] = [];
   const actions: CommitAction[] = [];
   const branchIds: string[] = [];
@@ -10,20 +68,20 @@ export async function fetchBranchLineage(db: any, branchId: string) {
   let currentBranchId: string | null = branchId;
   while (currentBranchId) {
     const branch = await db.query.branches.findFirst({
-      where: (table: any, { eq }: any) => eq(table.id, currentBranchId),
+      where: (table, { eq }) => eq(table.id, currentBranchId!),
     });
     if (!branch) break;
     
     branchIds.push(currentBranchId);
     
     const branchCommits = await db.query.commits.findMany({
-      where: (table: any, { eq }: any) => eq(table.branchId, currentBranchId),
+      where: (table, { eq }) => eq(table.branchId, currentBranchId!),
     });
-    commits.push(...branchCommits);
+    commits.push(...branchCommits.map(mapCommit));
     
     if (branch.baseCommitId) {
       const baseCommit = await db.query.commits.findFirst({
-        where: (table: any, { eq }: any) => eq(table.id, branch.baseCommitId),
+        where: (table, { eq }) => eq(table.id, branch.baseCommitId!),
       });
       currentBranchId = baseCommit?.branchId || null;
     } else {
@@ -33,17 +91,32 @@ export async function fetchBranchLineage(db: any, branchId: string) {
 
   if (commits.length > 0) {
     const commitIds = commits.map(c => c.id);
-    const allActions = await db.query.commitActions.findMany({
-      where: (table: any, { inArray }: any) => inArray(table.commitId, commitIds),
-    });
-    actions.push(...allActions);
+    const chunks = chunkArray(commitIds, 100);
+    
+    for (const chunk of chunks) {
+      const chunkActions = await db.query.commitActions.findMany({
+        where: (table, { inArray }) => inArray(table.commitId, chunk),
+      });
+      actions.push(...chunkActions.map(mapAction));
+    }
   }
 
-  const envVars = await db.query.envVars.findMany();
-  const branchGoals = await db.query.goals.findMany({
-    where: (table: any, { inArray }: any) => inArray(table.branchId, branchIds),
-  });
-  const accountingEntities = await db.query.accountingEntities.findMany();
+  const envVarsRaw = await db.query.envVars.findMany();
+  const envVars: EnvVar[] = envVarsRaw;
+  
+  const branchGoals: Goal[] = [];
+  if (branchIds.length > 0) {
+    const branchIdChunks = chunkArray(branchIds, 100);
+    for (const chunk of branchIdChunks) {
+      const chunkGoals = await db.query.goals.findMany({
+        where: (table, { inArray }) => inArray(table.branchId, chunk),
+      });
+      branchGoals.push(...chunkGoals.map(mapGoal));
+    }
+  }
+  
+  const accountingEntitiesRaw = await db.query.accountingEntities.findMany();
+  const accountingEntities: AccountingEntity[] = accountingEntitiesRaw.map(mapEntity);
 
   return { commits, actions, envVars, goals: branchGoals, accountingEntities };
 }
