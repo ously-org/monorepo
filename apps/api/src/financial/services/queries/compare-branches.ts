@@ -28,10 +28,13 @@ export async function compareBranches(
   branchIdB: string,
   durationMonths: number = 120
 ): Promise<BranchComparison> {
+  // Use a shared reference date for both projections
+  const now = new Date();
+
   // 1. Run projections for both branches
   const [snapshotsA, snapshotsB] = await Promise.all([
-    runProjection(db, branchIdA, durationMonths),
-    runProjection(db, branchIdB, durationMonths),
+    runProjection(db, branchIdA, durationMonths, now),
+    runProjection(db, branchIdB, durationMonths, now),
   ]);
 
   // 2. Get final snapshots (handling empty arrays safely)
