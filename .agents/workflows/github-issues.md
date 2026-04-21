@@ -23,12 +23,12 @@ We follow a flat, deliverable-centric structure:
 - **Issue**: Individual tasks directly assigned to a Milestone. No nesting or Epics are required.
 
 ## 3. Automation & Labeling
-- **Scoped Labels**: Always use `app:ously`, `app:prosper`, or `app:api` to denote the work target.
-- **Issue Types**: Use `Feature`, `Bug`, `Analysis`, or `Documentation`.
-- **Auto-labeling**: For PRs, use the GitHub `labeler` action. For Issues, use keyword-based automation in GitHub Actions to auto-assign scoped labels.
-- **Assignees**: `gh issue edit <ID> --add-assignee <handle>`
-- **Milestones**: Group issues by target deliverables. `gh issue edit <ID> --milestone <name>`
-- **Projects V2**: Connect issues to Kanban via `gh project item-add <Project_Num> --url <issue_url>`.
+When creating new issues, you MUST automatically set the following attributes without waiting for explicit prompts:
+- **Assignees**: Assign the issue to the active user or relevant developer (`gh issue edit <ID> --add-assignee <handle>`).
+- **Scoped Labels**: Use `app:ously`, `app:prosper`, or `app:api` to denote the work target. Add issue types like `Feature`, `Bug`, `Analysis`, or `Documentation`. (`gh issue edit <ID> --add-label "<label>"`)
+- **Milestones**: Group issues by target deliverables. Assign the most relevant milestone if it is active. (`gh issue edit <ID> --milestone "<name>"`)
+- **Projects V2**: Automatically connect the new issue to the relevant Kanban project (`gh project item-add <Project_Num> --url <issue_url>`).
+- **Estimates & Iterations**: Once added to the project, set the time estimate and place it in the correct iteration if the milestone is actively being worked on or nearing completion (`gh project item-edit ...`).
 
 ## 4. Velocity & Capacity Management
 - **Estimation Unit**: All effort estimates in the Project board MUST use "Units".
