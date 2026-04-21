@@ -35,6 +35,27 @@ To maximize context efficiency and project speed, we delegate tasks between the 
 2. **Hybrid Planning:** Use `writing-plans` to create a plan that includes a `start_new_jules_task` step for the remote portion.
 3. **Local Review:** After Jules completes its remote task, the local agent MUST verify the changes using Pillar 3 orchestration (TSC, Lint, Format) to ensure architectural integrity.
 
+## 🤖 Custom Agents & UI Production Line
+We use specialized sub-agents to maintain the "AI-Native" production line for UI development.
+
+### UI Production Line Workflow
+1. **Design (@designer-coordinator)**: Brainstorms and generates 3+ design variants via Stitch.
+2. **Review**: User verifies the design and provides a variant ID.
+3. **Audit (@component-implementor)**: Audits the existing ODS components to see if any are missing.
+4. **Build (@ods-agent)**: If components are missing, this agent uses the shadcn CLI to add them to `internal/` and creates wrappers.
+5. **Assemble (@component-implementor)**: Finalizes the implementation in the target app using ODS primitives.
+
+### Agent Mandatory Reading Lists
+All custom agents MUST read the following files before taking action:
+
+| Agent | Mandatory GEMINI.md Reading List |
+| :--- | :--- |
+| **@designer-coordinator** | Root, `packages/ods` |
+| **@ods-agent** | Root, `packages/ods` |
+| **@component-implementor** | Root, `packages/ods`, `packages/validation`, `packages/domain` |
+| **@arch-auditor** | Root, `apps/api`, `packages/domain` |
+| **@schema-matcher** | Root, `packages/domain`, `packages/validation`, `packages/db` |
+
 ## Project Goals
 - Multi-app frontend (Ously Main + Prosper)
 - Shared Hono Backend on Cloudflare Workers

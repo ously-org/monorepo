@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": "task-1",
+      "name": "Create public chart wrapper",
+      "status": "done"
+    },
+    {
+      "id": "task-2",
+      "name": "Update package exports",
+      "status": "done"
+    },
+    {
+      "id": "task-3",
+      "name": "Verify build",
+      "status": "done"
+    },
+    {
+      "id": "task-4",
+      "name": "Finalize and commit",
+      "status": "done"
+    }
+,
+  ]
+}
