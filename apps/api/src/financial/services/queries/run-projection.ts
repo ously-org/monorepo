@@ -10,7 +10,7 @@ import {
   getAccountingEntities, 
   getEnvVars 
 } from "../../repos/accounting.repo";
-import { ReplayEngine, Snapshot } from "../../../services/engine";
+import { ReplayEngine, Snapshot } from "../../engine/replay-engine";
 
 /**
  * Orchestrates a financial projection for a specific branch.

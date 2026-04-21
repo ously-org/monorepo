@@ -1,7 +1,7 @@
 import { DrizzleD1Database } from "drizzle-orm/d1";
 import * as schema from "@ously/db";
 import { runProjection } from "./run-projection";
-import { Snapshot } from "../../../services/engine";
+import { Snapshot } from "../../engine/replay-engine";
 
 export interface BranchComparison {
   branchA: {

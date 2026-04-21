@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "test": "vitest run"
+    "test": "vitest run",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.7.6",
     "@ously/db": "workspace:*",
     "@ously/domain": "workspace:*",
     "@ously/validation": "workspace:*",

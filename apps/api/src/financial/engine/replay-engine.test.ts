@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ReplayEngine, EngineState, AccountingEntityState, GoalState } from "./engine";
+import { ReplayEngine, EngineState, AccountingEntityState, GoalState } from "./replay-engine";
 import { Commit, CommitAction } from "@ously/domain";
 
 describe("ReplayEngine", () => {
