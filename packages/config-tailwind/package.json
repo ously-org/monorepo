@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "main": "./tailwind.config.ts",
-  "types": "./tailwind.config.ts",
+  "exports": {
+    ".": "./tailwind.config.ts",
+    "./tailwind.config": "./tailwind.config.ts"
+  },
   "dependencies": {
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7"
