@@ -8,7 +8,7 @@ The scope of the initial Gemini CLI task was strictly to **setup the monorepo fo
 
 ## 🧠 The Vibe Coding Framework
 We operate under a 3-Pillar Framework to prevent technical debt and strategic fatigue:
-1. **Rules:** Enforce strict architectural boundaries (Domain-First).
+1. **Rules:** Enforce strict architectural boundaries (Domain-First). **Aggressive Context Discovery:** Before modifying ANY file or performing research in a subdirectory, you MUST explicitly check for and read a `GEMINI.md` in that folder and its parent hierarchy. You MUST state "Reading local context from [path]" if a file is found.
 2. **Human:** Externalize decision-making to this document and Agent Prompts.
 3. **AI:** Mandatory orchestration (TSC, Lint, Format) in every feedback loop. **Milestone-Level Pushing:** To conserve CI/CD and CodeRabbit review limits, AI agents MUST commit locally after each task but ONLY push to the remote repository once the entire implementation plan is complete and verified.
 
@@ -19,7 +19,7 @@ We operate under a 3-Pillar Framework to prevent technical debt and strategic fa
 4. **API (apps/api):** Hono Gateway. The ONLY entry point to DB. Exports RPC `AppType`.
 
 ## 🤖 Jules & Local Delegation (Pillar 3: AI)
-To maximize context efficiency and project speed, we delegate tasks between the **Local Agent (Superpowers)** and **Remote Agent (Jules)** based on the **Volume vs. Complexity** ratio.
+To maximize context efficiency and project speed, we delegate tasks between the **Local Agent (Superpowers)** and **Remote Agent (Jules)** based on the **Volume vs. Complexity** ratio. This is a MANDATORY directive.
 
 ### Delegation Heuristic
 | Aspect | **Local (Superpowers)** | **Remote (Jules)** |
@@ -31,7 +31,7 @@ To maximize context efficiency and project speed, we delegate tasks between the 
 | **Benefit** | Instant feedback, precise control. | Preserves local context, offloads heavy work. |
 
 ### Jules Integration Workflow
-1. **Triage:** During brainstorming, if a task meets the "Remote (Jules)" criteria, the AI MUST suggest: *"This looks like a great fit for /jules! Would you like to use the /jules extension for this?"*
+1. **Triage:** During brainstorming, if a task meets the "Remote (Jules)" criteria (e.g., >10 files or mechanical refactoring), the AI MUST suggest: *"This looks like a great fit for /jules! Would you like to use the /jules extension for this?"* You MUST NOT proceed with the task yourself until Jules is explicitly declined.
 2. **Hybrid Planning:** Use `writing-plans` to create a plan that includes a `start_new_jules_task` step for the remote portion.
 3. **Local Review:** After Jules completes its remote task, the local agent MUST verify the changes using Pillar 3 orchestration (TSC, Lint, Format) to ensure architectural integrity.
 
