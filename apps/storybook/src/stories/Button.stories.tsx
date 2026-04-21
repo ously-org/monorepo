@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Button } from '@ously/ods';
+import { Mail, ArrowRight } from 'lucide-react';
 
 const meta = {
   title: 'Components/Button',
@@ -44,6 +45,14 @@ export const Destructive: Story = {
   args: {
     children: 'Destructive',
     variant: 'destructive',
+  },
+};
+
+export const WithIcons: Story = {
+  args: {
+    children: 'Email Us',
+    leftIcon: Mail,
+    rightIcon: ArrowRight,
   },
 };
 

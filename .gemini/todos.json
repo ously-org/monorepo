@@ -1,0 +1,56 @@
+[
+  {
+    "id": "task-1",
+    "text": "Update Root GEMINI.md",
+    "status": "done",
+    "steps": [
+      { "text": "Add the directive to read GEMINI.md in every folder", "status": "done" },
+      { "text": "Commit", "status": "done" }
+    ]
+  },
+  {
+    "id": "task-2",
+    "text": "Migrate Ously Theme to web-main",
+    "status": "done",
+    "steps": [
+      { "text": "Update globals.css with Ously variables and remove shared import", "status": "done" },
+      { "text": "Commit", "status": "done" }
+    ]
+  },
+  {
+    "id": "task-3",
+    "text": "Migrate Prosper Theme to web-prosper",
+    "status": "done",
+    "steps": [
+      { "text": "Update globals.css with Prosper variables and remove shared import", "status": "done" },
+      { "text": "Commit", "status": "done" }
+    ]
+  },
+  {
+    "id": "task-4",
+    "text": "Migrate Prosper Theme to storybook",
+    "status": "done",
+    "steps": [
+      { "text": "Update index.css with Prosper variables and remove shared import", "status": "done" },
+      { "text": "Commit", "status": "done" }
+    ]
+  },
+  {
+    "id": "task-5",
+    "text": "Clean up packages/config-tailwind",
+    "status": "todo",
+    "steps": [
+      { "text": "Remove theme.css export from package.json", "status": "todo" },
+      { "text": "Delete theme.css", "status": "todo" },
+      { "text": "Commit", "status": "todo" }
+    ]
+  },
+  {
+    "id": "task-6",
+    "text": "Final Verification",
+    "status": "todo",
+    "steps": [
+      { "text": "Run build across monorepo", "status": "todo" }
+    ]
+  }
+]

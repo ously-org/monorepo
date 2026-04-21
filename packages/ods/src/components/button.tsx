@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Button as ShadcnButton } from "../internal/button-shadcn"
-import { Loader2 } from "lucide-react"
+import { Loader2, LucideIcon } from "lucide-react"
+import { cn } from "../lib/utils"
 
 export interface ButtonProps {
   variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
@@ -10,14 +11,26 @@ export interface ButtonProps {
   children: React.ReactNode
   onClick?: React.MouseEventHandler<HTMLButtonElement>
   type?: "button" | "submit" | "reset"
-  className?: string // Allow for layout positioning but nothing else? Actually user said "cannot config anything else".
+  className?: string
+  leftIcon?: LucideIcon
+  rightIcon?: LucideIcon
 }
 
 /**
- * Highly constrained Button component for ODS.
+ * Premium ODS Button component.
+ * Wraps Shadcn UI with micro-interactions and standardized icon support.
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((
-  { variant = "default", size = "default", isLoading = false, children, ...props }, 
+  { 
+    variant = "default", 
+    size = "default", 
+    isLoading = false, 
+    children, 
+    className,
+    leftIcon: LeftIcon,
+    rightIcon: RightIcon,
+    ...props 
+  }, 
   ref
 ) => {
   return (
@@ -26,10 +39,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((
       variant={variant} 
       size={size} 
       disabled={isLoading || props.disabled}
+      className={cn(
+        "active:scale-[0.98] transition-all duration-200 font-medium",
+        className
+      )}
       {...props}
     >
-      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+      {isLoading ? (
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      ) : (
+        LeftIcon && <LeftIcon className="mr-2 h-4 w-4" />
+      )}
       {children}
+      {!isLoading && RightIcon && <RightIcon className="ml-2 h-4 w-4" />}
     </ShadcnButton>
   )
 })
