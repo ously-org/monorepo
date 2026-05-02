@@ -1,0 +1,21 @@
+name: PM Project Board Sync & Promotion
+
+on:
+  issues:
+    types: [unlabeled]
+
+jobs:
+  # Phase 3: Move to Ready when status:not-ready is removed
+  promote-to-ready:
+    name: Promote Issue to Ready
+    runs-on: ubuntu-latest
+    if: github.event.action == 'unlabeled' && github.event.label.name == 'status:not-ready'
+    steps:
+      - name: Move issue to Ready in Project
+        uses: leonsteinhaeuser/project-beta-automations@v2.2.1
+        with:
+          gh_token: ${{ secrets.PROJECT_PAT }}
+          organization: ously-org
+          project_id: 1
+          resource_node_id: ${{ github.event.issue.node_id }}
+          status_value: "Ready"
