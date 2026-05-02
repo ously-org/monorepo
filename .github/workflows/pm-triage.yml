@@ -13,60 +13,74 @@ jobs:
         with:
           script: |
             const title = context.payload.issue.title;
+            const issueId = context.payload.issue.node_id;
             const existingLabels = context.payload.issue.labels ? context.payload.issue.labels.map(l => l.name) : [];
             const action = context.payload.action;
 
-            // Case-insensitive regex checks
-            const isEpic = /\[EPIC\]/i.test(title);
-            const isAnalysis = /\[ANALYSIS\]/i.test(title);
-            const isBug = /\[BUG\]/i.test(title);
+            // Mapping prefixes to Native Issue Type IDs
+            const typeMap = {
+              'Epic': 'IT_kwDOD_xoo84B9jcQ',
+              'Bug': 'IT_kwDOD_xoo84B9jb4',
+              'Task': 'IT_kwDOD_xoo84B9jcF',
+              'Analysis': 'IT_kwDOD_xoo84B9jcM',
+              'Feature': 'IT_kwDOD_xoo84B9jbx',
+              'Documentation': 'IT_kwDOD_xoo84B9jfy'
+            };
 
-            const desiredLabels = [];
-            if (isEpic) desiredLabels.push('Epic');
-            if (isAnalysis) desiredLabels.push('Analysis');
-            if (isBug) desiredLabels.push('Bug');
+            let targetTypeId = null;
+            if (/\[EPIC\]/i.test(title)) targetTypeId = typeMap['Epic'];
+            else if (/\[BUG\]/i.test(title)) targetTypeId = typeMap['Bug'];
+            else if (/\[TASK\]/i.test(title)) targetTypeId = typeMap['Task'];
+            else if (/\[ANALYSIS\]/i.test(title)) targetTypeId = typeMap['Analysis'];
+            else if (/\[FEATURE\]/i.test(title)) targetTypeId = typeMap['Feature'];
+            else if (/\[DOCS\]|\[DOCUMENTATION\]/i.test(title)) targetTypeId = typeMap['Documentation'];
 
-            // Apply status:not-ready if not an Epic.
-            // To prevent re-adding on edits if manually removed, only add if opened, or if already present.
+            // 1. Update Native Issue Type via GraphQL
+            if (targetTypeId) {
+              await github.graphql(`
+                mutation($id: ID!, $typeId: ID!) {
+                  updateIssue(input: { id: $id, issueTypeId: $typeId }) {
+                    issue { id }
+                  }
+                }
+              `, {
+                id: issueId,
+                typeId: targetTypeId,
+                headers: {
+                  'GraphQL-Features': 'issue_types'
+                }
+              });
+            }
+
+            // 2. Manage status:not-ready Label
+            const isEpic = targetTypeId === typeMap['Epic'];
+            const labelName = 'status:not-ready';
+            const hasLabel = existingLabels.includes(labelName);
+
+            // Apply status:not-ready to non-Epics by default when opened
+            let shouldHaveLabel = false;
             if (!isEpic) {
-              if (action === 'opened' || existingLabels.includes('status:not-ready')) {
-                desiredLabels.push('status:not-ready');
+              if (action === 'opened' || hasLabel) {
+                shouldHaveLabel = true;
               }
             }
 
-            const labelsToAdd = [];
-            for (const label of desiredLabels) {
-              if (!existingLabels.includes(label)) {
-                labelsToAdd.push(label);
-              }
-            }
-
-            const managedLabels = ['Epic', 'Analysis', 'Bug', 'status:not-ready'];
-            const labelsToRemove = [];
-            for (const label of existingLabels) {
-              if (managedLabels.includes(label) && !desiredLabels.includes(label)) {
-                labelsToRemove.push(label);
-              }
-            }
-
-            if (labelsToAdd.length > 0) {
+            if (shouldHaveLabel && !hasLabel) {
               await github.rest.issues.addLabels({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
-                labels: labelsToAdd
+                labels: [labelName]
               });
-            }
-
-            for (const label of labelsToRemove) {
+            } else if (!shouldHaveLabel && hasLabel) {
               try {
                 await github.rest.issues.removeLabel({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: context.issue.number,
-                  name: label
+                  name: labelName
                 });
               } catch (error) {
-                // Ignore if label doesn't exist
+                // Ignore
               }
             }
