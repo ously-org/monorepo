@@ -2,21 +2,9 @@ name: PM Project Board Sync & Promotion
 
 on:
   issues:
-    types: [opened, unlabeled]
+    types: [unlabeled]
 
 jobs:
-  # Phase 2: Add to Project Board when an issue is created
-  sync-to-project:
-    name: Sync New Issue to Project
-    runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
-    steps:
-      - name: Add issue to project
-        uses: actions/add-to-project@v1.0.2
-        with:
-          project-url: https://github.com/orgs/ously-org/projects/1
-          github-token: ${{ secrets.PROJECT_PAT }}
-
   # Phase 3: Move to Ready when status:not-ready is removed
   promote-to-ready:
     name: Promote Issue to Ready
