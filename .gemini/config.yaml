@@ -1,0 +1,36 @@
+# Gemini Code Assist Configuration for Ously Monorepo
+
+# Ignore internal UI implementation details, lockfiles, and build artifacts
+ignore_patterns:
+  - "packages/ui/src/internal/**"
+  - "pnpm-lock.yaml"
+  - "pnpm-workspace.yaml"
+  - "**/node_modules/**"
+  - "**/.next/**"
+  - "**/.turbo/**"
+  - "**/.vercel/**"
+  - "**/.wrangler/**"
+  - "**/.pnpm-store/**"
+  - "**/*.tsbuildinfo"
+  - "**/dist/**"
+  - "**/build/**"
+
+code_review:
+  # Set minimum severity for comments. Options: LOW, MEDIUM, HIGH, CRITICAL.
+  comment_severity_threshold: HIGH
+  
+  # Maximum number of review comments. -1 for unlimited.
+  max_review_comments: -1
+
+pull_request_opened:
+  # Post a summary when a PR is opened.
+  summary: true
+  
+  # Enable agent functionality on draft pull requests.
+  include_drafts: false
+  
+  # Post a help message on pull request open.
+  help: true
+
+# Enables fun features such as a poem in the initial pull request summary.
+have_fun: true
