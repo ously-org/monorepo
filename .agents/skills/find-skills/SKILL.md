@@ -95,13 +95,13 @@ Learn more: https://skills.sh/vercel-labs/agent-skills/react-best-practices
 
 ### Step 6: Offer to Install
 
-If the user wants to proceed, you can install the skill for them:
+If the user wants to proceed, you can install the skill for them locally within the workspace:
 
 ```bash
-npx skills add <owner/repo@skill> -g -y
+npx skills add <owner/repo@skill> -y
 ```
 
-The `-g` flag installs globally (user-level) and `-y` skips confirmation prompts.
+The `-y` flag skips confirmation prompts. Do NOT use the `-g` flag unless explicitly requested, as we prefer workspace-scoped skills.
 
 ## Common Skill Categories
 
