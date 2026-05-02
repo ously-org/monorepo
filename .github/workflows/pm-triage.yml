@@ -1,0 +1,39 @@
+name: PM Triage Auto-Labeling
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  auto-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply Labels Based on Title
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const title = context.payload.issue.title;
+            const labelsToAdd = [];
+
+            // Case-insensitive regex checks
+            const isEpic = /\[EPIC\]/i.test(title);
+            const isAnalysis = /\[ANALYSIS\]/i.test(title);
+            const isBug = /\[BUG\]/i.test(title);
+
+            if (isEpic) labelsToAdd.push('Epic');
+            if (isAnalysis) labelsToAdd.push('Analysis');
+            if (isBug) labelsToAdd.push('Bug');
+
+            // Apply status:not-ready if not an Epic
+            if (!isEpic) {
+              labelsToAdd.push('status:not-ready');
+            }
+
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: labelsToAdd
+              });
+            }
