@@ -38,11 +38,11 @@
   {
     "id": "task-5",
     "text": "Clean up packages/config-tailwind",
-    "status": "todo",
+    "status": "done",
     "steps": [
-      { "text": "Remove theme.css export from package.json", "status": "todo" },
-      { "text": "Delete theme.css", "status": "todo" },
-      { "text": "Commit", "status": "todo" }
+      { "text": "Remove theme.css export from package.json", "status": "done" },
+      { "text": "Delete theme.css", "status": "done" },
+      { "text": "Commit", "status": "done" }
     ]
   },
   {
@@ -51,6 +51,37 @@
     "status": "todo",
     "steps": [
       { "text": "Run build across monorepo", "status": "todo" }
+    ]
+  },
+  {
+    "id": "widget-task-1",
+    "text": "ODS Infrastructure Setup",
+    "status": "done",
+    "steps": [
+      { "text": "Install recharts and lucide-react in packages/ods", "status": "done" },
+      { "text": "Commit infrastructure changes", "status": "done" }
+    ]
+  },
+  {
+    "id": "widget-task-2",
+    "text": "Shadcn CLI Chart Integration",
+    "status": "done",
+    "steps": [
+      { "text": "Run Shadcn CLI to add chart component", "status": "done" },
+      { "text": "Create public wrapper for Chart", "status": "done" },
+      { "text": "Export from ODS root", "status": "done" },
+      { "text": "Verify ODS build", "status": "done" },
+      { "text": "Commit chart component", "status": "done" }
+    ]
+  },
+  {
+    "id": "widget-task-3",
+    "text": "Contribution History Widget Implementation",
+    "status": "done",
+    "steps": [
+      { "text": "Implement the widget story in apps/storybook", "status": "done" },
+      { "text": "Verify Storybook", "status": "done" },
+      { "text": "Commit story", "status": "done" }
     ]
   }
 ]
