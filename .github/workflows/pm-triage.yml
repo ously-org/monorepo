@@ -13,20 +13,40 @@ jobs:
         with:
           script: |
             const title = context.payload.issue.title;
-            const labelsToAdd = [];
+            const existingLabels = context.payload.issue.labels ? context.payload.issue.labels.map(l => l.name) : [];
+            const action = context.payload.action;
 
             // Case-insensitive regex checks
             const isEpic = /\[EPIC\]/i.test(title);
             const isAnalysis = /\[ANALYSIS\]/i.test(title);
             const isBug = /\[BUG\]/i.test(title);
 
-            if (isEpic) labelsToAdd.push('Epic');
-            if (isAnalysis) labelsToAdd.push('Analysis');
-            if (isBug) labelsToAdd.push('Bug');
+            const desiredLabels = [];
+            if (isEpic) desiredLabels.push('Epic');
+            if (isAnalysis) desiredLabels.push('Analysis');
+            if (isBug) desiredLabels.push('Bug');
 
-            // Apply status:not-ready if not an Epic
+            // Apply status:not-ready if not an Epic.
+            // To prevent re-adding on edits if manually removed, only add if opened, or if already present.
             if (!isEpic) {
-              labelsToAdd.push('status:not-ready');
+              if (action === 'opened' || existingLabels.includes('status:not-ready')) {
+                desiredLabels.push('status:not-ready');
+              }
+            }
+
+            const labelsToAdd = [];
+            for (const label of desiredLabels) {
+              if (!existingLabels.includes(label)) {
+                labelsToAdd.push(label);
+              }
+            }
+
+            const managedLabels = ['Epic', 'Analysis', 'Bug', 'status:not-ready'];
+            const labelsToRemove = [];
+            for (const label of existingLabels) {
+              if (managedLabels.includes(label) && !desiredLabels.includes(label)) {
+                labelsToRemove.push(label);
+              }
             }
 
             if (labelsToAdd.length > 0) {
@@ -36,4 +56,17 @@ jobs:
                 issue_number: context.issue.number,
                 labels: labelsToAdd
               });
+            }
+
+            for (const label of labelsToRemove) {
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  name: label
+                });
+              } catch (error) {
+                // Ignore if label doesn't exist
+              }
             }
