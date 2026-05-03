@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@ously/tsconfig": "workspace:*",
-    "typescript": "^5.4.5"
+    "typescript": "catalog:"
   },
   "dependencies": {
     "@ously/domain": "workspace:*",
