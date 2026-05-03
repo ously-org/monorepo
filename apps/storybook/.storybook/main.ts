@@ -5,8 +5,9 @@ const config: StorybookConfig = {
   stories: [
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
     "../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)",
-    "../../../apps/web-main/**/*.stories.@(js|jsx|ts|tsx)",
-    "../../../apps/web-prosper/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../../apps/web-main/app/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../../apps/web-prosper/app/**/*.stories.@(js|jsx|ts|tsx)",
+    "../../../apps/web-prosper/components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
