@@ -3,14 +3,18 @@
 import * as React from "react";
 import { SidebarTrigger } from "../internal/sidebar";
 import { Separator } from "../internal/separator";
+import { usePathname } from "next/navigation";
 import { HeaderBreadcrumb } from "./BreadcrumbWIthPart";
 import { Box } from "./Box";
 
-export interface HeaderProps extends Omit<React.HTMLAttributes<HTMLElement>, "className"> {
-  pathname: string | null;
-}
+export interface HeaderProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  "className"
+> {}
 
-export function Header({ pathname }: HeaderProps) {
+export function Header() {
+  const currentPathname = usePathname();
+  const pathname = currentPathname;
   return (
     <Box
       asChild

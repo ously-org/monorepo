@@ -1,10 +1,9 @@
-import { Header, Box, Typography } from "@ously/ui";
+import { Box, Typography } from "@ously/ui";
 import { MockCard } from "../components/MockCard";
 
 export default function Home() {
   return (
     <>
-      <Header pathname="/dashboard" />
       <Box padding="lg" display="flex" direction="col" gap="md">
         <Typography variant="h1">Dashboard Overview</Typography>
         <Typography variant="p">

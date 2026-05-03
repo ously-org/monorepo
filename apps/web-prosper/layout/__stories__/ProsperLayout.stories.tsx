@@ -1,7 +1,8 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
-import { ProsperLayout } from "./ProsperLayout";
-import { Header, Box, Typography } from "@ously/ui";
-import { MockCard } from "./MockCard";
+import { ProsperLayout } from "../ProsperLayout";
+import { Box, Typography } from "@ously/ui";
+import { MockCard } from "../../components/MockCard";
 import {
   LayoutDashboard,
   Users,
@@ -12,14 +13,14 @@ import {
 } from "lucide-react";
 import { TooltipProvider } from "@ously/ui";
 
-const meta = {
+const meta: Meta<typeof ProsperLayout> = {
   title: "Prosper/ProsperLayout",
   component: ProsperLayout,
   parameters: {
     layout: "fullscreen",
   },
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <TooltipProvider delayDuration={0}>
         <Story />
       </TooltipProvider>
@@ -28,7 +29,6 @@ const meta = {
   args: {
     children: (
       <>
-        <Header pathname="/dashboard" />
         <Box padding="lg" display="flex" direction="col" gap="md">
           <Typography variant="h1">Dashboard Overview</Typography>
           <Typography variant="p">
@@ -71,7 +71,7 @@ const meta = {
     ],
     footerNav: [{ title: "Logout", href: "/logout", icon: LogOut }],
   },
-} satisfies Meta<typeof ProsperLayout>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -96,7 +96,6 @@ export const LongContent: Story = {
   args: {
     children: (
       <>
-        <Header pathname="/reports/analytics/detailed" />
         <Box padding="lg" display="flex" direction="col" gap="md">
           <Typography variant="h1">Long Page Content</Typography>
           {Array.from({ length: 20 }).map((_, i) => (
