@@ -7,9 +7,13 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "type-check": "turbo type-check",
+<<<<<<< Updated upstream
+    "storybook": "turbo dev --filter=storybook"
+=======
     "lint:fix": "turbo lint -- --fix",
     "check:all": "pnpm run type-check && pnpm run lint && pnpm run format",
     "prepare": "husky"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
@@ -26,11 +30,22 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.2",
     "turbo": "^2.7.2",
+<<<<<<< Updated upstream
+    "prettier": "^3.0.0",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "pnpm@10.30.3",
+  "pnpm": {
+    "overrides": {
+      "webpack": "^5.91.0"
+    }
+=======
     "typescript": "^5.0.0"
   },
   "packageManager": "pnpm@10.30.3",
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint --fix",
     "*.{ts,tsx,js,jsx,json,md}": "prettier --write"
+>>>>>>> Stashed changes
   }
 }
