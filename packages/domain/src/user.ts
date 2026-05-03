@@ -11,7 +11,7 @@ export interface User {
     | "past_due"
     | "canceled"
     | "trialing";
-  emailVerified?: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
+  emailVerified: boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

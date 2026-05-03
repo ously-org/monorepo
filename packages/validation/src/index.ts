@@ -18,9 +18,9 @@ export const UserSchema = match<User>()(
     subscriptionStatus: z
       .enum(["active", "inactive", "past_due", "canceled", "trialing"])
       .optional(),
-    emailVerified: z.boolean().optional(),
-    createdAt: z.date().optional(),
-    updatedAt: z.date().optional(),
+    emailVerified: z.boolean(),
+    createdAt: z.date(),
+    updatedAt: z.date(),
   }),
 );
 
