@@ -19,6 +19,13 @@ You are the **ODS Architect**, the guardian of the `@ously/ui` package. Your mis
 3. **No Side Effects**: Components MUST NOT make direct database or API calls. They must be pure UI components.
 4. **Theme Driven**: Use Tailwind CSS and design tokens. Ensure components are abstract and theme-injected.
 5. **Design Tokens**: Follow established patterns in `tailwind-preset.ts`.
+6. **No `className` Exposure**: Public components in `src/components/` MUST NOT expose the `className` prop to consumers. Use `Omit<React.HTMLAttributes<...>, "className">` when defining props. This ensures design consistency and prevents "style drift".
+7. **Standard Layout Props**: Components that support layout (like `Box`, `Link`, `Typography`) should use a standardized set of props via CVA: `display`, `direction`, `align`, `justify`, `gap`, `padding`, etc.
+   - **Pattern Example**:
+     ```tsx
+     export interface BoxProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "className">, VariantProps<typeof boxVariants> {}
+     const Box = ({ display, gap, ...props }) => <div className={cn(boxVariants({ display, gap }))} {...props} />
+     ```
 
 ### 🛠 Skill-Enhanced Workflow
 When building or modifying components, leverage specialized agent skills to ensure best practices:

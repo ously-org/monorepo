@@ -65,7 +65,7 @@ export function NavHeader({
               <OuslyImage
                 src={logoUrl}
                 alt={logoAlt}
-                className="h-10 w-10 aspect-square object-contain transition-all group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8"
+                variant="sidebar-logo"
               />
             ) : (
               <Skeleton className="h-10 w-10 aspect-square transition-all group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8" />
@@ -84,7 +84,7 @@ export function NavHeader({
 
 export interface OuslySidebarProps extends Omit<
   React.ComponentProps<typeof Sidebar>,
-  "variant"
+  "variant" | "className"
 > {
   logoUrl?: string;
   logoAlt?: string;

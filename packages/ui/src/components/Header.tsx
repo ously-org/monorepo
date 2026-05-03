@@ -4,10 +4,9 @@ import * as React from "react";
 import { SidebarTrigger } from "../internal/sidebar";
 import { Separator } from "../internal/separator";
 import { HeaderBreadcrumb } from "./BreadcrumbWIthPart";
-import { cn } from "../lib/utils";
 import { Box } from "./Box";
 
-export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
+export interface HeaderProps extends Omit<React.HTMLAttributes<HTMLElement>, "className"> {
   pathname: string | null;
 }
 
