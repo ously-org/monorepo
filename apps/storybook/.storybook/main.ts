@@ -1,23 +1,19 @@
-import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
+import type { StorybookConfig } from "@storybook/nextjs-vite";
 import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
   stories: [
     "../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../../../apps/web-prosper/{app,components,layout,lib,hooks}/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions",
-    "@storybook/addon-viewport",
-  ],
+  addons: [],
   framework: {
-    name: "@storybook/experimental-nextjs-vite",
+    name: "@storybook/nextjs-vite",
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
   },
   staticDirs: ["../public"],
   viteFinal: async (config) => {
@@ -30,7 +26,6 @@ const config: StorybookConfig = {
         ...config.resolve.alias,
         "@": path.resolve(__dirname, "../src"),
         "next/config": path.resolve(__dirname, "./next-config-mock.js"),
-        "storybook/test": "@storybook/test",
       };
     }
     return config;

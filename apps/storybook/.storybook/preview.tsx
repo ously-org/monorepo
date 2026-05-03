@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import type { Preview } from "@storybook/react";
-import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import type { Preview } from "storybook";
+import { INITIAL_VIEWPORTS } from "storybook/viewport";
 import "./globals.css";
 
 /**
@@ -64,6 +64,7 @@ function ThemeDecorator({
 }
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
     viewport: {
       viewports: INITIAL_VIEWPORTS,
