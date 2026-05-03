@@ -1,23 +1,13 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 @import "../../../packages/ui/src/themes.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  .theme {
-    --font-heading: var(--font-mono);
-    --font-mono: var(--font-mono);
-  }
-
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-mono;
   }
 }

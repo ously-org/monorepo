@@ -16,7 +16,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
     "@ously/tsconfig": "workspace:*",
-    "typescript": "^5.4.5",
+    "typescript": "catalog:",
     "wrangler": "^3.57.2"
   }
 }
