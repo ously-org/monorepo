@@ -9,5 +9,14 @@
         "Authorization": "Bearer $GITHUB_MCP_PAT"
       }
     }
+  },
+  "hooks": {
+    "post-session": {
+      "type": "command",
+      "command": "./.gemini/hooks/post-session.sh",
+      "description": "Run formatting and linting fixes after session completes",
+      "timeout": 60000,
+      "name": "Format and Lint Fixes"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { type SQLiteTableWithColumns, type TableConfig } from "drizzle-orm/sqlite-core";
+import { type SQLiteTableWithColumns, type TableConfig } from 'drizzle-orm/sqlite-core';
 
 export function matchTable<T>() {
   return <C extends TableConfig>(

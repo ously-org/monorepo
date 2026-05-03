@@ -28,7 +28,7 @@ describe('Avatar Component', () => {
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
     );
-    
+
     // In JSDOM, we might need to wait or it might not render at all without image loading simulation.
     // We'll check if the component exists in the tree at least.
     // For now, let's verify that the Fallback is present initially.

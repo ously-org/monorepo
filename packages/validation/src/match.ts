@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 /**
  * Ensures a Zod schema strictly matches a Domain interface.

@@ -1,4 +1,4 @@
-import { Button } from "@ously/ui";
+import { Button } from '@ously/ui';
 
 export default function Home() {
   return (

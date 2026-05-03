@@ -1,6 +1,6 @@
-import { z } from "zod";
-import { type User } from "@ously/domain";
-import { match } from "./match";
+import { z } from 'zod';
+import { type User } from '@ously/domain';
+import { match } from './match';
 
 export const UserSchema = match<User>()(
   z.object({
