@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/react-vite";
+import type { StorybookConfig } from "@storybook/experimental-nextjs-vite";
 import path from "path";
 
 const config: StorybookConfig = {
@@ -15,7 +15,7 @@ const config: StorybookConfig = {
     "@storybook/addon-interactions",
   ],
   framework: {
-    name: "@storybook/react-vite",
+    name: "@storybook/experimental-nextjs-vite",
     options: {},
   },
   docs: {
@@ -23,6 +23,10 @@ const config: StorybookConfig = {
   },
   staticDirs: ["../public"],
   viteFinal: async (config) => {
+    config.define = {
+      ...config.define,
+      "process.env": {},
+    };
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,

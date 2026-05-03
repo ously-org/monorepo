@@ -49,3 +49,5 @@ Thumbs.db
 # Worktrees
 worktrees/
 .worktrees/
+
+*.tsbuildinfo

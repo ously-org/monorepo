@@ -58,6 +58,9 @@ All feature development **MUST** start by defining interfaces in `@ously/domain`
 - Use `@ously/validation` for all request/response schemas in the `api`.
 - All auth logic should reside in or utilize `@ously/auth`.
 
+### 5. GitHub Interactions
+- **Mandate**: ALWAYS use the GitHub CLI (`gh`) for any interactions with GitHub (fetching issues, PRs, file contents from other repos). DO NOT use `web_fetch` for GitHub URLs.
+
 ---
 
 ## 📈 Project Management (PM)
