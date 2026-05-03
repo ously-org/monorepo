@@ -43,7 +43,7 @@ export function NavHeader({
   logoUrl,
   logoAlt = "",
   title = "PROSPER",
-  href = "#",
+  href = "/",
 }: NavHeaderProps) {
   return (
     <SidebarMenu>

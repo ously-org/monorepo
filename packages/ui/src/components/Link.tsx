@@ -74,6 +74,7 @@ export interface LinkProps
     VariantProps<typeof linkVariants> {
   icon?: React.ElementType;
   title?: string;
+  children?: React.ReactNode;
 }
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
