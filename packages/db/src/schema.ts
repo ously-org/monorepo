@@ -15,6 +15,9 @@ export const users = sqliteTable("user", {
   name: text("name"),
   emailVerified: integer("email_verified", { mode: "boolean" }).notNull(),
   image: text("image"),
+  gender: text("gender", { enum: ["male", "female", "other", "prefer_not_to_say"] }),
+  currency: text("currency", { enum: ["USD", "EUR", "GBP"] }),
+  subscriptionStatus: text("subscription_status", { enum: ["active", "inactive", "past_due", "canceled", "trialing"] }),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
 });
