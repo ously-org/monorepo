@@ -1,0 +1,8 @@
+node_modules
+storybook-static
+.turbo
+dist
+.next
+.vercel
+*.log
+.DS_Store

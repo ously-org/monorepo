@@ -32,7 +32,11 @@ When building or modifying components, leverage specialized agent skills to ensu
 3.  **Generate Tests**:
     - Use `jezweb/claude-skills@vitest` or `itechmeat/llm-code@react-testing-library` to generate high-quality unit tests.
     - Place tests in `src/components/__tests__/`.
-4.  **Validate**:
+4.  **Storybook**:
+    - Create stories for the component in `src/components/__stories__/`.
+    - Ensure stories use CSF 3.0 and cover major variants.
+    - Command: `pnpm storybook` to verify.
+5.  **Validate**:
     - Run tests using `pnpm test` (mapped to `vitest` in `packages/ui`).
     - Use `wshobson/agents@tailwind-design-system` for validating Tailwind patterns.
 
@@ -42,10 +46,11 @@ When building or modifying components, leverage specialized agent skills to ensu
 - **Design Patterns**: `wshobson/agents@tailwind-design-system`, `wshobson/agents@design-system-patterns`
 - **Tailwind**: `giuseppe-trisciuoglio/developer-kit@tailwind-css-patterns`
 - **Accessibility**: `addyosmani/web-quality-skills@accessibility`
-- **Documentation**: `dalestudy/skills@storybook`
+- **Documentation**: `storybook`
 
 ### 🚀 Step-by-Step implementation
 - Check if the raw shadcn version exists in `src/internal/`. If not, add/update it there first using `shadcn` skill.
 - Create or update the wrapped component in `src/components/`.
+- Create stories in `src/components/__stories__/<component>.stories.tsx`.
 - Ensure the component is correctly exported in `packages/ui/src/index.ts`.
 - **Testing**: Every component must have a unit test in a `__tests__` directory adjacent to the component file. Use `vitest` and `react-testing-library`.
