@@ -15,34 +15,40 @@ import {
   SidebarGroupContent,
 } from "../sidebar";
 import { Home, Settings, User, HelpCircle } from "lucide-react";
+import { TooltipProvider } from "../tooltip";
 
-const meta = {
+const meta: Meta<typeof Sidebar> = {
   title: "ODS/Primitive/Sidebar",
   component: Sidebar,
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+  },
   decorators: [
     (Story) => (
-      <SidebarProvider>
-        <div className="flex min-h-screen w-full">
-          <Story />
-          <SidebarInset>
-            <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-              <SidebarTrigger />
-            </header>
-            <div className="flex flex-1 flex-col gap-4 p-4">
-              <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div className="aspect-video rounded-none bg-muted/50" />
-                <div className="aspect-video rounded-none bg-muted/50" />
-                <div className="aspect-video rounded-none bg-muted/50" />
+      <TooltipProvider>
+        <SidebarProvider>
+          <div className="flex min-h-screen w-full">
+            <Story />
+            <SidebarInset>
+              <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                <SidebarTrigger />
+              </header>
+              <div className="flex flex-1 flex-col gap-4 p-4">
+                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+                  <div className="aspect-video rounded-none bg-muted/50" />
+                  <div className="aspect-video rounded-none bg-muted/50" />
+                  <div className="aspect-video rounded-none bg-muted/50" />
+                </div>
+                <div className="min-h-[100vh] flex-1 rounded-none bg-muted/50 md:min-h-min" />
               </div>
-              <div className="min-h-[100vh] flex-1 rounded-none bg-muted/50 md:min-h-min" />
-            </div>
-          </SidebarInset>
-        </div>
-      </SidebarProvider>
+            </SidebarInset>
+          </div>
+        </SidebarProvider>
+      </TooltipProvider>
     ),
   ],
-} satisfies Meta<typeof Sidebar>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
