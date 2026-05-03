@@ -9,8 +9,10 @@
     "type-check": "turbo type-check"
   },
   "devDependencies": {
-    "turbo": "^2.7.2",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "prettier": "^3.0.0",
+    "turbo": "^2.7.2",
     "typescript": "^5.0.0"
   },
   "packageManager": "pnpm@10.30.3"
