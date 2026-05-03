@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Typography } from "../Typography";
 
 const meta = {
+  title: "ODS/Typography",
   component: Typography,
   tags: ["autodocs"],
   argTypes: {
@@ -71,16 +72,14 @@ export const H4: Story = {
 export const Paragraph: Story = {
   args: {
     variant: "p",
-    text:
-      "The king, seeing how much people enjoyed laughing, decided to levy a tax on jokes. But he soon realized that the more jokes people told, the less they worked. So he decided to tax the silence too.",
+    text: "The king, seeing how much people enjoyed laughing, decided to levy a tax on jokes. But he soon realized that the more jokes people told, the less they worked. So he decided to tax the silence too.",
   },
 };
 
 export const Blockquote: Story = {
   args: {
     variant: "blockquote",
-    text:
-      "\"After all,\" he said, \"everyone can be quiet for a little while, but no one can be quiet forever.\"",
+    text: '"After all," he said, "everyone can be quiet for a little while, but no one can be quiet forever."',
   },
 };
 
@@ -108,8 +107,7 @@ export const InlineCode: Story = {
 export const Lead: Story = {
   args: {
     variant: "lead",
-    text:
-      "A fast and simple way to build beautiful user interfaces.",
+    text: "A fast and simple way to build beautiful user interfaces.",
   },
 };
 

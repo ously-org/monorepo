@@ -10,3 +10,8 @@ export * from "./internal/sheet";
 // Layout components
 export * from "./components/BreadcrumbWIthPart";
 export * from "./components/Typography";
+export * from "./components/OuslySidebar";
+export * from "./components/Header";
+export * from "./components/Box";
+export * from "./components/Link";
+export * from "./components/OuslyImage";

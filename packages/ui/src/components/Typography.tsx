@@ -21,47 +21,95 @@ const typographyVariants = cva("text-foreground", {
       large: "text-lg font-semibold",
       small: "text-sm font-medium leading-none",
       muted: "text-sm text-muted-foreground",
+      "no-style": "",
+    },
+    color: {
+      primary: "text-primary",
+      "primary-foreground": "text-primary-foreground",
+      natural: "text-muted-foreground",
+      none: "",
+    },
+    weight: {
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+    },
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+      base: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+      "5xl": "text-5xl",
     },
   },
+  compoundVariants: [
+    {
+      variant: "h1",
+      color: "none",
+      className: "text-primary",
+    },
+    {
+      variant: ["lead", "muted"],
+      color: "none",
+      className: "text-muted-foreground",
+    },
+  ],
   defaultVariants: {
     variant: "p",
+    color: "none",
   },
 });
 
 export interface TypographyProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "color" | "size">,
     VariantProps<typeof typographyVariants> {
   as?: React.ElementType;
   text?: React.ReactNode;
 }
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ className, variant, as, text, children, ...props }, ref) => {
+  ({ variant, color, weight, size, as, text, children, ...props }, ref) => {
     const Component =
       as ||
-      (variant === "ul"
-        ? "ul"
-        : variant === "ol"
-          ? "ol"
-          : variant === "inlineCode"
-            ? "code"
-            : variant &&
-                ["h1", "h2", "h3", "h4", "h5", "h6"].includes(variant)
-              ? (variant as React.ElementType)
-              : variant === "blockquote"
-                ? "blockquote"
-                : "p");
+      (() => {
+        switch (variant) {
+          case "ul":
+            return "ul";
+          case "ol":
+            return "ol";
+          case "inlineCode":
+            return "code";
+          case "blockquote":
+            return "blockquote";
+          case "no-style":
+            return "span";
+          case "h1":
+          case "h2":
+          case "h3":
+          case "h4":
+          case "h5":
+          case "h6":
+            return variant as React.ElementType;
+          default:
+            return "p";
+        }
+      })();
 
     return (
       <Component
         ref={ref}
-        className={cn(typographyVariants({ variant, className }))}
+        className={cn(typographyVariants({ variant, color, weight, size }))}
         {...props}
       >
         {text ?? children}
       </Component>
     );
-  }
+  },
 );
 Typography.displayName = "Typography";
 

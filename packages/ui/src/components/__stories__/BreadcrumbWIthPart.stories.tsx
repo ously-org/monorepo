@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { HeaderBreadcrumb } from "../BreadcrumbWIthPart";
 
 const meta: Meta<typeof HeaderBreadcrumb> = {
-  title: "ODS/Components/Layout/BreadcrumbWIthPart",
+  title: "ODS/Layout/BreadcrumbWIthPart",
   component: HeaderBreadcrumb,
   tags: ["autodocs"],
   decorators: [

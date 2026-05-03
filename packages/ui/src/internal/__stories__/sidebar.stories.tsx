@@ -24,6 +24,16 @@ const meta: Meta<typeof Sidebar> = {
   parameters: {
     layout: "fullscreen",
   },
+  argTypes: {
+    collapsible: {
+      control: "radio",
+      options: ["offcanvas", "icon", "none"],
+      description: "How the sidebar collapses. 'icon' keeps icons visible.",
+    },
+  },
+  args: {
+    collapsible: "offcanvas",
+  },
   decorators: [
     (Story) => (
       <TooltipProvider>
@@ -57,15 +67,22 @@ export const Default: Story = {
   render: (args) => (
     <Sidebar {...args}>
       <SidebarHeader>
-        <div className="flex items-center gap-2 px-2 py-2">
-          <div className="flex aspect-square size-8 items-center justify-center rounded-none bg-primary text-primary-foreground">
-            <Home className="size-4" />
-          </div>
-          <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-semibold">Ously UI</span>
-            <span className="truncate text-xs">Internal UI Kit</span>
-          </div>
-        </div>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              size="lg"
+              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <div className="flex aspect-square size-8 items-center justify-center rounded-none bg-primary text-primary-foreground">
+                <Home className="size-4" />
+              </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate font-semibold">Acme Inc</span>
+                <span className="truncate text-xs">Select Workspace</span>
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
