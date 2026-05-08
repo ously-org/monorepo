@@ -1,0 +1,21 @@
+# Ously Monorepo Code Owners
+
+# Frontend Domain
+/apps/web-main/ @frontend-engineer
+/apps/web-prosper/ @frontend-engineer
+/apps/storybook/ @frontend-engineer
+/packages/ui/ @frontend-engineer
+
+# Backend Domain
+/apps/api/ @backend-engineer
+/packages/domain/ @backend-engineer
+/packages/validation/ @backend-engineer
+/packages/db/ @backend-engineer
+/packages/auth/ @backend-engineer
+
+# Infrastructure & Shared
+/packages/tsconfig/ @backend-engineer
+/packages/config-tailwind/ @frontend-engineer
+/turbo.json @backend-engineer
+/package.json @backend-engineer
+/pnpm-workspace.yaml @backend-engineer

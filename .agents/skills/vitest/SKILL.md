@@ -31,13 +31,13 @@ src/                  → source structure
 
 Classify as one of:
 
-| Type | Signals | Environment |
-|------|---------|-------------|
-| **Cloudflare Workers** | wrangler.toml, @cloudflare/workers-types, cloudflare vite plugin | `node` with Workers-specific setup |
-| **React (Vite)** | @vitejs/plugin-react, react-dom | `jsdom` or `happy-dom` |
-| **React (SSR/TanStack Start)** | @tanstack/start, vinxi | Split: `node` for server, `jsdom` for client |
-| **Node/Hono API** | hono, express, no react-dom | `node` |
-| **Library** | exports field, no framework deps | `node` |
+| Type                           | Signals                                                          | Environment                                  |
+| ------------------------------ | ---------------------------------------------------------------- | -------------------------------------------- |
+| **Cloudflare Workers**         | wrangler.toml, @cloudflare/workers-types, cloudflare vite plugin | `node` with Workers-specific setup           |
+| **React (Vite)**               | @vitejs/plugin-react, react-dom                                  | `jsdom` or `happy-dom`                       |
+| **React (SSR/TanStack Start)** | @tanstack/start, vinxi                                           | Split: `node` for server, `jsdom` for client |
+| **Node/Hono API**              | hono, express, no react-dom                                      | `node`                                       |
+| **Library**                    | exports field, no framework deps                                 | `node`                                       |
 
 If a `vite.config.ts` already exists, extend it rather than creating a separate vitest.config.ts — Vitest reads Vite config natively.
 
@@ -267,13 +267,13 @@ pnpm test:run
 
 If it fails, diagnose and fix. Common issues:
 
-| Error | Fix |
-|-------|-----|
-| `Cannot find module 'vitest'` | Check install completed, check `node_modules/.vitest` exists |
-| `ReferenceError: describe is not defined` | Add `globals: true` to config, or add `types: ["vitest/globals"]` to tsconfig |
-| `document is not defined` | Wrong environment — set `environment: "jsdom"` for React tests |
-| `Cannot use import.meta` | Ensure vitest.config uses `.ts` extension and project has `"type": "module"` or Vite handles transforms |
-| Workers bindings undefined | Use `@cloudflare/vitest-pool-workers` instead of plain vitest, check wrangler.toml path |
+| Error                                     | Fix                                                                                                     |
+| ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `Cannot find module 'vitest'`             | Check install completed, check `node_modules/.vitest` exists                                            |
+| `ReferenceError: describe is not defined` | Add `globals: true` to config, or add `types: ["vitest/globals"]` to tsconfig                           |
+| `document is not defined`                 | Wrong environment — set `environment: "jsdom"` for React tests                                          |
+| `Cannot use import.meta`                  | Ensure vitest.config uses `.ts` extension and project has `"type": "module"` or Vite handles transforms |
+| Workers bindings undefined                | Use `@cloudflare/vitest-pool-workers` instead of plain vitest, check wrangler.toml path                 |
 
 ---
 
@@ -402,6 +402,7 @@ vi.spyOn(obj, "method");
 ```
 
 3. **Remove Jest packages:**
+
 ```bash
 pnpm remove jest ts-jest @types/jest jest-environment-jsdom babel-jest @jest/globals
 ```
@@ -412,16 +413,16 @@ pnpm remove jest ts-jest @types/jest jest-environment-jsdom babel-jest @jest/glo
 
 Key replacements:
 
-| Jest | Vitest |
-|------|--------|
-| `jest.fn()` | `vi.fn()` |
-| `jest.mock()` | `vi.mock()` |
-| `jest.spyOn()` | `vi.spyOn()` |
+| Jest                   | Vitest               |
+| ---------------------- | -------------------- |
+| `jest.fn()`            | `vi.fn()`            |
+| `jest.mock()`          | `vi.mock()`          |
+| `jest.spyOn()`         | `vi.spyOn()`         |
 | `jest.useFakeTimers()` | `vi.useFakeTimers()` |
 | `jest.clearAllMocks()` | `vi.clearAllMocks()` |
-| `jest.requireActual()` | `vi.importActual()` |
-| `@jest/globals` | `vitest` |
-| `jest.config.js` | `vitest.config.ts` |
+| `jest.requireActual()` | `vi.importActual()`  |
+| `@jest/globals`        | `vitest`             |
+| `jest.config.js`       | `vitest.config.ts`   |
 
 ---
 
@@ -433,9 +434,7 @@ For monorepo projects with multiple packages:
 // vitest.workspace.ts
 import { defineWorkspace } from "vitest/config";
 
-export default defineWorkspace([
-  "packages/*/vitest.config.ts",
-]);
+export default defineWorkspace(["packages/*/vitest.config.ts"]);
 ```
 
 Each package gets its own config. The workspace file just points to them.
@@ -445,6 +444,7 @@ Each package gets its own config. The workspace file just points to them.
 ## What This Skill Produces
 
 After running, the project should have:
+
 - `vitest.config.ts` (or test block added to existing vite.config.ts)
 - `src/test/setup.ts` (React projects)
 - Updated `tsconfig.json` with vitest/globals type

@@ -40,10 +40,16 @@ describe("Button Component", () => {
     const { rerender } = render(
       <Button variant="destructive">Destructive</Button>,
     );
-    expect(screen.getByRole("button")).toHaveAttribute("data-variant", "destructive");
+    expect(screen.getByRole("button")).toHaveAttribute(
+      "data-variant",
+      "destructive",
+    );
 
     rerender(<Button variant="outline">Outline</Button>);
-    expect(screen.getByRole("button")).toHaveAttribute("data-variant", "outline");
+    expect(screen.getByRole("button")).toHaveAttribute(
+      "data-variant",
+      "outline",
+    );
   });
 
   it("applies size classes correctly", () => {

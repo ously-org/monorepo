@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import * as React from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../collapsible";
 import { Button } from "../button";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
@@ -13,31 +17,45 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = React.useState(false);
+function CollapsibleDemo() {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-    return (
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-[350px] space-y-2">
-        <div className="flex items-center justify-between space-x-4 px-4">
-          <h4 className="text-sm font-semibold">@peduarte starred 3 repositories</h4>
-          <CollapsibleTrigger asChild>
-            <Button variant="ghost" size="sm" className="w-9 p-0">
-              {isOpen ? (
-                <ChevronDown className="h-4 w-4" />
-              ) : (
-                <ChevronRight className="h-4 w-4" />
-              )}
-              <span className="sr-only">Toggle</span>
-            </Button>
-          </CollapsibleTrigger>
+  return (
+    <Collapsible
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      className="w-[350px] space-y-2"
+    >
+      <div className="flex items-center justify-between space-x-4 px-4">
+        <h4 className="text-sm font-semibold">
+          @peduarte starred 3 repositories
+        </h4>
+        <CollapsibleTrigger asChild>
+          <Button variant="ghost" size="sm" className="w-9 p-0">
+            {isOpen ? (
+              <ChevronDown className="h-4 w-4" />
+            ) : (
+              <ChevronRight className="h-4 w-4" />
+            )}
+            <span className="sr-only">Toggle</span>
+          </Button>
+        </CollapsibleTrigger>
+      </div>
+      <div className="rounded-none border px-4 py-3 text-sm">
+        @radix-ui/primitives
+      </div>
+      <CollapsibleContent className="space-y-2">
+        <div className="rounded-none border px-4 py-3 text-sm">
+          @radix-ui/colors
         </div>
-        <div className="rounded-none border px-4 py-3 text-sm">@radix-ui/primitives</div>
-        <CollapsibleContent className="space-y-2">
-          <div className="rounded-none border px-4 py-3 text-sm">@radix-ui/colors</div>
-          <div className="rounded-none border px-4 py-3 text-sm">@stitches/react</div>
-        </CollapsibleContent>
-      </Collapsible>
-    );
-  },
+        <div className="rounded-none border px-4 py-3 text-sm">
+          @stitches/react
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
+
+export const Default: Story = {
+  render: () => <CollapsibleDemo />,
 };

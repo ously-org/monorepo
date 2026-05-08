@@ -1,12 +1,17 @@
 /**
  * This schema is based on the Better Auth requirements for the Drizzle adapter.
  * Reference: https://www.better-auth.com/docs/adapters/drizzle
- * 
+ *
  * To update this schema using the Better Auth CLI, run:
  * pnpm dlx @better-auth/cli generate --output ./src/schema.ts
  */
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
-import { type User, type Session, type Account, type Verification } from "@ously/domain";
+import {
+  type User,
+  type Session,
+  type Account,
+  type Verification,
+} from "@ously/domain";
 import { matchTable } from "./match-table";
 
 export const users = sqliteTable("user", {
@@ -15,9 +20,13 @@ export const users = sqliteTable("user", {
   name: text("name"),
   emailVerified: integer("email_verified", { mode: "boolean" }).notNull(),
   image: text("image"),
-  gender: text("gender", { enum: ["male", "female", "other", "prefer_not_to_say"] }),
+  gender: text("gender", {
+    enum: ["male", "female", "other", "prefer_not_to_say"],
+  }),
   currency: text("currency", { enum: ["USD", "EUR", "GBP"] }),
-  subscriptionStatus: text("subscription_status", { enum: ["active", "inactive", "past_due", "canceled", "trialing"] }),
+  subscriptionStatus: text("subscription_status", {
+    enum: ["active", "inactive", "past_due", "canceled", "trialing"],
+  }),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
   updatedAt: integer("updated_at", { mode: "timestamp" }).notNull(),
 });
@@ -45,8 +54,12 @@ export const accounts = sqliteTable("account", {
   accessToken: text("access_token"),
   refreshToken: text("refresh_token"),
   idToken: text("id_token"),
-  accessTokenExpiresAt: integer("access_token_expires_at", { mode: "timestamp" }),
-  refreshTokenExpiresAt: integer("refresh_token_expires_at", { mode: "timestamp" }),
+  accessTokenExpiresAt: integer("access_token_expires_at", {
+    mode: "timestamp",
+  }),
+  refreshTokenExpiresAt: integer("refresh_token_expires_at", {
+    mode: "timestamp",
+  }),
   scope: text("scope"),
   password: text("password"),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),

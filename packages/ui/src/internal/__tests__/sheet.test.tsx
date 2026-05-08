@@ -22,7 +22,7 @@ describe("Sheet Component", () => {
             <SheetDescription>Description</SheetDescription>
           </SheetHeader>
         </SheetContent>
-      </Sheet>
+      </Sheet>,
     );
 
     const trigger = screen.getByText("Open");

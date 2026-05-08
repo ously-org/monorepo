@@ -5,8 +5,16 @@ Complete reference for every Drizzle ORM column type used with Cloudflare D1. Al
 ## Imports
 
 ```typescript
-import { sqliteTable, text, integer, real, blob, index, uniqueIndex } from 'drizzle-orm/sqlite-core'
-import { relations, sql } from 'drizzle-orm'
+import {
+  sqliteTable,
+  text,
+  integer,
+  real,
+  blob,
+  index,
+  uniqueIndex,
+} from "drizzle-orm/sqlite-core";
+import { relations, sql } from "drizzle-orm";
 ```
 
 ## Primary Keys
@@ -148,22 +156,33 @@ parentId: text('parent_id')
 Defined in the table function callback (second argument to `sqliteTable`):
 
 ```typescript
-export const posts = sqliteTable('posts', {
-  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
-  title: text('title').notNull(),
-  authorId: text('author_id').notNull().references(() => users.id),
-  status: text('status', { enum: ['draft', 'published'] }).notNull(),
-  publishedAt: integer('published_at', { mode: 'timestamp' }),
-}, (table) => ({
-  // Single column index
-  authorIdx: index('posts_author_idx').on(table.authorId),
+export const posts = sqliteTable(
+  "posts",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    title: text("title").notNull(),
+    authorId: text("author_id")
+      .notNull()
+      .references(() => users.id),
+    status: text("status", { enum: ["draft", "published"] }).notNull(),
+    publishedAt: integer("published_at", { mode: "timestamp" }),
+  },
+  (table) => ({
+    // Single column index
+    authorIdx: index("posts_author_idx").on(table.authorId),
 
-  // Unique index
-  slugIdx: uniqueIndex('posts_slug_idx').on(table.slug),
+    // Unique index
+    slugIdx: uniqueIndex("posts_slug_idx").on(table.slug),
 
-  // Composite index
-  statusDateIdx: index('posts_status_date_idx').on(table.status, table.publishedAt),
-}))
+    // Composite index
+    statusDateIdx: index("posts_status_date_idx").on(
+      table.status,
+      table.publishedAt,
+    ),
+  }),
+);
 ```
 
 **Naming convention**: `{table}_{column(s)}_{idx|uniq}`.
@@ -177,25 +196,33 @@ Drizzle relations are query builder helpers — not database-level constraints. 
 ```typescript
 export const usersRelations = relations(users, ({ many }) => ({
   posts: many(posts),
-}))
+}));
 
 export const postsRelations = relations(posts, ({ one }) => ({
   author: one(users, {
     fields: [posts.authorId],
     references: [users.id],
   }),
-}))
+}));
 ```
 
 ### Many-to-many (via junction table)
 
 ```typescript
-export const postTags = sqliteTable('post_tags', {
-  postId: text('post_id').notNull().references(() => posts.id, { onDelete: 'cascade' }),
-  tagId: text('tag_id').notNull().references(() => tags.id, { onDelete: 'cascade' }),
-}, (table) => ({
-  pk: uniqueIndex('post_tags_pk').on(table.postId, table.tagId),
-}))
+export const postTags = sqliteTable(
+  "post_tags",
+  {
+    postId: text("post_id")
+      .notNull()
+      .references(() => posts.id, { onDelete: "cascade" }),
+    tagId: text("tag_id")
+      .notNull()
+      .references(() => tags.id, { onDelete: "cascade" }),
+  },
+  (table) => ({
+    pk: uniqueIndex("post_tags_pk").on(table.postId, table.tagId),
+  }),
+);
 ```
 
 ## Type Exports
@@ -203,8 +230,8 @@ export const postTags = sqliteTable('post_tags', {
 Always export inferred types for every table:
 
 ```typescript
-export type User = typeof users.$inferSelect
-export type NewUser = typeof users.$inferInsert
-export type Post = typeof posts.$inferSelect
-export type NewPost = typeof posts.$inferInsert
+export type User = typeof users.$inferSelect;
+export type NewUser = typeof users.$inferInsert;
+export type Post = typeof posts.$inferSelect;
+export type NewPost = typeof posts.$inferInsert;
 ```

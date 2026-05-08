@@ -10,11 +10,19 @@ describe("Separator Component", () => {
   });
 
   it("applies the correct orientation class", () => {
-    const { rerender } = render(<Separator orientation="horizontal" data-testid="separator" />);
-    expect(screen.getByTestId("separator")).toHaveAttribute("data-orientation", "horizontal");
+    const { rerender } = render(
+      <Separator orientation="horizontal" data-testid="separator" />,
+    );
+    expect(screen.getByTestId("separator")).toHaveAttribute(
+      "data-orientation",
+      "horizontal",
+    );
 
     rerender(<Separator orientation="vertical" data-testid="separator" />);
-    expect(screen.getByTestId("separator")).toHaveAttribute("data-orientation", "vertical");
+    expect(screen.getByTestId("separator")).toHaveAttribute(
+      "data-orientation",
+      "vertical",
+    );
   });
 
   it("applies custom className", () => {

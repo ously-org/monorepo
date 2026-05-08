@@ -1,19 +1,19 @@
-import type { Meta, StoryObj } from "@storybook/react"
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   Bell,
   CreditCard,
   MoreHorizontal,
   Settings,
   Users,
-} from "lucide-react"
+} from "lucide-react";
 import {
   Avatar,
   AvatarFallback,
   AvatarGroup,
   AvatarGroupCount,
   AvatarImage,
-} from "../avatar"
-import { Button } from "../button"
+} from "../avatar";
+import { Button } from "../button";
 import {
   Card,
   CardAction,
@@ -22,9 +22,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../card"
-import { Separator } from "../separator"
-import { Skeleton } from "../skeleton"
+} from "../card";
+import { Separator } from "../separator";
+import { Skeleton } from "../skeleton";
 
 const meta = {
   title: "ODS/Primitive/Card",
@@ -39,10 +39,10 @@ const meta = {
       options: ["default", "sm"],
     },
   },
-} satisfies Meta<typeof Card>
+} satisfies Meta<typeof Card>;
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 /**
  * Advanced composition showing a project management card.
@@ -65,7 +65,8 @@ export const TeamProject: Story = {
         <div className="mt-4">
           <CardTitle>Redesign Dashboard</CardTitle>
           <CardDescription>
-            Update the analytics dashboard with new mobile responsive components.
+            Update the analytics dashboard with new mobile responsive
+            components.
           </CardDescription>
         </div>
       </CardHeader>
@@ -106,7 +107,7 @@ export const TeamProject: Story = {
       </CardFooter>
     </Card>
   ),
-}
+};
 
 /**
  * Notification card pattern using CardAction for utility actions.
@@ -146,7 +147,7 @@ export const Notification: Story = {
       </CardContent>
     </Card>
   ),
-}
+};
 
 /**
  * Loading state using Skeleton components to match the Card layout.
@@ -173,7 +174,7 @@ export const Loading: Story = {
       </CardFooter>
     </Card>
   ),
-}
+};
 
 /**
  * Settings card layout with header borders and background-tinted footer.
@@ -219,4 +220,4 @@ export const SettingsCard: Story = {
       </CardFooter>
     </Card>
   ),
-}
+};

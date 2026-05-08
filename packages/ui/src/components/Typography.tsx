@@ -66,7 +66,8 @@ const typographyVariants = cva("text-foreground", {
 });
 
 export interface TypographyProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "className" | "color" | "size">,
+  extends
+    Omit<React.HTMLAttributes<HTMLElement>, "className" | "color" | "size">,
     VariantProps<typeof typographyVariants> {
   as?: React.ElementType;
   text?: React.ReactNode;

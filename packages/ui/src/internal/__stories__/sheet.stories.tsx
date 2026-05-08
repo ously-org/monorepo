@@ -35,11 +35,15 @@ export const Default: Story = {
         </SheetHeader>
         <div className="grid gap-4 py-4 px-4">
           <div className="grid gap-2">
-            <label htmlFor="name" className="text-xs font-medium">Name</label>
+            <label htmlFor="name" className="text-xs font-medium">
+              Name
+            </label>
             <Input id="name" defaultValue="Pedro Duarte" />
           </div>
           <div className="grid gap-2">
-            <label htmlFor="username" className="text-xs font-medium">Username</label>
+            <label htmlFor="username" className="text-xs font-medium">
+              Username
+            </label>
             <Input id="username" defaultValue="@peduarte" />
           </div>
         </div>

@@ -3,7 +3,7 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": ".",
+    "moduleResolution": "bundler",
     "paths": {
       "@ously/ui/*": ["./src/*"]
     }

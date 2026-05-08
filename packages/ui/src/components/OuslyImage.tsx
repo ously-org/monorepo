@@ -16,7 +16,8 @@ const imageVariants = cva("max-w-full h-auto", {
 });
 
 export interface OuslyImageProps
-  extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, "className">,
+  extends
+    Omit<React.ImgHTMLAttributes<HTMLImageElement>, "className">,
     VariantProps<typeof imageVariants> {}
 
 /**
@@ -33,7 +34,7 @@ export const OuslyImage = React.forwardRef<HTMLImageElement, OuslyImageProps>(
         {...props}
       />
     );
-  }
+  },
 );
 
 OuslyImage.displayName = "OuslyImage";

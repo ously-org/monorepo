@@ -8,7 +8,7 @@ export * from "./internal/tooltip";
 export * from "./internal/sheet";
 
 // Layout components
-export * from "./components/BreadcrumbWIthPart";
+export * from "./components/HeaderBreadcrumb";
 export * from "./components/Typography";
 export * from "./components/OuslySidebar";
 export * from "./components/Header";

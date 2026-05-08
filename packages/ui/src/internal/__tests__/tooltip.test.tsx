@@ -1,7 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect } from "vitest";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../tooltip";
 
 describe("Tooltip Component", () => {
   it("renders the trigger correctly", () => {
@@ -11,7 +16,7 @@ describe("Tooltip Component", () => {
           <TooltipTrigger>Hover me</TooltipTrigger>
           <TooltipContent>Tooltip content</TooltipContent>
         </Tooltip>
-      </TooltipProvider>
+      </TooltipProvider>,
     );
     expect(screen.getByText("Hover me")).toBeInTheDocument();
   });
@@ -22,9 +27,11 @@ describe("Tooltip Component", () => {
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger>Hover me</TooltipTrigger>
-          <TooltipContent data-testid="tooltip-content">Tooltip content</TooltipContent>
+          <TooltipContent data-testid="tooltip-content">
+            Tooltip content
+          </TooltipContent>
         </Tooltip>
-      </TooltipProvider>
+      </TooltipProvider>,
     );
 
     const trigger = screen.getByText("Hover me");

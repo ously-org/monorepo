@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import { HeaderBreadcrumb } from "../BreadcrumbWIthPart";
+import { HeaderBreadcrumb } from "../HeaderBreadcrumb";
 
 // Mock next/link to avoid issues in test environment
 vi.mock("next/link", () => {

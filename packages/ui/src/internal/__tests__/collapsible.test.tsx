@@ -1,7 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect } from "vitest";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../collapsible";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "../collapsible";
 
 describe("Collapsible Component", () => {
   it("renders correctly and toggles content", async () => {
@@ -9,8 +13,10 @@ describe("Collapsible Component", () => {
     render(
       <Collapsible>
         <CollapsibleTrigger>Toggle</CollapsibleTrigger>
-        <CollapsibleContent data-testid="content">Hidden Content</CollapsibleContent>
-      </Collapsible>
+        <CollapsibleContent data-testid="content">
+          Hidden Content
+        </CollapsibleContent>
+      </Collapsible>,
     );
 
     // Content should be hidden initially (Radix uses data-state or hidden)

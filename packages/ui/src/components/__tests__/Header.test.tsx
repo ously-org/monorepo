@@ -13,7 +13,7 @@ describe("Header", () => {
     render(
       <SidebarProvider>
         <Header pathname="/dashboard/settings" />
-      </SidebarProvider>
+      </SidebarProvider>,
     );
 
     // HeaderBreadcrumb should render "Home", "Dashboard", "Settings"
@@ -26,7 +26,7 @@ describe("Header", () => {
     render(
       <SidebarProvider>
         <Header pathname="/" />
-      </SidebarProvider>
+      </SidebarProvider>,
     );
 
     // SidebarTrigger has a sr-only text "Toggle Sidebar"

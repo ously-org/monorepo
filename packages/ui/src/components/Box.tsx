@@ -66,11 +66,6 @@ const boxVariants = cva("", {
       lg: "gap-4",
       xl: "gap-5",
     },
-    collapseBehavior: {
-      hide: "group-data-[collapsible=icon]:hidden",
-      header:
-        "h-16 shrink-0 border-b px-4 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12",
-    },
   },
   defaultVariants: {
     display: "block",
@@ -99,7 +94,6 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
       columns,
       padding,
       gap,
-      collapseBehavior,
       asChild = false,
       ...props
     },
@@ -119,7 +113,6 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
             columns,
             padding,
             gap,
-            collapseBehavior,
           }),
         )}
         {...props}

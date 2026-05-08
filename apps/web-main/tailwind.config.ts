@@ -7,7 +7,10 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    path.join(path.dirname(require.resolve("@ously/ui/package.json")), "src/**/*.{ts,tsx}"),
+    path.join(
+      path.dirname(require.resolve("@ously/ui/package.json")),
+      "src/**/*.{ts,tsx}",
+    ),
   ],
   presets: [sharedConfig as any],
 };

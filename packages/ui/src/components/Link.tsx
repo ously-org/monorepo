@@ -4,7 +4,6 @@ import * as React from "react";
 import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 import { cn } from "../lib/utils";
 import { Typography } from "./Typography";
-import { Box } from "./Box";
 import { type VariantProps, cva } from "class-variance-authority";
 
 const linkVariants = cva(
@@ -114,7 +113,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       >
         {Icon && <Icon className="size-4 shrink-0" />}
         {title ? (
-          <Box collapseBehavior="hide">
+          <span className="group-data-[collapsible=icon]:hidden">
             <Typography
               variant="no-style"
               as="span"
@@ -122,7 +121,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
             >
               {title}
             </Typography>
-          </Box>
+          </span>
         ) : (
           children
         )}

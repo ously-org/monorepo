@@ -1,6 +1,4 @@
-@import "../../../node_modules/tw-animate-css/dist/tw-animate.css";
-@import "../../../node_modules/shadcn/dist/tailwind.css";
-@import "../../../packages/ui/src/themes.css";
+@import "@ously/ui/themes.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
