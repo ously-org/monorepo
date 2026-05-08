@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@ously/tsconfig": "workspace:*",
+    "@storybook/addon-docs": "catalog:",
     "@storybook/nextjs-vite": "catalog:",
     "@storybook/react": "catalog:",
     "@types/react": "catalog:",

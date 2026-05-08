@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@storybook/addon-docs':
+      specifier: 10.3.6
+      version: 10.3.6
     '@storybook/nextjs-vite':
       specifier: 10.3.6
       version: 10.3.6
@@ -131,6 +134,9 @@ importers:
       '@ously/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
+      '@storybook/addon-docs':
+        specifier: 'catalog:'
+        version: 10.3.6(@types/react@18.3.28)(esbuild@0.25.12)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@5.4.21(@types/node@20.19.39))
       '@storybook/nextjs-vite':
         specifier: 'catalog:'
         version: 10.3.6(@babel/core@7.29.0)(esbuild@0.25.12)(next@16.2.4(@babel/core@7.29.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(typescript@5.9.3)(vite@5.4.21(@types/node@20.19.39))
@@ -1805,6 +1811,12 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==, tarball: https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.9.tgz}
 
+  '@mdx-js/react@3.1.1':
+    resolution: {integrity: sha512-f++rKLQgUVYDAtECQ6fn/is15GkEH9+nZPM3MS0RcxVqoTfawHvDlSCH7JbMhAM6uJ32v3eXLvLmLvjGu7PTQw==, tarball: https://registry.npmjs.org/@mdx-js/react/-/react-3.1.1.tgz}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
+
   '@modelcontextprotocol/sdk@1.29.0':
     resolution: {integrity: sha512-zo37mZA9hJWpULgkRpowewez1y6ML5GsXJPY8FI0tBBCd77HEvza4jDqRKOXgHNn867PVGCyTdzqpz0izu5ZjQ==, tarball: https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.29.0.tgz}
     engines: {node: '>=18'}
@@ -2814,6 +2826,11 @@ packages:
   '@standard-schema/spec@1.1.0':
     resolution: {integrity: sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w==, tarball: https://registry.npmjs.org/@standard-schema/spec/-/spec-1.1.0.tgz}
 
+  '@storybook/addon-docs@10.3.6':
+    resolution: {integrity: sha512-TvIdADVPtauxW0LzXIpIv7X6GxwetorhyNh+6+7MHC27XSBCWVxxRUwL63YeLlHTuXsIk0quG3b1xgwVRzWOJA==, tarball: https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-10.3.6.tgz}
+    peerDependencies:
+      storybook: ^10.3.6
+
   '@storybook/builder-vite@10.3.6':
     resolution: {integrity: sha512-gpvR/sE4BcrFtmQZ+Ker7zD23oQzoVeqD9nF6cK6yzY+Q0svJXyX2EPmFG4y+EwygD5/vNzDpP84gGMut8VRwg==, tarball: https://registry.npmjs.org/@storybook/builder-vite/-/builder-vite-10.3.6.tgz}
     peerDependencies:
@@ -2977,6 +2994,9 @@ packages:
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==, tarball: https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz}
+
+  '@types/mdx@2.0.13':
+    resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==, tarball: https://registry.npmjs.org/@types/mdx/-/mdx-2.0.13.tgz}
 
   '@types/node@20.19.39':
     resolution: {integrity: sha512-orrrD74MBUyK8jOAD/r0+lfa1I2MO6I+vAkmAWzMYbCcgrN4lCrmK52gRFQq/JRxfYPfonkr4b0jcY7Olqdqbw==, tarball: https://registry.npmjs.org/@types/node/-/node-20.19.39.tgz}
@@ -6433,6 +6453,12 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
+  '@mdx-js/react@3.1.1(@types/react@18.3.28)(react@18.3.1)':
+    dependencies:
+      '@types/mdx': 2.0.13
+      '@types/react': 18.3.28
+      react: 18.3.1
+
   '@modelcontextprotocol/sdk@1.29.0(zod@3.25.76)':
     dependencies:
       '@hono/node-server': 1.19.14(hono@4.12.16)
@@ -7401,6 +7427,23 @@ snapshots:
 
   '@standard-schema/spec@1.1.0': {}
 
+  '@storybook/addon-docs@10.3.6(@types/react@18.3.28)(esbuild@0.25.12)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@5.4.21(@types/node@20.19.39))':
+    dependencies:
+      '@mdx-js/react': 3.1.1(@types/react@18.3.28)(react@18.3.1)
+      '@storybook/csf-plugin': 10.3.6(esbuild@0.25.12)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@5.4.21(@types/node@20.19.39))
+      '@storybook/icons': 2.0.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@storybook/react-dom-shim': 10.3.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      storybook: 10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      ts-dedent: 2.2.0
+    transitivePeerDependencies:
+      - '@types/react'
+      - esbuild
+      - rollup
+      - vite
+      - webpack
+
   '@storybook/builder-vite@10.3.6(esbuild@0.25.12)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@5.4.21(@types/node@20.19.39))':
     dependencies:
       '@storybook/csf-plugin': 10.3.6(esbuild@0.25.12)(rollup@4.60.2)(storybook@10.3.6(@testing-library/dom@10.4.0)(prettier@3.8.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@5.4.21(@types/node@20.19.39))
@@ -7587,6 +7630,8 @@ snapshots:
   '@types/doctrine@0.0.9': {}
 
   '@types/estree@1.0.8': {}
+
+  '@types/mdx@2.0.13': {}
 
   '@types/node@20.19.39':
     dependencies:

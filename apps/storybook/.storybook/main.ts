@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     "../../../packages/ui/src/**/*.stories.@(js|jsx|ts|tsx)",
     "../../../apps/web-prosper/{app,components,layout,lib,hooks}/**/*.stories.@(js|jsx|ts|tsx)",
   ],
-  addons: [],
+  addons: ["@storybook/addon-essentials"],
   framework: {
     name: "@storybook/nextjs-vite",
     options: {},
