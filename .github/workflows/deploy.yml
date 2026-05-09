@@ -30,6 +30,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Type Check
+        run: pnpm type-check
+
       - name: Deploy API (Worker)
         uses: cloudflare/wrangler-action@v3
         with:

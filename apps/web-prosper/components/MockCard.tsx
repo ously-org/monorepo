@@ -11,9 +11,7 @@ export const MockCard = ({ title, description }: MockCardProps) => {
       <h3 className="text-2xl font-semibold leading-none tracking-tight mb-2">
         {title}
       </h3>
-      <p className="text-sm text-muted-foreground">
-        {description}
-      </p>
+      <p className="text-sm text-muted-foreground">{description}</p>
     </div>
   );
 };

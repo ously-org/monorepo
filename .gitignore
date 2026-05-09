@@ -8,6 +8,7 @@ build/
 .next/
 .turbo/
 out/
+next-env.d.ts
 
 # Logs
 logs
@@ -49,3 +50,5 @@ Thumbs.db
 # Worktrees
 worktrees/
 .worktrees/
+
+*.tsbuildinfo
