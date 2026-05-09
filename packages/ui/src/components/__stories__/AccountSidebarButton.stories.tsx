@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { AccountSidebarButton } from "../AccountSidebarButton";
-import {
-  SidebarProvider,
-  SidebarFooter,
-  Sidebar,
-} from "../../internal/sidebar";
+import { SidebarProvider, SidebarFooter, Sidebar } from "../../internal/sidebar";
 import { TooltipProvider } from "../../internal/tooltip";
 
 const meta: Meta<typeof AccountSidebarButton> = {
