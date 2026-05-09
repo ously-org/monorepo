@@ -1,3 +1,4 @@
+// ISSUE_#119 | 2026-05-09 | Annotate pending Account Settings task
 import { Box, Typography } from "@ously/ui";
 import { MockCard } from "../components/MockCard";
 
@@ -23,3 +24,5 @@ export default function Home() {
     </>
   );
 }
+
+// TODO(ISSUE-84): Implement Account Settings shell

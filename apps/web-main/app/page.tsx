@@ -1,3 +1,4 @@
+// ISSUE_#119 | 2026-05-09 | Annotate pending Settings and Account Deletion tasks
 import { Button } from "@ously/ui";
 
 export default function Home() {
@@ -8,3 +9,8 @@ export default function Home() {
     </main>
   );
 }
+
+// TODO(ISSUE-84): Implement Account Settings shell
+// TODO(ISSUE-86): Implement General Info form
+// TODO(ISSUE-87): Implement Email Preferences form
+// TODO(ISSUE-89): Implement Account Deletion workflow

@@ -1,3 +1,4 @@
+// ISSUE_#119 | 2026-05-09 | Annotate pending Subscription & Billing UI task
 export * from "./internal/button";
 export * from "./internal/avatar";
 export * from "./internal/sidebar";
@@ -15,3 +16,5 @@ export * from "./components/Header";
 export * from "./components/Box";
 export * from "./components/Link";
 export * from "./components/OuslyImage";
+
+// TODO(ISSUE-88): Implement Subscription & Billing UI placeholders

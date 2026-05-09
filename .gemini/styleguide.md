@@ -1,3 +1,5 @@
+<!-- ISSUE_#119 | 2026-05-09 | Mandate // TODO(ISSUE-XXX): format for task tracking -->
+
 # Ously Monorepo Coding Style Guide
 
 This guide defines the architectural standards and coding conventions for the Ously monorepo. Gemini Code Assist must prioritize these rules during code reviews.
@@ -59,7 +61,12 @@ This guide defines the architectural standards and coding conventions for the Ou
 - Prefer composition over complex inheritance.
 - Keep components and functions focused and atomic.
 
-### 3. Monorepo Best Practices
+### 3. Task Tracking
+
+- **Convention**: All pending work or technical debt MUST be marked with `// TODO(ISSUE-XXX): <description>`.
+- **Requirement**: Every TODO must link to a valid GitHub Issue ID. If an issue doesn't exist, one must be created before adding the comment.
+
+### 4. Monorepo Best Practices
 
 - Use workspace protocols (`workspace:*`) for internal dependency links.
 - Adhere to the defined pnpm/Turborepo workflow.

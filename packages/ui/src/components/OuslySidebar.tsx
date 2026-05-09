@@ -1,6 +1,8 @@
 "use client";
-
+// ISSUE_#119 | 2026-05-09 | Annotate pending Sidebar Account Button task
 import * as React from "react";
+// TODO(ISSUE-82): Implement Sidebar Account Button
+
 import {
   Sidebar,
   SidebarContent,
