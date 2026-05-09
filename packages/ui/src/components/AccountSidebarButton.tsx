@@ -3,6 +3,7 @@
 import { Settings, LogOut, ChevronsUpDown } from "lucide-react";
 import { cn } from "../lib/utils";
 import { Avatar, AvatarImage, AvatarFallback } from "../internal/avatar";
+import { Button } from "../internal/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,6 +12,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "../internal/dropdown-menu";
+import { Box } from "./Box";
+import { Typography } from "./Typography";
 
 export interface AccountSidebarButtonProps {
   user: {
@@ -43,11 +46,13 @@ function AccountSidebarButton({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="default"
           data-slot="account-sidebar-button"
           className={cn(
-            "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-none p-2 text-left text-xs ring-sidebar-ring outline-hidden transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0!",
+            "flex peer/menu-button group/menu-button w-full gap-2 overflow-hidden p-2 text-left ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0!",
             className,
           )}
         >
@@ -57,42 +62,60 @@ function AccountSidebarButton({
             ) : null}
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
-          <span className="flex flex-col items-start gap-0 group-data-[collapsible=icon]:hidden min-w-0 flex-1">
-            <span className="truncate text-xs font-medium text-sidebar-foreground">
+          <Typography
+            as="span"
+            variant="no-style"
+            className="flex flex-col items-start gap-0 group-data-[collapsible=icon]:hidden min-w-0 flex-1"
+          >
+            <Typography
+              as="span"
+              variant="no-style"
+              className="truncate text-xs font-medium text-sidebar-foreground"
+            >
               {user.name}
-            </span>
+            </Typography>
             {user.email && (
-              <span className="truncate text-[10px] text-sidebar-foreground/60">
+              <Typography
+                as="span"
+                variant="no-style"
+                className="truncate text-[10px] text-sidebar-foreground/60"
+              >
                 {user.email}
-              </span>
+              </Typography>
             )}
-          </span>
+          </Typography>
           <ChevronsUpDown className="size-3 shrink-0 text-sidebar-foreground/40 group-data-[collapsible=icon]:hidden" />
-        </button>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent side="top" align="start" className="w-48">
         <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col gap-0.5">
-            <span className="text-sm font-medium">{user.name}</span>
+          <Box display="flex" direction="col" className="gap-0.5">
+            <Typography as="span" className="text-sm font-medium">
+              {user.name}
+            </Typography>
             {user.email && (
-              <span className="text-xs text-muted-foreground">
+              <Typography as="span" variant="muted" size="xs">
                 {user.email}
-              </span>
+              </Typography>
             )}
-          </div>
+          </Box>
         </DropdownMenuLabel>
         {(onSettings || onLogout) && <DropdownMenuSeparator />}
         {onSettings && (
           <DropdownMenuItem onClick={onSettings}>
             <Settings className="size-4" />
-            <span>{settingsLabel}</span>
+            <Typography as="span" variant="no-style">
+              {settingsLabel}
+            </Typography>
           </DropdownMenuItem>
         )}
         {onSettings && onLogout && <DropdownMenuSeparator />}
         {onLogout && (
           <DropdownMenuItem onClick={onLogout}>
             <LogOut className="size-4" />
-            <span>{logoutLabel}</span>
+            <Typography as="span" variant="no-style">
+              {logoutLabel}
+            </Typography>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

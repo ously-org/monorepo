@@ -14,6 +14,7 @@ import {
   SidebarMenuItem,
 } from "../internal/sidebar";
 import { Skeleton } from "../internal/skeleton";
+import { Box } from "./Box";
 import { Typography } from "./Typography";
 import { Link } from "./Link";
 import { OuslyImage } from "./OuslyImage";
@@ -65,11 +66,11 @@ export function NavHeader({
             ) : (
               <Skeleton className="h-10 w-10 aspect-square transition-all group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8" />
             )}
-            <div className="group-data-[collapsible=icon]:hidden">
+            <Box className="group-data-[collapsible=icon]:hidden">
               <Typography variant="h4" weight="bold" color="primary">
                 {title}
               </Typography>
-            </div>
+            </Box>
           </Link>
         </SidebarMenuButton>
       </SidebarMenuItem>
