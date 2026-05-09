@@ -12,7 +12,7 @@ This guide defines the architectural standards and coding conventions for the Ou
 - **Dependency Rule**: `@ously/domain` must have **ZERO dependencies**.
 - **Workflow**: All feature development **MUST** start by defining interfaces in `@ously/domain`.
 - **Review Check**: Flag any implementation that introduces logic or data structures without a corresponding domain interface.
-- **No Runtime Values**: `@ously/domain` must export **types only**. Do NOT add `as const` arrays, enums, or any runtime values. The domain defines *what* the data looks like, not the valid values.
+- **No Runtime Values**: `@ously/domain` must export **types only**. Do NOT add `as const` arrays, enums, or any runtime values. The domain defines _what_ the data looks like, not the valid values.
 - **Review Check**: Reject suggestions to share runtime constants from `@ously/domain` to other packages. Each layer defines its own values independently (e.g., Drizzle `{enum: [...]}` in `@ously/db`, Zod `.enum()` in `@ously/validation`). Alignment is enforced at compile time by `match<T>()` and `matchTable<T>()`.
 
 ### 2. Structural Alignment (The Matching Rule)

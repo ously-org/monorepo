@@ -1,4 +1,4 @@
-// ISSUE_#81 | 2026-05-09 | Add detailed action-log and reviewer notes template to PR opener
+<!-- ISSUE_#81 | 2026-05-09 | Add detailed action-log and reviewer notes template to PR opener -->
 ---
 name: pr_opener
 description: Specialized in creating GitHub pull requests with high-quality, summarized descriptions using the 'gh' CLI. Use this when you are ready to submit your changes for review.
@@ -35,21 +35,6 @@ Create a GitHub pull request using the `gh` CLI with a well-structured and detai
 3. **Create PR**:
    - Construct the `gh pr create` command with a detailed body.
    - Structure the body with sections: **Summary**, **Changes by File**, **Commands Executed**, **Reviewer Notes**.
-   - Example body structure:
-     ```
-     ## Summary
-     <1-2 sentence overview of the change>
-
-     ## Changes by File
-     - `path/to/file.ts` — what changed and why
-
-     ## Commands Executed
-     - `pnpm build` — ✅ passed
-     - `pnpm type-check` — ✅ passed
-
-     ## Reviewer Notes
-     - <what to pay attention to, decisions made, risks>
-     ```
 4. **Verify**: Confirm the PR was created successfully and provide the URL to the user.
 
 ### 🚀 Example Command

@@ -54,6 +54,13 @@ For every file edited as part of a task, add a comment header at the top of the 
 // ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change>
 ```
 
+For files with YAML frontmatter (`---` delimited), use an HTML comment above the frontmatter:
+
+```
+<!-- ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change> -->
+---
+```
+
 This tracks which issue triggered the change, when it happened, and what was done.
 
 ### 1. Domain-First Development
