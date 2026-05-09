@@ -46,6 +46,23 @@ This is the primary repository for the Ously project, managed as a pnpm monorepo
 
 ## 📜 Development Conventions
 
+### 0. File Change Tracking
+
+For every file edited as part of a task, add a comment header at the top of the file with the format:
+
+```
+// ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change>
+```
+
+For files with YAML frontmatter (`---` delimited), use an HTML comment above the frontmatter:
+
+```
+<!-- ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change> -->
+---
+```
+
+This tracks which issue triggered the change, when it happened, and what was done.
+
 ### 1. Domain-First Development
 
 All feature development **MUST** start by defining interfaces in `@ously/domain`. This package must remain dependency-free.
@@ -117,16 +134,16 @@ Issue arrives
 
 ### Agent Mapping
 
-| Task | Gemini CLI | OpenCode |
-|------|-----------|----------|
-| Fetch issue/PR context | `@issue_fetcher` | `@code-explorer` (*gh* CLI) |
-| Scope/impact analysis | `@scope_analyzer` | `@code-explorer` |
-| Backend implementation | `@backend_engineer` | `@backend-coder` |
-| Frontend implementation | `@frontend_engineer` | `@frontend-coder` |
-| UI/Design system | `@ods_architect` | `@ui-architect` |
-| Storybook docs | `@storybook_creator` | `@storybook-writer` |
-| Pre-commit checks | `@precommit_check` | `@precommit-checker` |
-| PR creation | `@pr_opener` | N/A (Gemini only) |
+| Task                    | Gemini CLI           | OpenCode                    |
+| ----------------------- | -------------------- | --------------------------- |
+| Fetch issue/PR context  | `@issue_fetcher`     | `@code-explorer` (_gh_ CLI) |
+| Scope/impact analysis   | `@scope_analyzer`    | `@code-explorer`            |
+| Backend implementation  | `@backend_engineer`  | `@backend-coder`            |
+| Frontend implementation | `@frontend_engineer` | `@frontend-coder`           |
+| UI/Design system        | `@ods_architect`     | `@ui-architect`             |
+| Storybook docs          | `@storybook_creator` | `@storybook-writer`         |
+| Pre-commit checks       | `@precommit_check`   | `@precommit-checker`        |
+| PR creation             | `@pr_opener`         | N/A (Gemini only)           |
 
 ---
 

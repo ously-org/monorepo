@@ -1,7 +1,7 @@
 ---
 description: Runs pre-commit quality checks (format, lint, build) and reports results. Gemini equivalent: @precommit_check.
 mode: subagent
-model: deepseek/deepseek-v4-flash-high
+model: opencode-go/deepseek-v4-flash
 temperature: 0
 permission:
   edit: deny

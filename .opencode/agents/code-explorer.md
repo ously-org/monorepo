@@ -1,7 +1,7 @@
 ---
 description: Fast, read-only codebase explorer. Searches files, finds patterns, analyzes scope. Use for grep, glob, file reading, and understanding code structure. Gemini equivalent: @scope_analyzer + @issue_fetcher.
 mode: subagent
-model: deepseek/deepseek-v4-flash-high
+model: opencode-go/deepseek-v4-flash
 temperature: 0
 permission:
   edit: deny

@@ -44,6 +44,7 @@ Task received
 ### Parallel Execution
 
 When a task touches multiple domains, launch subagents **in parallel**:
+
 - E.g., "Add user avatar feature" → `@backend-coder` (DB + API) AND `@frontend-coder` (UI) simultaneously
 
 ## 📐 Code Conventions (from root AGENTS.md)
@@ -64,9 +65,9 @@ When a task touches multiple domains, launch subagents **in parallel**:
 
 Load domain-specific skills via the `skill` tool when needed:
 
-| Domain | Skills |
-|--------|--------|
-| Backend | `hono`, `wrangler`, `d1-drizzle-schema`, `vitest` |
+| Domain   | Skills                                                                                                 |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| Backend  | `hono`, `wrangler`, `d1-drizzle-schema`, `vitest`                                                      |
 | Frontend | `nextjs-app-router-patterns`, `shadcn`, `tailwind-css-patterns`, `tailwind-design-system`, `storybook` |
-| Testing | `vitest`, `react-testing-library`, `webapp-testing` |
-| General | `gh-cli`, `monorepo-management`, `accessibility` |
+| Testing  | `vitest`, `react-testing-library`, `webapp-testing`                                                    |
+| General  | `gh-cli`, `monorepo-management`, `accessibility`                                                       |
