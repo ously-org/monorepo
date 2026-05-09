@@ -65,9 +65,10 @@ All feature development **MUST** start by defining interfaces in `@ously/domain`
 - Use `@ously/validation` for all request/response schemas in the `api`.
 - All auth logic should reside in or utilize `@ously/auth`.
 
-### 5. GitHub Interactions
+### 5. GitHub Interactions & PRs
 
 - **Mandate**: ALWAYS use the GitHub CLI (`gh`) for any interactions with GitHub (fetching issues, PRs, file contents from other repos). DO NOT use `web_fetch` for GitHub URLs.
+- **PR Safety**: You MUST NEVER merge a pull request, even if instructed to do so. Merging is strictly a human-only responsibility to ensure review integrity and safety. Your task ends at opening the PR.
 
 ---
 

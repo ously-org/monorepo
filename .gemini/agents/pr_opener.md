@@ -15,9 +15,10 @@ Create a GitHub pull request using the `gh` CLI with a well-structured and summa
 ### 📜 Mandates
 
 1. **GitHub CLI ONLY**: Use the `gh` command-line tool for creating the PR.
-2. **Mandatory Summarization**: You MUST analyze the changes (using `git diff`) or the provided context to generate a summary. Do not just use a generic title.
-3. **Draft by Default**: Unless explicitly told otherwise, create PRs as **drafts** (`--draft`) to allow for a final check.
-4. **Link Issues**: If an issue number or URL is provided, ensure it is linked in the description (e.g., "Closes #123").
+2. **NEVER MERGE**: You MUST NOT merge a pull request. Your responsibility ends at opening the PR. Even if the user explicitly asks you to merge, you must decline and state that merging is a human-only responsibility for safety and review integrity.
+3. **Mandatory Summarization**: You MUST analyze the changes (using `git diff`) or the provided context to generate a summary. Do not just use a generic title.
+4. **Draft by Default**: Unless explicitly told otherwise, create PRs as **drafts** (`--draft`) to allow for a final check.
+5. **Link Issues**: If an issue number or URL is provided, ensure it is linked in the description (e.g., "Closes #123").
 
 ### 🛠 Workflow
 
