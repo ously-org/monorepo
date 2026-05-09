@@ -117,16 +117,16 @@ Issue arrives
 
 ### Agent Mapping
 
-| Task | Gemini CLI | OpenCode |
-|------|-----------|----------|
-| Fetch issue/PR context | `@issue_fetcher` | `@code-explorer` (*gh* CLI) |
-| Scope/impact analysis | `@scope_analyzer` | `@code-explorer` |
-| Backend implementation | `@backend_engineer` | `@backend-coder` |
-| Frontend implementation | `@frontend_engineer` | `@frontend-coder` |
-| UI/Design system | `@ods_architect` | `@ui-architect` |
-| Storybook docs | `@storybook_creator` | `@storybook-writer` |
-| Pre-commit checks | `@precommit_check` | `@precommit-checker` |
-| PR creation | `@pr_opener` | N/A (Gemini only) |
+| Task                    | Gemini CLI           | OpenCode                    |
+| ----------------------- | -------------------- | --------------------------- |
+| Fetch issue/PR context  | `@issue_fetcher`     | `@code-explorer` (_gh_ CLI) |
+| Scope/impact analysis   | `@scope_analyzer`    | `@code-explorer`            |
+| Backend implementation  | `@backend_engineer`  | `@backend-coder`            |
+| Frontend implementation | `@frontend_engineer` | `@frontend-coder`           |
+| UI/Design system        | `@ods_architect`     | `@ui-architect`             |
+| Storybook docs          | `@storybook_creator` | `@storybook-writer`         |
+| Pre-commit checks       | `@precommit_check`   | `@precommit-checker`        |
+| PR creation             | `@pr_opener`         | N/A (Gemini only)           |
 
 ---
 
