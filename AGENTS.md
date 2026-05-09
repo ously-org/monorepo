@@ -74,15 +74,16 @@ All feature development **MUST** start by defining interfaces in `@ously/domain`
 
 ## 📈 Project Management (PM)
 
-Project management is handled via specialized skills and integrated with GitHub Issues/Projects.
+Project management is handled via the `po` (Product Owner) skill and specialized subagents.
 
-- **Mandate**: For **ANY** analysis, planning, or task-related activities, you **MUST** activate the relevant PM skill:
-  - `ous-roadmap`: For product roadmap and high-level Epic creation.
-  - `ous-analyst`: For architectural analysis and atomic task breakdown.
-  - `ous-scrum`: For backlog grooming, iteration planning, and capacity management.
+- **Mandate**: For **ANY** analysis, planning, or task-related activities, you **MUST** activate the `po` skill.
+- **Delegation**: The `po` skill orchestrates the following specialized subagents via `invoke_agent`:
+  - `ous_pm`: For product roadmap and high-level Epic creation.
+  - `ous_analyst`: For architectural analysis and atomic task breakdown.
+  - `ous_scrum`: For backlog grooming, iteration planning, and capacity management.
 - **EPIC-Driven**: Features start as `[Epic]` issues and are broken down into atomic sub-issues.
 - **Estimation**: 1 Unit = 2 Hours. Capacity is tracked in units.
-- **Workflow**: Automated via the PM skills using GraphQL-based issue management.
+- **Workflow**: Automated via the PM subagents using GraphQL-based issue management.
 
 ---
 
