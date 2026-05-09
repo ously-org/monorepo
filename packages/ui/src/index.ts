@@ -8,6 +8,9 @@ export * from "./internal/tooltip";
 export * from "./internal/sheet";
 
 // Layout components
+// Account components
+export * from "./components/AccountSidebarButton";
+
 export * from "./components/HeaderBreadcrumb";
 export * from "./components/Typography";
 export * from "./components/OuslySidebar";
