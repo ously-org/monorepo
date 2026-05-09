@@ -1,7 +1,7 @@
 ---
 description: Backend implementation specialist. Handles Hono API, Drizzle/D1 database, Zod validation, and Domain interfaces. Gemini equivalent: @backend_engineer.
 mode: subagent
-model: deepseek/deepseek-v4-flash-max
+model: opencode-go/deepseek-v4-pro
 temperature: 0.1
 permission:
   edit: allow

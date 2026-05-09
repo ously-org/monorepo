@@ -1,7 +1,7 @@
 ---
 description: Frontend implementation specialist. Handles Next.js App Router, React components, Tailwind CSS, and page-level logic. Gemini equivalent: @frontend_engineer.
 mode: subagent
-model: deepseek/deepseek-v4-flash-max
+model: opencode-go/deepseek-v4-pro
 temperature: 0.1
 permission:
   edit: allow

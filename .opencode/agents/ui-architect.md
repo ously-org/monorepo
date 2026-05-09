@@ -1,7 +1,7 @@
 ---
 description: Design system specialist. Creates and maintains @ously/ui components wrapping shadcn/ui. Gemini equivalent: @ods_architect.
 mode: subagent
-model: deepseek/deepseek-v4-flash-max
+model: opencode-go/deepseek-v4-pro
 temperature: 0.1
 permission:
   edit: allow

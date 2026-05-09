@@ -1,7 +1,7 @@
 ---
 description: Generates CSF 3.0 Storybook stories for ODS components with variants, interaction tests, and a11y checks. Gemini equivalent: @storybook_creator.
 mode: subagent
-model: deepseek/deepseek-v4-flash-high
+model: opencode-go/deepseek-v4-flash
 temperature: 0
 permission:
   edit: allow
