@@ -4,6 +4,13 @@
 
 The mono repo for all services in the Ously project.
 
+## Product & Roadmap
+
+For information about the project vision, products, and roadmap, please refer to:
+
+- [products/](./products/PRODUCTS.md)
+- [ROADMAP.md](./products/ROADMAP.md)
+
 ## Development
 
 ### Initializing Types
