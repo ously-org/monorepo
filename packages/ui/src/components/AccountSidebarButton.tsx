@@ -1,12 +1,8 @@
 "use client";
 
-import { Settings, LogOut } from "lucide-react";
+import { Settings, LogOut, ChevronsUpDown } from "lucide-react";
 import { cn } from "../lib/utils";
-import {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-} from "../internal/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "../internal/avatar";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -60,7 +56,7 @@ function AccountSidebarButton({
             ) : null}
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
-          <span className="flex flex-col items-start gap-0 group-data-[collapsible=icon]:hidden min-w-0">
+          <span className="flex flex-col items-start gap-0 group-data-[collapsible=icon]:hidden min-w-0 flex-1">
             <span className="truncate text-xs font-medium text-sidebar-foreground">
               {user.name}
             </span>
@@ -70,13 +66,10 @@ function AccountSidebarButton({
               </span>
             )}
           </span>
+          <ChevronsUpDown className="size-3 shrink-0 text-sidebar-foreground/40 group-data-[collapsible=icon]:hidden" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        side="top"
-        align="start"
-        className="w-48"
-      >
+      <DropdownMenuContent side="top" align="start" className="w-48">
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col gap-0.5">
             <span className="text-sm font-medium">{user.name}</span>
