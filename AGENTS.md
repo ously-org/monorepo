@@ -86,6 +86,49 @@ Project management is handled via specialized skills and integrated with GitHub 
 
 ---
 
+## 🤖 Dual-Tool Workflow (Gemini CLI + OpenCode)
+
+This repository uses **two AI coding tools** with distinct responsibilities:
+
+### 🔷 Gemini CLI — Planning & Task Management
+
+- **Primary role**: Specification creation, task breakdown, issue management
+- **When to use**: Analyzing GitHub issues, creating specs, breaking Epics into subtasks, opening PRs
+- **Key agents**: `@issue_fetcher`, `@scope_analyzer`, `@pr_opener`
+- **Config**: `.gemini/`
+
+### 🔶 OpenCode — Code Execution
+
+- **Primary role**: All code implementation, refactoring, bug fixes
+- **When to use**: Writing/changing any code across `apps/` and `packages/`
+- **Key agents**: `@code-explorer` (search), `@backend-coder`, `@frontend-coder`, `@ui-architect` (implementation), `@precommit-checker` (validation), `@storybook-writer` (docs)
+- **Config**: `.opencode/`
+
+### Workflow
+
+```
+Issue arrives
+  → Gemini CLI: @issue_fetcher → @scope_analyzer → Master Plan
+  → OpenCode: @code-explorer → @backend-coder / @frontend-coder / @ui-architect
+  → OpenCode: @precommit-checker (format + lint + build)
+  → Gemini CLI: @pr_opener (gh pr create)
+```
+
+### Agent Mapping
+
+| Task | Gemini CLI | OpenCode |
+|------|-----------|----------|
+| Fetch issue/PR context | `@issue_fetcher` | `@code-explorer` (*gh* CLI) |
+| Scope/impact analysis | `@scope_analyzer` | `@code-explorer` |
+| Backend implementation | `@backend_engineer` | `@backend-coder` |
+| Frontend implementation | `@frontend_engineer` | `@frontend-coder` |
+| UI/Design system | `@ods_architect` | `@ui-architect` |
+| Storybook docs | `@storybook_creator` | `@storybook-writer` |
+| Pre-commit checks | `@precommit_check` | `@precommit-checker` |
+| PR creation | `@pr_opener` | N/A (Gemini only) |
+
+---
+
 ## 🤖 Gemini CLI Usage
 
 This `GEMINI.md` file serves as your primary context. For specific sub-tasks, refer to the local `GEMINI.md` files in each app or package directory for more granular rules.
