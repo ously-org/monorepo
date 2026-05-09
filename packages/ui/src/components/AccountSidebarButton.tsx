@@ -44,9 +44,10 @@ function AccountSidebarButton({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
+          type="button"
           data-slot="account-sidebar-button"
           className={cn(
-            "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-none p-2 text-left text-xs ring-sidebar-ring outline-hidden transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-2!",
+            "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-none p-2 text-left text-xs ring-sidebar-ring outline-hidden transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0!",
             className,
           )}
         >
@@ -80,16 +81,20 @@ function AccountSidebarButton({
             )}
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={onSettings}>
-          <Settings className="size-4" />
-          <span>{settingsLabel}</span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={onLogout}>
-          <LogOut className="size-4" />
-          <span>{logoutLabel}</span>
-        </DropdownMenuItem>
+        {(onSettings || onLogout) && <DropdownMenuSeparator />}
+        {onSettings && (
+          <DropdownMenuItem onClick={onSettings}>
+            <Settings className="size-4" />
+            <span>{settingsLabel}</span>
+          </DropdownMenuItem>
+        )}
+        {onSettings && onLogout && <DropdownMenuSeparator />}
+        {onLogout && (
+          <DropdownMenuItem onClick={onLogout}>
+            <LogOut className="size-4" />
+            <span>{logoutLabel}</span>
+          </DropdownMenuItem>
+        )}
       </DropdownMenuContent>
     </DropdownMenu>
   );
