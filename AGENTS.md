@@ -73,12 +73,15 @@ All feature development **MUST** start by defining interfaces in `@ously/domain`
 
 ## 📈 Project Management (PM)
 
-Project management is handled within the `pm/` directory and integrated with GitHub Issues/Projects.
+Project management is handled via specialized skills and integrated with GitHub Issues/Projects.
 
-- **Mandate**: For **ANY** analysis, planning, or task-related activities, you **MUST** read `pm/GEMINI.md` first to ensure compliance with the latest organizational workflows and native issue type standards.
+- **Mandate**: For **ANY** analysis, planning, or task-related activities, you **MUST** activate the relevant PM skill:
+  - `ous-roadmap`: For product roadmap and high-level Epic creation.
+  - `ous-analyst`: For architectural analysis and atomic task breakdown.
+  - `ous-scrum`: For backlog grooming, iteration planning, and capacity management.
 - **EPIC-Driven**: Features start as `[Epic]` issues and are broken down into atomic sub-issues.
 - **Estimation**: 1 Unit = 2 Hours. Capacity is tracked in units.
-- **Workflow**: See `pm/GEMINI.md` for detailed GraphQL-based issue management and automation commands.
+- **Workflow**: Automated via the PM skills using GraphQL-based issue management.
 
 ---
 
