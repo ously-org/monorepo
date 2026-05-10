@@ -74,7 +74,7 @@ const boxVariants = cva("", {
 
 export interface BoxProps
   extends
-    Omit<React.HTMLAttributes<HTMLDivElement>, "className">,
+    React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof boxVariants> {
   asChild?: boolean;
 }
@@ -95,6 +95,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
       padding,
       gap,
       asChild = false,
+      className,
       ...props
     },
     ref,
@@ -114,6 +115,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
             padding,
             gap,
           }),
+          className,
         )}
         {...props}
       />

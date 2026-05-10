@@ -37,10 +37,13 @@ When a GitHub link (Issue, PR, or Comment) is provided:
 
 #### Phase 3: Validation & Delivery
 
-7. **Quality Gates**:
+7. **Storybook Check** (mandatory):
+   - Verify every newly created component has a corresponding story file (`*.stories.tsx` / `*.stories.ts`).
+   - If missing, route to OpenCode `@storybook-writer` or Gemini CLI `@storybook_creator`.
+8. **Quality Gates**:
    - **OpenCode**: Run `@precommit-checker` (format + lint + build)
    - **Gemini CLI**: Run `@precommit_check` as backup
-8. **PR Creation** (Gemini CLI):
+9. **PR Creation** (Gemini CLI):
    - **New Issue**: Use `@pr_opener` to create the PR
    - **PR Comment**: Use `gh pr comment` to reply
 
