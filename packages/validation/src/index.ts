@@ -66,4 +66,5 @@ export const VerificationSchema = match<Verification>()(
   }),
 );
 
+export * from "./design";
 export { type User, type Account, type Session, type Verification };
