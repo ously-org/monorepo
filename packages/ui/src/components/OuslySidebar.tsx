@@ -1,7 +1,5 @@
 "use client";
 import * as React from "react";
-// TODO(ISSUE-82): Implement Sidebar Account Button
-
 import {
   Sidebar,
   SidebarContent,
@@ -18,6 +16,8 @@ import { Skeleton } from "../internal/skeleton";
 import { Typography } from "./Typography";
 import { Link } from "./Link";
 import { OuslyImage } from "./OuslyImage";
+
+// TODO(ISSUE-82): Implement Sidebar Account Button
 
 export interface NavItem {
   title: string;
