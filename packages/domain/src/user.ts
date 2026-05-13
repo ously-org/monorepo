@@ -1,4 +1,4 @@
-// ISSUE_#81 | 2026-05-09 | Extract UserGender, UserCurrency, UserSubscriptionStatus named types in User domain interface
+// ISSUE_#81 | 2026-05-09 | Extract UserGender, UserCurrency, UserSubscriptionStatus named types in User domain interface | opencode | deepseek-v4-flash
 
 export type UserGender = "male" | "female" | "other" | "prefer_not_to_say";
 

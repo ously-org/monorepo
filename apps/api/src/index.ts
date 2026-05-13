@@ -1,4 +1,3 @@
-// ISSUE_#119 | 2026-05-09 | Annotate pending Profile API and Account Deletion tasks
 import { Hono } from "hono";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "@ously/db";
@@ -24,5 +23,6 @@ app.get("/users", async (c) => {
 
 // TODO(ISSUE-85): Implement Profile API endpoints (GET/PATCH)
 // TODO(ISSUE-89): Implement Account Deletion workflow
+// TODO(ISSUE-124): Integrate Better Auth middleware and session handling
 
 export default app;

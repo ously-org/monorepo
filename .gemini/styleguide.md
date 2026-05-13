@@ -1,5 +1,3 @@
-<!-- ISSUE_#119 | 2026-05-09 | Mandate // TODO(ISSUE-XXX): format for task tracking -->
-
 # Ously Monorepo Coding Style Guide
 
 This guide defines the architectural standards and coding conventions for the Ously monorepo. Gemini Code Assist must prioritize these rules during code reviews.
@@ -65,8 +63,17 @@ This guide defines the architectural standards and coding conventions for the Ou
 
 - **Convention**: All pending work or technical debt MUST be marked with `// TODO(ISSUE-XXX): <description>`.
 - **Requirement**: Every TODO must link to a valid GitHub Issue ID. If an issue doesn't exist, one must be created before adding the comment.
+### 4. File-Level Header Annotation
 
-### 4. Monorepo Best Practices
+All source files should include a header annotation with pipe-separated columns. Extend the existing format with 2 additional columns for AI tool and model attribution.
+
+- **Format**: `// ISSUE_#<number> | <date> | <description> | <tool> | <model>`
+- **Existing columns** (3): Issue reference, date, change description.
+- **New columns** (2): `<tool>` (`gemini-cli` or `opencode`) and `<model>` (e.g., `gemini-2.5-pro`, `deepseek-v4-flash`).
+- **Example**: `// ISSUE_#81 | 2026-05-09 | Extract UserGender types | opencode | deepseek-v4-flash`
+- **Scope**: Include all 5 columns when a significant portion of the file (>50%) is AI-generated or when modifying existing files with substantial AI-driven changes. Minor edits (single-line fixes, small refactors) do not require updating the tool/model columns.
+
+### 5. Monorepo Best Practices
 
 - Use workspace protocols (`workspace:*`) for internal dependency links.
 - Adhere to the defined pnpm/Turborepo workflow.
