@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Link } from "../Link";
-import { Home, User, Settings } from "lucide-react";
 
 const meta: Meta<typeof Link> = {
   title: "ODS/Link",
@@ -36,7 +35,7 @@ export const WithIcon: Story = {
   args: {
     href: "#",
     title: "Home",
-    icon: Home,
+    icon: "phosphor.house",
   },
 };
 
@@ -57,11 +56,11 @@ export const CustomChildren: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Link href="#" variant="default" title="Default Variant" icon={Home} />
-      <Link href="#" variant="primary" title="Primary Variant" icon={User} />
-      <Link href="#" variant="muted" title="Muted Variant" icon={Settings} />
+      <Link href="#" variant="default" title="Default Variant" icon="phosphor.house" />
+      <Link href="#" variant="primary" title="Primary Variant" icon="phosphor.user" />
+      <Link href="#" variant="muted" title="Muted Variant" icon="phosphor.gear" />
       <Link href="#" variant="underline" title="Underline Variant" />
-      <Link href="#" variant="ghost" title="Ghost Variant" icon={Settings} />
+      <Link href="#" variant="ghost" title="Ghost Variant" icon="phosphor.gear" />
     </div>
   ),
 };
@@ -69,9 +68,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Link href="#" size="lg" title="Large Link" icon={Home} />
-      <Link href="#" size="default" title="Default Link" icon={Home} />
-      <Link href="#" size="sm" title="Small Link" icon={Home} />
+      <Link href="#" size="lg" title="Large Link" icon="phosphor.house" />
+      <Link href="#" size="default" title="Default Link" icon="phosphor.house" />
+      <Link href="#" size="sm" title="Small Link" icon="phosphor.house" />
     </div>
   ),
 };

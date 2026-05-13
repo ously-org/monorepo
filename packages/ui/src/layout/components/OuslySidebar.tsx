@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import type { IconId } from "../../const";
 import {
   Sidebar,
   SidebarContent,
@@ -11,19 +12,19 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "../internal/sidebar";
-import { Skeleton } from "../internal/skeleton";
-import { Box } from "./Box";
-import { Typography } from "./Typography";
-import { Link } from "./Link";
-import { OuslyImage } from "./OuslyImage";
+} from "../../internal/sidebar";
+import { Skeleton } from "../../internal/skeleton";
+import { Box } from "../../components/Box";
+import { Typography } from "../../components/Typography";
+import { Link } from "../../components/Link";
+import { OuslyImage } from "../../components/OuslyImage";
 
 // TODO(ISSUE-82): Implement Sidebar Account Button
 
 export interface NavItem {
   title: string;
   href: string;
-  icon?: React.ElementType;
+  icon?: IconId;
   tooltip?: string;
   isActive?: boolean;
 }
@@ -63,7 +64,7 @@ export function NavHeader({
             collapseBehavior="remove-padding"
           >
             {logoUrl ? (
-              <OuslyImage src={logoUrl} alt={logoAlt} variant="sidebar-logo" />
+              <OuslyImage src={logoUrl} alt={logoAlt} size="md" />
             ) : (
               <Skeleton className="h-10 w-10 aspect-square transition-all group-data-[collapsible=icon]:h-8 group-data-[collapsible=icon]:w-8" />
             )}
@@ -92,6 +93,63 @@ export interface OuslySidebarProps extends Omit<
   variant?: "all-the-way" | "inset";
 }
 
+function SidebarNavGroups({ groups }: { groups: NavGroup[] }) {
+  return groups.map((group, index) => (
+    <SidebarGroup key={group.label || index}>
+      {group.label && (
+        <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
+      )}
+      <SidebarGroupContent>
+        <SidebarMenu>
+          {group.items.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton
+                asChild
+                isActive={item.isActive}
+                tooltip={item.tooltip || item.title}
+              >
+                <Link
+                  href={item.href}
+                  icon={item.icon}
+                  title={item.title}
+                  variant="sidebar"
+                  data-active={item.isActive}
+                />
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarGroupContent>
+    </SidebarGroup>
+  ));
+}
+
+function SidebarNavFooter({ items }: { items: NavItem[] }) {
+  return (
+    <SidebarFooter>
+      <SidebarMenu>
+        {items.map((item) => (
+          <SidebarMenuItem key={item.title}>
+            <SidebarMenuButton
+              asChild
+              isActive={item.isActive}
+              tooltip={item.tooltip || item.title}
+            >
+              <Link
+                href={item.href}
+                icon={item.icon}
+                title={item.title}
+                variant="sidebar"
+                data-active={item.isActive}
+              />
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        ))}
+      </SidebarMenu>
+    </SidebarFooter>
+  );
+}
+
 export function OuslySidebar({
   logoUrl,
   logoAlt,
@@ -111,51 +169,10 @@ export function OuslySidebar({
         <NavHeader logoUrl={logoUrl} logoAlt={logoAlt} title={title} />
       </SidebarHeader>
       <SidebarContent>
-        {navGroups?.map((group, index) => (
-          <SidebarGroup key={group.label || index}>
-            {group.label && (
-              <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
-            )}
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {group.items.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      asChild
-                      isActive={item.isActive}
-                      tooltip={item.tooltip || item.title}
-                    >
-                      <Link
-                        href={item.href}
-                        icon={item.icon}
-                        title={item.title}
-                      />
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        ))}
+        {navGroups && <SidebarNavGroups groups={navGroups} />}
         {children}
       </SidebarContent>
-      {footer && (
-        <SidebarFooter>
-          <SidebarMenu>
-            {footer.map((item) => (
-              <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton
-                  asChild
-                  isActive={item.isActive}
-                  tooltip={item.tooltip || item.title}
-                >
-                  <Link href={item.href} icon={item.icon} title={item.title} />
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            ))}
-          </SidebarMenu>
-        </SidebarFooter>
-      )}
+      {footer && <SidebarNavFooter items={footer} />}
     </Sidebar>
   );
 }
