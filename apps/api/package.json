@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@ously/db": "workspace:*",
@@ -17,6 +19,7 @@
     "@cloudflare/workers-types": "^4.20240529.0",
     "@ously/tsconfig": "workspace:*",
     "typescript": "catalog:",
+    "vitest": "^2.1.0",
     "wrangler": "^3.57.2"
   }
 }

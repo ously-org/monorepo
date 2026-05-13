@@ -66,4 +66,11 @@ export const VerificationSchema = match<Verification>()(
   }),
 );
 
+export const ProfileUpdateSchema = z.object({
+  name: z.string().min(1).max(100).optional(),
+  image: z.string().url().optional(),
+  gender: z.enum(["male", "female", "other", "prefer_not_to_say"]).optional(),
+  currency: z.enum(["USD", "EUR", "GBP"]).optional(),
+});
+
 export { type User, type Account, type Session, type Verification };
