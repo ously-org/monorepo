@@ -46,9 +46,9 @@ This is the primary repository for the Ously project, managed as a pnpm monorepo
 
 ## 📜 Development Conventions
 
-### 0. Policy Change: Removal of File-Level Tracking
+### 0. File-Level Tracking Headers
 
-Previously, file-level tracking headers (e.g., `// ISSUE_#<number> | ...`) were required. Per user feedback (2026-05-09), these are now considered redundant as Git history provides this context. They should only be used when fixing critical code functionality, not for general task tracking or TODOs.
+File-level tracking headers (e.g., `// ISSUE_#<number> | <date> | <description> | <tool> | <model>`) should be added for **functional changes** — such as adding a new hook, wiring backend logic, or any change that affects the runtime behavior of the code. Do NOT add headers for cosmetic changes like style tweaks or comment-only edits.
 
 ### 1. Domain-First Development
 
