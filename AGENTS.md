@@ -46,22 +46,9 @@ This is the primary repository for the Ously project, managed as a pnpm monorepo
 
 ## 📜 Development Conventions
 
-### 0. File Change Tracking
+### 0. File-Level Tracking Headers
 
-For every file edited as part of a task, add a comment header at the top of the file with the format:
-
-```
-// ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change>
-```
-
-For files with YAML frontmatter (`---` delimited), use an HTML comment after the closing frontmatter:
-
-```
----
-<!-- ISSUE_#<number> | <YYYY-MM-DD> | <One-line summary of the change> -->
-```
-
-This tracks which issue triggered the change, when it happened, and what was done.
+File-level tracking headers (e.g., `// ISSUE_#<number> | <date> | <description> | <tool> | <model>`) should be added for **functional changes** — such as adding a new hook, wiring backend logic, or any change that affects the runtime behavior of the code. Do NOT add headers for cosmetic changes like style tweaks or comment-only edits.
 
 ### 1. Domain-First Development
 

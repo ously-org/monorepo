@@ -21,4 +21,8 @@ app.get("/users", async (c) => {
   return c.json({ users });
 });
 
+// TODO(ISSUE-85): Implement Profile API endpoints (GET/PATCH)
+// TODO(ISSUE-89): Implement Account Deletion workflow
+// TODO(ISSUE-124): Integrate Better Auth middleware and session handling
+
 export default app;

@@ -23,3 +23,6 @@ export default function Home() {
     </>
   );
 }
+
+// TODO(ISSUE-84): Implement Account Settings shell
+// TODO(ISSUE-126): Replace MockCard with real data fetching from API

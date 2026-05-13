@@ -26,3 +26,6 @@ export default function RootLayout({
     </html>
   );
 }
+
+// TODO(ISSUE-125): Implement Global Auth Provider
+// TODO(ISSUE-127): Implement root loading.tsx and error.tsx
