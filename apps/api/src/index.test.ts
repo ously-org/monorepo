@@ -1,6 +1,7 @@
 // ISSUE_#85 | 2026-05-13 | Profile API endpoint tests | opencode | deepseek-v4-flash
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import * as schema from "@ously/db";
 
 const mocks = vi.hoisted(() => ({
   mockSelect: vi.fn(),
@@ -80,11 +81,26 @@ describe("GET /me", () => {
     const body: any = await res.json();
     expect(body.user).toBeDefined();
     expect(body.user.email).toBe("test@ously.tech");
+    expect(body.user.id).toBe("user-1");
+
+    expect(mocks.drizzleMock).toHaveBeenCalledTimes(1);
+    expect(mocks.drizzleMock).toHaveBeenCalledWith(
+      env.DB,
+      expect.objectContaining({ schema: expect.any(Object) }),
+    );
+    expect(mocks.mockSelect).toHaveBeenCalledTimes(2);
+    expect(mocks.mockFrom).toHaveBeenNthCalledWith(1, schema.sessions);
+    expect(mocks.mockFrom).toHaveBeenNthCalledWith(2, schema.users);
+    expect(mocks.mockWhere).toHaveBeenCalledTimes(2);
+    expect(mocks.mockLimit).toHaveBeenCalledTimes(2);
+    expect(mocks.mockLimit).toHaveBeenCalledWith(1);
   });
 
   it("returns 401 without auth token", async () => {
     const res = await app.request("/me", {}, env);
     expect(res.status).toBe(401);
+
+    expect(mocks.drizzleMock).not.toHaveBeenCalled();
   });
 
   it("returns 401 with invalid token", async () => {
@@ -95,7 +111,12 @@ describe("GET /me", () => {
       { headers: { Authorization: "Bearer invalid-token" } },
       env,
     );
+
     expect(res.status).toBe(401);
+    expect(mocks.drizzleMock).toHaveBeenCalledTimes(1);
+    expect(mocks.mockSelect).toHaveBeenCalledTimes(1);
+    expect(mocks.mockFrom).toHaveBeenCalledWith(schema.sessions);
+    expect(mocks.mockLimit).toHaveBeenCalledTimes(1);
   });
 
   it("returns 401 with expired session", async () => {
@@ -108,7 +129,11 @@ describe("GET /me", () => {
       { headers: { Authorization: "Bearer expired-token" } },
       env,
     );
+
     expect(res.status).toBe(401);
+    expect(mocks.drizzleMock).toHaveBeenCalledTimes(1);
+    expect(mocks.mockSelect).toHaveBeenCalledTimes(1);
+    expect(mocks.mockFrom).toHaveBeenCalledWith(schema.sessions);
   });
 });
 
@@ -136,6 +161,88 @@ describe("PATCH /me", () => {
     expect(res.status).toBe(200);
     const body: any = await res.json();
     expect(body.user.name).toBe("Updated Name");
+
+    expect(mocks.drizzleMock).toHaveBeenCalledTimes(2);
+    expect(mocks.mockSelect).toHaveBeenCalledTimes(2);
+    expect(mocks.mockFrom).toHaveBeenNthCalledWith(1, schema.sessions);
+    expect(mocks.mockFrom).toHaveBeenNthCalledWith(2, schema.users);
+    expect(mocks.mockUpdate).toHaveBeenCalledTimes(1);
+    expect(mocks.mockUpdate).toHaveBeenCalledWith(schema.users);
+    expect(mocks.mockSet).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "Updated Name",
+        updatedAt: expect.any(Date),
+      }),
+    );
+    expect(mocks.mockUpdateWhere).toHaveBeenCalledTimes(1);
+    expect(mocks.mockReturning).toHaveBeenCalledTimes(1);
+  });
+
+  it("updates all allowed fields at once", async () => {
+    mocks.mockLimit.mockResolvedValueOnce([mockSession]);
+    mocks.mockLimit.mockResolvedValueOnce([mockUser]);
+    mocks.mockReturning.mockResolvedValueOnce([
+      {
+        ...mockUser,
+        name: "New",
+        image: "https://example.com/pic.png",
+        gender: "female",
+        currency: "EUR",
+      },
+    ]);
+
+    const res = await app.request(
+      "/me",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer valid-token",
+        },
+        body: JSON.stringify({
+          name: "New",
+          image: "https://example.com/pic.png",
+          gender: "female",
+          currency: "EUR",
+        }),
+      },
+      env,
+    );
+
+    expect(res.status).toBe(200);
+    expect(mocks.mockSet).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "New",
+        image: "https://example.com/pic.png",
+        gender: "female",
+        currency: "EUR",
+        updatedAt: expect.any(Date),
+      }),
+    );
+  });
+
+  it("accepts empty body (no-op)", async () => {
+    mocks.mockLimit.mockResolvedValueOnce([mockSession]);
+    mocks.mockLimit.mockResolvedValueOnce([mockUser]);
+    mocks.mockReturning.mockResolvedValueOnce([mockUser]);
+
+    const res = await app.request(
+      "/me",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer valid-token",
+        },
+        body: JSON.stringify({}),
+      },
+      env,
+    );
+
+    expect(res.status).toBe(200);
+    expect(mocks.mockSet).toHaveBeenCalledWith(
+      expect.objectContaining({ updatedAt: expect.any(Date) }),
+    );
   });
 
   it("rejects invalid gender value", async () => {
@@ -156,6 +263,7 @@ describe("PATCH /me", () => {
     );
 
     expect(res.status).toBe(400);
+    expect(mocks.mockSet).not.toHaveBeenCalled();
   });
 
   it("rejects invalid currency value", async () => {
@@ -176,5 +284,6 @@ describe("PATCH /me", () => {
     );
 
     expect(res.status).toBe(400);
+    expect(mocks.mockSet).not.toHaveBeenCalled();
   });
 });
