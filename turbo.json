@@ -1,6 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
+    "generate:icons": {
+      "cache": false,
+      "outputs": ["packages/ui/src/generated/**"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", ".vercel/**", "dist/**"]
@@ -9,6 +13,7 @@
       "cache": false
     },
     "dev": {
+      "dependsOn": ["generate:icons"],
       "cache": false,
       "persistent": true
     },

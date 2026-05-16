@@ -12,8 +12,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
+        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         ghost:
@@ -37,8 +36,7 @@ const buttonVariants = cva(
   },
 );
 
-export interface ButtonProps
-  extends VariantProps<typeof buttonVariants> {
+export interface ButtonProps extends VariantProps<typeof buttonVariants> {
   asChild?: boolean;
   icon?: IconId;
   type?: React.ComponentProps<"button">["type"];
@@ -67,7 +65,7 @@ function Button({
       onClick={onClick}
       className={cn(buttonVariants({ variant, size }), className)}
     >
-      {icon && <Icon id={icon} />}
+      {icon && <Icon id={icon} data-icon="inline-start" />}
       {children}
     </InternalButton>
   );

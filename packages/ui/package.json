@@ -34,6 +34,7 @@
     "src"
   ],
   "scripts": {
+    "generate:icons": "node scripts/generate-icon-map.mjs",
     "lint": "eslint src/",
     "type-check": "tsc --noEmit",
     "test": "vitest run",

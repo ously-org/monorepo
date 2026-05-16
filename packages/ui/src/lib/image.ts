@@ -7,7 +7,7 @@ import type { StaticImageData } from "next/image";
  * @param imageSrc The imported image/SVG asset
  * @returns The resolved URL string
  */
-export function getImageUrl(imageSrc: string | StaticImageData | any): string {
+export function getImageUrl(imageSrc: string | StaticImageData): string {
   if (typeof imageSrc === "string") {
     return imageSrc;
   }
