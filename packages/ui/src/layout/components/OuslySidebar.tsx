@@ -96,9 +96,7 @@ export interface OuslySidebarProps extends Omit<
 function SidebarNavGroups({ groups }: { groups: NavGroup[] }) {
   return groups.map((group, index) => (
     <SidebarGroup key={group.label || index}>
-      {group.label && (
-        <SidebarGroupLabel>{group.label}</SidebarGroupLabel>
-      )}
+      {group.label && <SidebarGroupLabel>{group.label}</SidebarGroupLabel>}
       <SidebarGroupContent>
         <SidebarMenu>
           {group.items.map((item) => (

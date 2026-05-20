@@ -1,7 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { OuslySidebar, type NavGroup, type NavItem } from "./components/OuslySidebar";
+import {
+  OuslySidebar,
+  type NavGroup,
+  type NavItem,
+} from "./components/OuslySidebar";
 import { SidebarProvider, SidebarInset } from "../internal/sidebar";
 import { TooltipProvider } from "../internal/tooltip";
 import { Header } from "./components/Header";

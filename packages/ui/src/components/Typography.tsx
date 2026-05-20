@@ -68,8 +68,9 @@ const typographyVariants = cva("", {
   },
 });
 
-export interface TypographyProps
-  extends VariantProps<typeof typographyVariants> {
+export interface TypographyProps extends VariantProps<
+  typeof typographyVariants
+> {
   as?: React.ElementType;
   text?: React.ReactNode;
   children?: React.ReactNode;
@@ -78,20 +79,35 @@ export interface TypographyProps
 }
 
 const Typography = React.forwardRef<HTMLElement, TypographyProps>(
-  ({ variant, color, weight, size, as, text, children, className, id }, ref) => {
-    const Component = as ?? (() => {
-      switch (variant) {
-        case "ul": return "ul";
-        case "ol": return "ol";
-        case "inlineCode": return "code";
-        case "blockquote": return "blockquote";
-        case "no-style": return "span";
-        case "h1": case "h2": case "h3":
-        case "h4": case "h5": case "h6":
-          return variant as React.ElementType;
-        default: return "p";
-      }
-    })();
+  (
+    { variant, color, weight, size, as, text, children, className, id },
+    ref,
+  ) => {
+    const Component =
+      as ??
+      (() => {
+        switch (variant) {
+          case "ul":
+            return "ul";
+          case "ol":
+            return "ol";
+          case "inlineCode":
+            return "code";
+          case "blockquote":
+            return "blockquote";
+          case "no-style":
+            return "span";
+          case "h1":
+          case "h2":
+          case "h3":
+          case "h4":
+          case "h5":
+          case "h6":
+            return variant as React.ElementType;
+          default:
+            return "p";
+        }
+      })();
 
     return (
       <InternalTypography

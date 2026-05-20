@@ -7,11 +7,7 @@ function OuslyImage({
   ...props
 }: React.ComponentProps<"img">) {
   return (
-    <img
-      className={cn("max-w-full h-auto", className)}
-      alt={alt}
-      {...props}
-    />
+    <img className={cn("max-w-full h-auto", className)} alt={alt} {...props} />
   );
 }
 

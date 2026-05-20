@@ -24,8 +24,10 @@ const iconColors = {
 export type IconSize = keyof typeof iconSizes;
 export type IconColor = keyof typeof iconColors;
 
-export interface IconProps
-  extends Omit<ComponentPropsWithoutRef<"svg">, "id" | "size" | "color"> {
+export interface IconProps extends Omit<
+  ComponentPropsWithoutRef<"svg">,
+  "id" | "size" | "color"
+> {
   id: IconId;
   size?: IconSize;
   color?: IconColor;
@@ -41,7 +43,12 @@ const Icon = forwardRef<SVGSVGElement, IconProps>(
     return (
       <Component
         ref={ref}
-        className={cn("shrink-0", iconSizes[size], color && iconColors[color], className)}
+        className={cn(
+          "shrink-0",
+          iconSizes[size],
+          color && iconColors[color],
+          className,
+        )}
         {...props}
       />
     );

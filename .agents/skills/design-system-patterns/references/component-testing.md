@@ -75,13 +75,14 @@ describe("OuslySidebar", () => {
     render(
       <TooltipProvider>
         <SidebarProvider>
-          <OuslySidebar
-            footer={[{ title: "Logout", href: "/logout" }]}
-          />
+          <OuslySidebar footer={[{ title: "Logout", href: "/logout" }]} />
         </SidebarProvider>
       </TooltipProvider>,
     );
-    expect(screen.getByRole("link", { name: /logout/i })).toHaveAttribute("href", "/logout");
+    expect(screen.getByRole("link", { name: /logout/i })).toHaveAttribute(
+      "href",
+      "/logout",
+    );
   });
 });
 ```
@@ -110,21 +111,21 @@ it("applies variant classes", () => {
 
 ## What to Test
 
-| What | Example |
-|------|---------|
-| Content rendering | Text/content appears correctly |
-| Navigation | Links have correct hrefs |
-| User interaction | Click, hover, focus behavior |
+| What                  | Example                            |
+| --------------------- | ---------------------------------- |
+| Content rendering     | Text/content appears correctly     |
+| Navigation            | Links have correct hrefs           |
+| User interaction      | Click, hover, focus behavior       |
 | Conditional rendering | Content shows/hides based on props |
-| Accessibility | Roles, labels, keyboard support |
-| State changes | Open/close, active/inactive |
+| Accessibility         | Roles, labels, keyboard support    |
+| State changes         | Open/close, active/inactive        |
 
 ## What NOT to Test
 
-| What | Why |
-|------|-----|
-| Class names | Implementation detail, changes with styling |
-| Tag names | Semantic HTML can change |
-| Internal state | Should test through user-facing behavior |
-| Third-party libraries | Already tested by their maintainers |
-| CSS/styling | Visual regression tests are separate |
+| What                  | Why                                         |
+| --------------------- | ------------------------------------------- |
+| Class names           | Implementation detail, changes with styling |
+| Tag names             | Semantic HTML can change                    |
+| Internal state        | Should test through user-facing behavior    |
+| Third-party libraries | Already tested by their maintainers         |
+| CSS/styling           | Visual regression tests are separate        |

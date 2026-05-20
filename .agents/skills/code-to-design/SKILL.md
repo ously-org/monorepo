@@ -66,21 +66,23 @@ Bridges code components (React/TypeScript/Tailwind) into Penpot design system co
 The Button component source: `packages/ui/src/components/Button.tsx`
 
 ### Variants mapping:
-| Variant | Fill | Text | Stroke |
-|---|---|---|---|
-| default | `primary` | `primary-foreground` | none |
-| outline | `background` | `foreground` | `border` |
-| ghost | none | `foreground` | none |
-| destructive | `destructive` | `foreground` | none |
-| link | none | `primary` + underline | none |
+
+| Variant     | Fill          | Text                  | Stroke   |
+| ----------- | ------------- | --------------------- | -------- |
+| default     | `primary`     | `primary-foreground`  | none     |
+| outline     | `background`  | `foreground`          | `border` |
+| ghost       | none          | `foreground`          | none     |
+| destructive | `destructive` | `foreground`          | none     |
+| link        | none          | `primary` + underline | none     |
 
 ### Sizes:
-| Size | Width | Height | Font | Label |
-|---|---|---|---|---|
-| default | 80 | 32 | 12 | "Button" |
-| sm | 70 | 28 | 11 | "Button" |
-| lg | 90 | 36 | 12 | "Button" |
-| icon | 32 | 32 | 14 | "A" |
+
+| Size    | Width | Height | Font | Label    |
+| ------- | ----- | ------ | ---- | -------- |
+| default | 80    | 32     | 12   | "Button" |
+| sm      | 70    | 28     | 11   | "Button" |
+| lg      | 90    | 36     | 12   | "Button" |
+| icon    | 32    | 32     | 14   | "A"      |
 
 ## Known Penpot API Bugs
 

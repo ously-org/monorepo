@@ -21,8 +21,7 @@ const imageVariants = cva(
   },
 );
 
-export interface OuslyImageProps
-  extends VariantProps<typeof imageVariants> {
+export interface OuslyImageProps extends VariantProps<typeof imageVariants> {
   src: string;
   alt: string;
   width?: React.ComponentProps<"img">["width"];

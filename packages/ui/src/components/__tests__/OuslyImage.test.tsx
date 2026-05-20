@@ -11,7 +11,9 @@ describe("OuslyImage", () => {
   });
 
   it("applies width and height when provided", () => {
-    const { container } = render(<OuslyImage src="/test.png" alt="Test" width={100} height={50} />);
+    const { container } = render(
+      <OuslyImage src="/test.png" alt="Test" width={100} height={50} />,
+    );
     const img = container.querySelector("img");
     expect(img).toHaveAttribute("width", "100");
     expect(img).toHaveAttribute("height", "50");

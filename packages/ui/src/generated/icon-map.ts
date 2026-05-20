@@ -2,12 +2,30 @@
 // Direct imports for icons used in source code
 // Lazy dynamic imports for all other icons (loaded on first render)
 
-import dynamic from 'next/dynamic'
-import type { ForwardRefExoticComponent, RefAttributes, SVGAttributes } from 'react'
+import dynamic from "next/dynamic";
+import type {
+  ForwardRefExoticComponent,
+  RefAttributes,
+  SVGAttributes,
+} from "react";
 
-import { CaretRight, ChartPie, DotsThree, Gear, House, Layout, SidebarSimple, SignOut, Sparkle, Users, X } from '@phosphor-icons/react'
+import {
+  CaretRight,
+  ChartPie,
+  DotsThree,
+  Gear,
+  House,
+  Layout,
+  SidebarSimple,
+  SignOut,
+  Sparkle,
+  Users,
+  X,
+} from "@phosphor-icons/react";
 
-type IconComponent = ForwardRefExoticComponent<SVGAttributes<SVGSVGElement> & RefAttributes<SVGSVGElement>>
+type IconComponent = ForwardRefExoticComponent<
+  SVGAttributes<SVGSVGElement> & RefAttributes<SVGSVGElement>
+>;
 
 export const iconMap: Record<string, IconComponent> = {
   "phosphor.caret_right": CaretRight,
@@ -22,284 +40,1404 @@ export const iconMap: Record<string, IconComponent> = {
   "phosphor.users": Users,
   "phosphor.x": X,
 
-  "phosphor.airplane": dynamic(() => import('@phosphor-icons/react/dist/icons/Airplane').then(m => ({ default: m.Airplane }))) as IconComponent,
-  "phosphor.archive": dynamic(() => import('@phosphor-icons/react/dist/icons/Archive').then(m => ({ default: m.Archive }))) as IconComponent,
-  "phosphor.arrow_clockwise": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowClockwise').then(m => ({ default: m.ArrowClockwise }))) as IconComponent,
-  "phosphor.arrow_counter_clockwise": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowCounterClockwise').then(m => ({ default: m.ArrowCounterClockwise }))) as IconComponent,
-  "phosphor.arrow_down": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowDown').then(m => ({ default: m.ArrowDown }))) as IconComponent,
-  "phosphor.arrow_left": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowLeft').then(m => ({ default: m.ArrowLeft }))) as IconComponent,
-  "phosphor.arrow_right": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowRight').then(m => ({ default: m.ArrowRight }))) as IconComponent,
-  "phosphor.arrow_up": dynamic(() => import('@phosphor-icons/react/dist/icons/ArrowUp').then(m => ({ default: m.ArrowUp }))) as IconComponent,
-  "phosphor.bank": dynamic(() => import('@phosphor-icons/react/dist/icons/Bank').then(m => ({ default: m.Bank }))) as IconComponent,
-  "phosphor.battery_charging": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryCharging').then(m => ({ default: m.BatteryCharging }))) as IconComponent,
-  "phosphor.battery_empty": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryEmpty').then(m => ({ default: m.BatteryEmpty }))) as IconComponent,
-  "phosphor.battery_full": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryFull').then(m => ({ default: m.BatteryFull }))) as IconComponent,
-  "phosphor.battery_high": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryHigh').then(m => ({ default: m.BatteryHigh }))) as IconComponent,
-  "phosphor.battery_low": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryLow').then(m => ({ default: m.BatteryLow }))) as IconComponent,
-  "phosphor.battery_medium": dynamic(() => import('@phosphor-icons/react/dist/icons/BatteryMedium').then(m => ({ default: m.BatteryMedium }))) as IconComponent,
-  "phosphor.bell": dynamic(() => import('@phosphor-icons/react/dist/icons/Bell').then(m => ({ default: m.Bell }))) as IconComponent,
-  "phosphor.bell_ringing": dynamic(() => import('@phosphor-icons/react/dist/icons/BellRinging').then(m => ({ default: m.BellRinging }))) as IconComponent,
-  "phosphor.bell_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/BellSimple').then(m => ({ default: m.BellSimple }))) as IconComponent,
-  "phosphor.bell_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/BellSlash').then(m => ({ default: m.BellSlash }))) as IconComponent,
-  "phosphor.bluetooth": dynamic(() => import('@phosphor-icons/react/dist/icons/Bluetooth').then(m => ({ default: m.Bluetooth }))) as IconComponent,
-  "phosphor.bookmark": dynamic(() => import('@phosphor-icons/react/dist/icons/Bookmark').then(m => ({ default: m.Bookmark }))) as IconComponent,
-  "phosphor.bookmark_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/BookmarkSimple').then(m => ({ default: m.BookmarkSimple }))) as IconComponent,
-  "phosphor.bug": dynamic(() => import('@phosphor-icons/react/dist/icons/Bug').then(m => ({ default: m.Bug }))) as IconComponent,
-  "phosphor.building": dynamic(() => import('@phosphor-icons/react/dist/icons/Building').then(m => ({ default: m.Building }))) as IconComponent,
-  "phosphor.buildings": dynamic(() => import('@phosphor-icons/react/dist/icons/Buildings').then(m => ({ default: m.Buildings }))) as IconComponent,
-  "phosphor.bus": dynamic(() => import('@phosphor-icons/react/dist/icons/Bus').then(m => ({ default: m.Bus }))) as IconComponent,
-  "phosphor.calendar": dynamic(() => import('@phosphor-icons/react/dist/icons/Calendar').then(m => ({ default: m.Calendar }))) as IconComponent,
-  "phosphor.calendar_blank": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarBlank').then(m => ({ default: m.CalendarBlank }))) as IconComponent,
-  "phosphor.calendar_check": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarCheck').then(m => ({ default: m.CalendarCheck }))) as IconComponent,
-  "phosphor.calendar_dot": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarDot').then(m => ({ default: m.CalendarDot }))) as IconComponent,
-  "phosphor.calendar_minus": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarMinus').then(m => ({ default: m.CalendarMinus }))) as IconComponent,
-  "phosphor.calendar_plus": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarPlus').then(m => ({ default: m.CalendarPlus }))) as IconComponent,
-  "phosphor.calendar_x": dynamic(() => import('@phosphor-icons/react/dist/icons/CalendarX').then(m => ({ default: m.CalendarX }))) as IconComponent,
-  "phosphor.camera": dynamic(() => import('@phosphor-icons/react/dist/icons/Camera').then(m => ({ default: m.Camera }))) as IconComponent,
-  "phosphor.camera_rotate": dynamic(() => import('@phosphor-icons/react/dist/icons/CameraRotate').then(m => ({ default: m.CameraRotate }))) as IconComponent,
-  "phosphor.camera_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/CameraSlash').then(m => ({ default: m.CameraSlash }))) as IconComponent,
-  "phosphor.car": dynamic(() => import('@phosphor-icons/react/dist/icons/Car').then(m => ({ default: m.Car }))) as IconComponent,
-  "phosphor.car_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/CarSimple').then(m => ({ default: m.CarSimple }))) as IconComponent,
-  "phosphor.caret_double_left": dynamic(() => import('@phosphor-icons/react/dist/icons/CaretDoubleLeft').then(m => ({ default: m.CaretDoubleLeft }))) as IconComponent,
-  "phosphor.caret_double_right": dynamic(() => import('@phosphor-icons/react/dist/icons/CaretDoubleRight').then(m => ({ default: m.CaretDoubleRight }))) as IconComponent,
-  "phosphor.caret_down": dynamic(() => import('@phosphor-icons/react/dist/icons/CaretDown').then(m => ({ default: m.CaretDown }))) as IconComponent,
-  "phosphor.caret_left": dynamic(() => import('@phosphor-icons/react/dist/icons/CaretLeft').then(m => ({ default: m.CaretLeft }))) as IconComponent,
-  "phosphor.caret_up": dynamic(() => import('@phosphor-icons/react/dist/icons/CaretUp').then(m => ({ default: m.CaretUp }))) as IconComponent,
-  "phosphor.chart_bar": dynamic(() => import('@phosphor-icons/react/dist/icons/ChartBar').then(m => ({ default: m.ChartBar }))) as IconComponent,
-  "phosphor.chart_bar_horizontal": dynamic(() => import('@phosphor-icons/react/dist/icons/ChartBarHorizontal').then(m => ({ default: m.ChartBarHorizontal }))) as IconComponent,
-  "phosphor.chart_donut": dynamic(() => import('@phosphor-icons/react/dist/icons/ChartDonut').then(m => ({ default: m.ChartDonut }))) as IconComponent,
-  "phosphor.chart_line": dynamic(() => import('@phosphor-icons/react/dist/icons/ChartLine').then(m => ({ default: m.ChartLine }))) as IconComponent,
-  "phosphor.chart_line_up": dynamic(() => import('@phosphor-icons/react/dist/icons/ChartLineUp').then(m => ({ default: m.ChartLineUp }))) as IconComponent,
-  "phosphor.chat": dynamic(() => import('@phosphor-icons/react/dist/icons/Chat').then(m => ({ default: m.Chat }))) as IconComponent,
-  "phosphor.chat_centered": dynamic(() => import('@phosphor-icons/react/dist/icons/ChatCentered').then(m => ({ default: m.ChatCentered }))) as IconComponent,
-  "phosphor.chat_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/ChatCircle').then(m => ({ default: m.ChatCircle }))) as IconComponent,
-  "phosphor.chat_dots": dynamic(() => import('@phosphor-icons/react/dist/icons/ChatDots').then(m => ({ default: m.ChatDots }))) as IconComponent,
-  "phosphor.chat_teardrop": dynamic(() => import('@phosphor-icons/react/dist/icons/ChatTeardrop').then(m => ({ default: m.ChatTeardrop }))) as IconComponent,
-  "phosphor.check": dynamic(() => import('@phosphor-icons/react/dist/icons/Check').then(m => ({ default: m.Check }))) as IconComponent,
-  "phosphor.check_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/CheckCircle').then(m => ({ default: m.CheckCircle }))) as IconComponent,
-  "phosphor.check_square": dynamic(() => import('@phosphor-icons/react/dist/icons/CheckSquare').then(m => ({ default: m.CheckSquare }))) as IconComponent,
-  "phosphor.checks": dynamic(() => import('@phosphor-icons/react/dist/icons/Checks').then(m => ({ default: m.Checks }))) as IconComponent,
-  "phosphor.clock": dynamic(() => import('@phosphor-icons/react/dist/icons/Clock').then(m => ({ default: m.Clock }))) as IconComponent,
-  "phosphor.clock_afternoon": dynamic(() => import('@phosphor-icons/react/dist/icons/ClockAfternoon').then(m => ({ default: m.ClockAfternoon }))) as IconComponent,
-  "phosphor.clock_clockwise": dynamic(() => import('@phosphor-icons/react/dist/icons/ClockClockwise').then(m => ({ default: m.ClockClockwise }))) as IconComponent,
-  "phosphor.clock_counter_clockwise": dynamic(() => import('@phosphor-icons/react/dist/icons/ClockCounterClockwise').then(m => ({ default: m.ClockCounterClockwise }))) as IconComponent,
-  "phosphor.cloud": dynamic(() => import('@phosphor-icons/react/dist/icons/Cloud').then(m => ({ default: m.Cloud }))) as IconComponent,
-  "phosphor.cloud_check": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudCheck').then(m => ({ default: m.CloudCheck }))) as IconComponent,
-  "phosphor.cloud_fog": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudFog').then(m => ({ default: m.CloudFog }))) as IconComponent,
-  "phosphor.cloud_lightning": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudLightning').then(m => ({ default: m.CloudLightning }))) as IconComponent,
-  "phosphor.cloud_rain": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudRain').then(m => ({ default: m.CloudRain }))) as IconComponent,
-  "phosphor.cloud_snow": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudSnow').then(m => ({ default: m.CloudSnow }))) as IconComponent,
-  "phosphor.cloud_sun": dynamic(() => import('@phosphor-icons/react/dist/icons/CloudSun').then(m => ({ default: m.CloudSun }))) as IconComponent,
-  "phosphor.code": dynamic(() => import('@phosphor-icons/react/dist/icons/Code').then(m => ({ default: m.Code }))) as IconComponent,
-  "phosphor.code_block": dynamic(() => import('@phosphor-icons/react/dist/icons/CodeBlock').then(m => ({ default: m.CodeBlock }))) as IconComponent,
-  "phosphor.code_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/CodeSimple').then(m => ({ default: m.CodeSimple }))) as IconComponent,
-  "phosphor.coin": dynamic(() => import('@phosphor-icons/react/dist/icons/Coin').then(m => ({ default: m.Coin }))) as IconComponent,
-  "phosphor.coins": dynamic(() => import('@phosphor-icons/react/dist/icons/Coins').then(m => ({ default: m.Coins }))) as IconComponent,
-  "phosphor.compass": dynamic(() => import('@phosphor-icons/react/dist/icons/Compass').then(m => ({ default: m.Compass }))) as IconComponent,
-  "phosphor.copy": dynamic(() => import('@phosphor-icons/react/dist/icons/Copy').then(m => ({ default: m.Copy }))) as IconComponent,
-  "phosphor.copy_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/CopySimple').then(m => ({ default: m.CopySimple }))) as IconComponent,
-  "phosphor.cpu": dynamic(() => import('@phosphor-icons/react/dist/icons/Cpu').then(m => ({ default: m.Cpu }))) as IconComponent,
-  "phosphor.credit_card": dynamic(() => import('@phosphor-icons/react/dist/icons/CreditCard').then(m => ({ default: m.CreditCard }))) as IconComponent,
-  "phosphor.crown": dynamic(() => import('@phosphor-icons/react/dist/icons/Crown').then(m => ({ default: m.Crown }))) as IconComponent,
-  "phosphor.cube": dynamic(() => import('@phosphor-icons/react/dist/icons/Cube').then(m => ({ default: m.Cube }))) as IconComponent,
-  "phosphor.currency_circle_dollar": dynamic(() => import('@phosphor-icons/react/dist/icons/CurrencyCircleDollar').then(m => ({ default: m.CurrencyCircleDollar }))) as IconComponent,
-  "phosphor.database": dynamic(() => import('@phosphor-icons/react/dist/icons/Database').then(m => ({ default: m.Database }))) as IconComponent,
-  "phosphor.desktop": dynamic(() => import('@phosphor-icons/react/dist/icons/Desktop').then(m => ({ default: m.Desktop }))) as IconComponent,
-  "phosphor.desktop_tower": dynamic(() => import('@phosphor-icons/react/dist/icons/DesktopTower').then(m => ({ default: m.DesktopTower }))) as IconComponent,
-  "phosphor.device_mobile": dynamic(() => import('@phosphor-icons/react/dist/icons/DeviceMobile').then(m => ({ default: m.DeviceMobile }))) as IconComponent,
-  "phosphor.device_tablet": dynamic(() => import('@phosphor-icons/react/dist/icons/DeviceTablet').then(m => ({ default: m.DeviceTablet }))) as IconComponent,
-  "phosphor.dots_three_outline": dynamic(() => import('@phosphor-icons/react/dist/icons/DotsThreeOutline').then(m => ({ default: m.DotsThreeOutline }))) as IconComponent,
-  "phosphor.dots_three_outline_vertical": dynamic(() => import('@phosphor-icons/react/dist/icons/DotsThreeOutlineVertical').then(m => ({ default: m.DotsThreeOutlineVertical }))) as IconComponent,
-  "phosphor.dots_three_vertical": dynamic(() => import('@phosphor-icons/react/dist/icons/DotsThreeVertical').then(m => ({ default: m.DotsThreeVertical }))) as IconComponent,
-  "phosphor.download": dynamic(() => import('@phosphor-icons/react/dist/icons/Download').then(m => ({ default: m.Download }))) as IconComponent,
-  "phosphor.download_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/DownloadSimple').then(m => ({ default: m.DownloadSimple }))) as IconComponent,
-  "phosphor.envelope": dynamic(() => import('@phosphor-icons/react/dist/icons/Envelope').then(m => ({ default: m.Envelope }))) as IconComponent,
-  "phosphor.envelope_open": dynamic(() => import('@phosphor-icons/react/dist/icons/EnvelopeOpen').then(m => ({ default: m.EnvelopeOpen }))) as IconComponent,
-  "phosphor.envelope_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/EnvelopeSimple').then(m => ({ default: m.EnvelopeSimple }))) as IconComponent,
-  "phosphor.eraser": dynamic(() => import('@phosphor-icons/react/dist/icons/Eraser').then(m => ({ default: m.Eraser }))) as IconComponent,
-  "phosphor.eye": dynamic(() => import('@phosphor-icons/react/dist/icons/Eye').then(m => ({ default: m.Eye }))) as IconComponent,
-  "phosphor.eye_closed": dynamic(() => import('@phosphor-icons/react/dist/icons/EyeClosed').then(m => ({ default: m.EyeClosed }))) as IconComponent,
-  "phosphor.eye_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/EyeSlash').then(m => ({ default: m.EyeSlash }))) as IconComponent,
-  "phosphor.factory": dynamic(() => import('@phosphor-icons/react/dist/icons/Factory').then(m => ({ default: m.Factory }))) as IconComponent,
-  "phosphor.file": dynamic(() => import('@phosphor-icons/react/dist/icons/File').then(m => ({ default: m.File }))) as IconComponent,
-  "phosphor.file_code": dynamic(() => import('@phosphor-icons/react/dist/icons/FileCode').then(m => ({ default: m.FileCode }))) as IconComponent,
-  "phosphor.file_image": dynamic(() => import('@phosphor-icons/react/dist/icons/FileImage').then(m => ({ default: m.FileImage }))) as IconComponent,
-  "phosphor.file_minus": dynamic(() => import('@phosphor-icons/react/dist/icons/FileMinus').then(m => ({ default: m.FileMinus }))) as IconComponent,
-  "phosphor.file_pdf": dynamic(() => import('@phosphor-icons/react/dist/icons/FilePdf').then(m => ({ default: m.FilePdf }))) as IconComponent,
-  "phosphor.file_plus": dynamic(() => import('@phosphor-icons/react/dist/icons/FilePlus').then(m => ({ default: m.FilePlus }))) as IconComponent,
-  "phosphor.file_text": dynamic(() => import('@phosphor-icons/react/dist/icons/FileText').then(m => ({ default: m.FileText }))) as IconComponent,
-  "phosphor.fire": dynamic(() => import('@phosphor-icons/react/dist/icons/Fire').then(m => ({ default: m.Fire }))) as IconComponent,
-  "phosphor.flag": dynamic(() => import('@phosphor-icons/react/dist/icons/Flag').then(m => ({ default: m.Flag }))) as IconComponent,
-  "phosphor.flag_banner": dynamic(() => import('@phosphor-icons/react/dist/icons/FlagBanner').then(m => ({ default: m.FlagBanner }))) as IconComponent,
-  "phosphor.flag_pennant": dynamic(() => import('@phosphor-icons/react/dist/icons/FlagPennant').then(m => ({ default: m.FlagPennant }))) as IconComponent,
-  "phosphor.folder": dynamic(() => import('@phosphor-icons/react/dist/icons/Folder').then(m => ({ default: m.Folder }))) as IconComponent,
-  "phosphor.folder_minus": dynamic(() => import('@phosphor-icons/react/dist/icons/FolderMinus').then(m => ({ default: m.FolderMinus }))) as IconComponent,
-  "phosphor.folder_open": dynamic(() => import('@phosphor-icons/react/dist/icons/FolderOpen').then(m => ({ default: m.FolderOpen }))) as IconComponent,
-  "phosphor.folder_plus": dynamic(() => import('@phosphor-icons/react/dist/icons/FolderPlus').then(m => ({ default: m.FolderPlus }))) as IconComponent,
-  "phosphor.folder_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/FolderSimple').then(m => ({ default: m.FolderSimple }))) as IconComponent,
-  "phosphor.funnel": dynamic(() => import('@phosphor-icons/react/dist/icons/Funnel').then(m => ({ default: m.Funnel }))) as IconComponent,
-  "phosphor.funnel_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/FunnelSimple').then(m => ({ default: m.FunnelSimple }))) as IconComponent,
-  "phosphor.gear_six": dynamic(() => import('@phosphor-icons/react/dist/icons/GearSix').then(m => ({ default: m.GearSix }))) as IconComponent,
-  "phosphor.gift": dynamic(() => import('@phosphor-icons/react/dist/icons/Gift').then(m => ({ default: m.Gift }))) as IconComponent,
-  "phosphor.globe": dynamic(() => import('@phosphor-icons/react/dist/icons/Globe').then(m => ({ default: m.Globe }))) as IconComponent,
-  "phosphor.globe_hemisphere_west": dynamic(() => import('@phosphor-icons/react/dist/icons/GlobeHemisphereWest').then(m => ({ default: m.GlobeHemisphereWest }))) as IconComponent,
-  "phosphor.globe_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/GlobeSimple').then(m => ({ default: m.GlobeSimple }))) as IconComponent,
-  "phosphor.grid_four": dynamic(() => import('@phosphor-icons/react/dist/icons/GridFour').then(m => ({ default: m.GridFour }))) as IconComponent,
-  "phosphor.grid_nine": dynamic(() => import('@phosphor-icons/react/dist/icons/GridNine').then(m => ({ default: m.GridNine }))) as IconComponent,
-  "phosphor.headphones": dynamic(() => import('@phosphor-icons/react/dist/icons/Headphones').then(m => ({ default: m.Headphones }))) as IconComponent,
-  "phosphor.heart": dynamic(() => import('@phosphor-icons/react/dist/icons/Heart').then(m => ({ default: m.Heart }))) as IconComponent,
-  "phosphor.heart_break": dynamic(() => import('@phosphor-icons/react/dist/icons/HeartBreak').then(m => ({ default: m.HeartBreak }))) as IconComponent,
-  "phosphor.heart_straight": dynamic(() => import('@phosphor-icons/react/dist/icons/HeartStraight').then(m => ({ default: m.HeartStraight }))) as IconComponent,
-  "phosphor.house_line": dynamic(() => import('@phosphor-icons/react/dist/icons/HouseLine').then(m => ({ default: m.HouseLine }))) as IconComponent,
-  "phosphor.house_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/HouseSimple').then(m => ({ default: m.HouseSimple }))) as IconComponent,
-  "phosphor.image": dynamic(() => import('@phosphor-icons/react/dist/icons/Image').then(m => ({ default: m.Image }))) as IconComponent,
-  "phosphor.image_square": dynamic(() => import('@phosphor-icons/react/dist/icons/ImageSquare').then(m => ({ default: m.ImageSquare }))) as IconComponent,
-  "phosphor.info": dynamic(() => import('@phosphor-icons/react/dist/icons/Info').then(m => ({ default: m.Info }))) as IconComponent,
-  "phosphor.key": dynamic(() => import('@phosphor-icons/react/dist/icons/Key').then(m => ({ default: m.Key }))) as IconComponent,
-  "phosphor.key_return": dynamic(() => import('@phosphor-icons/react/dist/icons/KeyReturn').then(m => ({ default: m.KeyReturn }))) as IconComponent,
-  "phosphor.keyboard": dynamic(() => import('@phosphor-icons/react/dist/icons/Keyboard').then(m => ({ default: m.Keyboard }))) as IconComponent,
-  "phosphor.laptop": dynamic(() => import('@phosphor-icons/react/dist/icons/Laptop').then(m => ({ default: m.Laptop }))) as IconComponent,
-  "phosphor.lightning": dynamic(() => import('@phosphor-icons/react/dist/icons/Lightning').then(m => ({ default: m.Lightning }))) as IconComponent,
-  "phosphor.lightning_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/LightningSlash').then(m => ({ default: m.LightningSlash }))) as IconComponent,
-  "phosphor.link": dynamic(() => import('@phosphor-icons/react/dist/icons/Link').then(m => ({ default: m.Link }))) as IconComponent,
-  "phosphor.link_break": dynamic(() => import('@phosphor-icons/react/dist/icons/LinkBreak').then(m => ({ default: m.LinkBreak }))) as IconComponent,
-  "phosphor.link_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/LinkSimple').then(m => ({ default: m.LinkSimple }))) as IconComponent,
-  "phosphor.list": dynamic(() => import('@phosphor-icons/react/dist/icons/List').then(m => ({ default: m.List }))) as IconComponent,
-  "phosphor.list_bullets": dynamic(() => import('@phosphor-icons/react/dist/icons/ListBullets').then(m => ({ default: m.ListBullets }))) as IconComponent,
-  "phosphor.list_checks": dynamic(() => import('@phosphor-icons/react/dist/icons/ListChecks').then(m => ({ default: m.ListChecks }))) as IconComponent,
-  "phosphor.list_dashes": dynamic(() => import('@phosphor-icons/react/dist/icons/ListDashes').then(m => ({ default: m.ListDashes }))) as IconComponent,
-  "phosphor.list_numbers": dynamic(() => import('@phosphor-icons/react/dist/icons/ListNumbers').then(m => ({ default: m.ListNumbers }))) as IconComponent,
-  "phosphor.lock": dynamic(() => import('@phosphor-icons/react/dist/icons/Lock').then(m => ({ default: m.Lock }))) as IconComponent,
-  "phosphor.lock_key": dynamic(() => import('@phosphor-icons/react/dist/icons/LockKey').then(m => ({ default: m.LockKey }))) as IconComponent,
-  "phosphor.lock_open": dynamic(() => import('@phosphor-icons/react/dist/icons/LockOpen').then(m => ({ default: m.LockOpen }))) as IconComponent,
-  "phosphor.lock_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/LockSimple').then(m => ({ default: m.LockSimple }))) as IconComponent,
-  "phosphor.magnifying_glass": dynamic(() => import('@phosphor-icons/react/dist/icons/MagnifyingGlass').then(m => ({ default: m.MagnifyingGlass }))) as IconComponent,
-  "phosphor.magnifying_glass_minus": dynamic(() => import('@phosphor-icons/react/dist/icons/MagnifyingGlassMinus').then(m => ({ default: m.MagnifyingGlassMinus }))) as IconComponent,
-  "phosphor.magnifying_glass_plus": dynamic(() => import('@phosphor-icons/react/dist/icons/MagnifyingGlassPlus').then(m => ({ default: m.MagnifyingGlassPlus }))) as IconComponent,
-  "phosphor.map_pin": dynamic(() => import('@phosphor-icons/react/dist/icons/MapPin').then(m => ({ default: m.MapPin }))) as IconComponent,
-  "phosphor.map_pin_line": dynamic(() => import('@phosphor-icons/react/dist/icons/MapPinLine').then(m => ({ default: m.MapPinLine }))) as IconComponent,
-  "phosphor.map_pin_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/MapPinSimple').then(m => ({ default: m.MapPinSimple }))) as IconComponent,
-  "phosphor.map_trifold": dynamic(() => import('@phosphor-icons/react/dist/icons/MapTrifold').then(m => ({ default: m.MapTrifold }))) as IconComponent,
-  "phosphor.medal": dynamic(() => import('@phosphor-icons/react/dist/icons/Medal').then(m => ({ default: m.Medal }))) as IconComponent,
-  "phosphor.microphone": dynamic(() => import('@phosphor-icons/react/dist/icons/Microphone').then(m => ({ default: m.Microphone }))) as IconComponent,
-  "phosphor.microphone_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/MicrophoneSlash').then(m => ({ default: m.MicrophoneSlash }))) as IconComponent,
-  "phosphor.minus": dynamic(() => import('@phosphor-icons/react/dist/icons/Minus').then(m => ({ default: m.Minus }))) as IconComponent,
-  "phosphor.minus_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/MinusCircle').then(m => ({ default: m.MinusCircle }))) as IconComponent,
-  "phosphor.money": dynamic(() => import('@phosphor-icons/react/dist/icons/Money').then(m => ({ default: m.Money }))) as IconComponent,
-  "phosphor.monitor": dynamic(() => import('@phosphor-icons/react/dist/icons/Monitor').then(m => ({ default: m.Monitor }))) as IconComponent,
-  "phosphor.moon": dynamic(() => import('@phosphor-icons/react/dist/icons/Moon').then(m => ({ default: m.Moon }))) as IconComponent,
-  "phosphor.moon_stars": dynamic(() => import('@phosphor-icons/react/dist/icons/MoonStars').then(m => ({ default: m.MoonStars }))) as IconComponent,
-  "phosphor.mouse": dynamic(() => import('@phosphor-icons/react/dist/icons/Mouse').then(m => ({ default: m.Mouse }))) as IconComponent,
-  "phosphor.mouse_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/MouseSimple').then(m => ({ default: m.MouseSimple }))) as IconComponent,
-  "phosphor.music_note": dynamic(() => import('@phosphor-icons/react/dist/icons/MusicNote').then(m => ({ default: m.MusicNote }))) as IconComponent,
-  "phosphor.music_note_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/MusicNoteSimple').then(m => ({ default: m.MusicNoteSimple }))) as IconComponent,
-  "phosphor.music_notes": dynamic(() => import('@phosphor-icons/react/dist/icons/MusicNotes').then(m => ({ default: m.MusicNotes }))) as IconComponent,
-  "phosphor.navigation_arrow": dynamic(() => import('@phosphor-icons/react/dist/icons/NavigationArrow').then(m => ({ default: m.NavigationArrow }))) as IconComponent,
-  "phosphor.notification": dynamic(() => import('@phosphor-icons/react/dist/icons/Notification').then(m => ({ default: m.Notification }))) as IconComponent,
-  "phosphor.paint_brush": dynamic(() => import('@phosphor-icons/react/dist/icons/PaintBrush').then(m => ({ default: m.PaintBrush }))) as IconComponent,
-  "phosphor.paint_brush_broad": dynamic(() => import('@phosphor-icons/react/dist/icons/PaintBrushBroad').then(m => ({ default: m.PaintBrushBroad }))) as IconComponent,
-  "phosphor.paint_bucket": dynamic(() => import('@phosphor-icons/react/dist/icons/PaintBucket').then(m => ({ default: m.PaintBucket }))) as IconComponent,
-  "phosphor.palette": dynamic(() => import('@phosphor-icons/react/dist/icons/Palette').then(m => ({ default: m.Palette }))) as IconComponent,
-  "phosphor.paper_plane_right": dynamic(() => import('@phosphor-icons/react/dist/icons/PaperPlaneRight').then(m => ({ default: m.PaperPlaneRight }))) as IconComponent,
-  "phosphor.pause": dynamic(() => import('@phosphor-icons/react/dist/icons/Pause').then(m => ({ default: m.Pause }))) as IconComponent,
-  "phosphor.pencil": dynamic(() => import('@phosphor-icons/react/dist/icons/Pencil').then(m => ({ default: m.Pencil }))) as IconComponent,
-  "phosphor.pencil_line": dynamic(() => import('@phosphor-icons/react/dist/icons/PencilLine').then(m => ({ default: m.PencilLine }))) as IconComponent,
-  "phosphor.pencil_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/PencilSimple').then(m => ({ default: m.PencilSimple }))) as IconComponent,
-  "phosphor.phone": dynamic(() => import('@phosphor-icons/react/dist/icons/Phone').then(m => ({ default: m.Phone }))) as IconComponent,
-  "phosphor.phone_call": dynamic(() => import('@phosphor-icons/react/dist/icons/PhoneCall').then(m => ({ default: m.PhoneCall }))) as IconComponent,
-  "phosphor.phone_incoming": dynamic(() => import('@phosphor-icons/react/dist/icons/PhoneIncoming').then(m => ({ default: m.PhoneIncoming }))) as IconComponent,
-  "phosphor.phone_outgoing": dynamic(() => import('@phosphor-icons/react/dist/icons/PhoneOutgoing').then(m => ({ default: m.PhoneOutgoing }))) as IconComponent,
-  "phosphor.play": dynamic(() => import('@phosphor-icons/react/dist/icons/Play').then(m => ({ default: m.Play }))) as IconComponent,
-  "phosphor.plug": dynamic(() => import('@phosphor-icons/react/dist/icons/Plug').then(m => ({ default: m.Plug }))) as IconComponent,
-  "phosphor.plug_charging": dynamic(() => import('@phosphor-icons/react/dist/icons/PlugCharging').then(m => ({ default: m.PlugCharging }))) as IconComponent,
-  "phosphor.plus": dynamic(() => import('@phosphor-icons/react/dist/icons/Plus').then(m => ({ default: m.Plus }))) as IconComponent,
-  "phosphor.plus_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/PlusCircle').then(m => ({ default: m.PlusCircle }))) as IconComponent,
-  "phosphor.plus_square": dynamic(() => import('@phosphor-icons/react/dist/icons/PlusSquare').then(m => ({ default: m.PlusSquare }))) as IconComponent,
-  "phosphor.power": dynamic(() => import('@phosphor-icons/react/dist/icons/Power').then(m => ({ default: m.Power }))) as IconComponent,
-  "phosphor.printer": dynamic(() => import('@phosphor-icons/react/dist/icons/Printer').then(m => ({ default: m.Printer }))) as IconComponent,
-  "phosphor.qr_code": dynamic(() => import('@phosphor-icons/react/dist/icons/QrCode').then(m => ({ default: m.QrCode }))) as IconComponent,
-  "phosphor.question": dynamic(() => import('@phosphor-icons/react/dist/icons/Question').then(m => ({ default: m.Question }))) as IconComponent,
-  "phosphor.rainbow": dynamic(() => import('@phosphor-icons/react/dist/icons/Rainbow').then(m => ({ default: m.Rainbow }))) as IconComponent,
-  "phosphor.receipt": dynamic(() => import('@phosphor-icons/react/dist/icons/Receipt').then(m => ({ default: m.Receipt }))) as IconComponent,
-  "phosphor.rocket": dynamic(() => import('@phosphor-icons/react/dist/icons/Rocket').then(m => ({ default: m.Rocket }))) as IconComponent,
-  "phosphor.scan": dynamic(() => import('@phosphor-icons/react/dist/icons/Scan').then(m => ({ default: m.Scan }))) as IconComponent,
-  "phosphor.scissors": dynamic(() => import('@phosphor-icons/react/dist/icons/Scissors').then(m => ({ default: m.Scissors }))) as IconComponent,
-  "phosphor.seal_check": dynamic(() => import('@phosphor-icons/react/dist/icons/SealCheck').then(m => ({ default: m.SealCheck }))) as IconComponent,
-  "phosphor.share": dynamic(() => import('@phosphor-icons/react/dist/icons/Share').then(m => ({ default: m.Share }))) as IconComponent,
-  "phosphor.share_fat": dynamic(() => import('@phosphor-icons/react/dist/icons/ShareFat').then(m => ({ default: m.ShareFat }))) as IconComponent,
-  "phosphor.share_network": dynamic(() => import('@phosphor-icons/react/dist/icons/ShareNetwork').then(m => ({ default: m.ShareNetwork }))) as IconComponent,
-  "phosphor.shield": dynamic(() => import('@phosphor-icons/react/dist/icons/Shield').then(m => ({ default: m.Shield }))) as IconComponent,
-  "phosphor.shield_check": dynamic(() => import('@phosphor-icons/react/dist/icons/ShieldCheck').then(m => ({ default: m.ShieldCheck }))) as IconComponent,
-  "phosphor.shield_star": dynamic(() => import('@phosphor-icons/react/dist/icons/ShieldStar').then(m => ({ default: m.ShieldStar }))) as IconComponent,
-  "phosphor.shield_warning": dynamic(() => import('@phosphor-icons/react/dist/icons/ShieldWarning').then(m => ({ default: m.ShieldWarning }))) as IconComponent,
-  "phosphor.shopping_bag": dynamic(() => import('@phosphor-icons/react/dist/icons/ShoppingBag').then(m => ({ default: m.ShoppingBag }))) as IconComponent,
-  "phosphor.shopping_bag_open": dynamic(() => import('@phosphor-icons/react/dist/icons/ShoppingBagOpen').then(m => ({ default: m.ShoppingBagOpen }))) as IconComponent,
-  "phosphor.shopping_cart": dynamic(() => import('@phosphor-icons/react/dist/icons/ShoppingCart').then(m => ({ default: m.ShoppingCart }))) as IconComponent,
-  "phosphor.sidebar": dynamic(() => import('@phosphor-icons/react/dist/icons/Sidebar').then(m => ({ default: m.Sidebar }))) as IconComponent,
-  "phosphor.sign_in": dynamic(() => import('@phosphor-icons/react/dist/icons/SignIn').then(m => ({ default: m.SignIn }))) as IconComponent,
-  "phosphor.skip_back": dynamic(() => import('@phosphor-icons/react/dist/icons/SkipBack').then(m => ({ default: m.SkipBack }))) as IconComponent,
-  "phosphor.skip_forward": dynamic(() => import('@phosphor-icons/react/dist/icons/SkipForward').then(m => ({ default: m.SkipForward }))) as IconComponent,
-  "phosphor.sliders": dynamic(() => import('@phosphor-icons/react/dist/icons/Sliders').then(m => ({ default: m.Sliders }))) as IconComponent,
-  "phosphor.sliders_horizontal": dynamic(() => import('@phosphor-icons/react/dist/icons/SlidersHorizontal').then(m => ({ default: m.SlidersHorizontal }))) as IconComponent,
-  "phosphor.speaker_high": dynamic(() => import('@phosphor-icons/react/dist/icons/SpeakerHigh').then(m => ({ default: m.SpeakerHigh }))) as IconComponent,
-  "phosphor.speaker_low": dynamic(() => import('@phosphor-icons/react/dist/icons/SpeakerLow').then(m => ({ default: m.SpeakerLow }))) as IconComponent,
-  "phosphor.speaker_none": dynamic(() => import('@phosphor-icons/react/dist/icons/SpeakerNone').then(m => ({ default: m.SpeakerNone }))) as IconComponent,
-  "phosphor.speaker_x": dynamic(() => import('@phosphor-icons/react/dist/icons/SpeakerX').then(m => ({ default: m.SpeakerX }))) as IconComponent,
-  "phosphor.stack": dynamic(() => import('@phosphor-icons/react/dist/icons/Stack').then(m => ({ default: m.Stack }))) as IconComponent,
-  "phosphor.stack_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/StackSimple').then(m => ({ default: m.StackSimple }))) as IconComponent,
-  "phosphor.star": dynamic(() => import('@phosphor-icons/react/dist/icons/Star').then(m => ({ default: m.Star }))) as IconComponent,
-  "phosphor.star_four": dynamic(() => import('@phosphor-icons/react/dist/icons/StarFour').then(m => ({ default: m.StarFour }))) as IconComponent,
-  "phosphor.star_half": dynamic(() => import('@phosphor-icons/react/dist/icons/StarHalf').then(m => ({ default: m.StarHalf }))) as IconComponent,
-  "phosphor.stop": dynamic(() => import('@phosphor-icons/react/dist/icons/Stop').then(m => ({ default: m.Stop }))) as IconComponent,
-  "phosphor.storefront": dynamic(() => import('@phosphor-icons/react/dist/icons/Storefront').then(m => ({ default: m.Storefront }))) as IconComponent,
-  "phosphor.sun": dynamic(() => import('@phosphor-icons/react/dist/icons/Sun').then(m => ({ default: m.Sun }))) as IconComponent,
-  "phosphor.sun_dim": dynamic(() => import('@phosphor-icons/react/dist/icons/SunDim').then(m => ({ default: m.SunDim }))) as IconComponent,
-  "phosphor.sun_horizon": dynamic(() => import('@phosphor-icons/react/dist/icons/SunHorizon').then(m => ({ default: m.SunHorizon }))) as IconComponent,
-  "phosphor.swatches": dynamic(() => import('@phosphor-icons/react/dist/icons/Swatches').then(m => ({ default: m.Swatches }))) as IconComponent,
-  "phosphor.table": dynamic(() => import('@phosphor-icons/react/dist/icons/Table').then(m => ({ default: m.Table }))) as IconComponent,
-  "phosphor.tag": dynamic(() => import('@phosphor-icons/react/dist/icons/Tag').then(m => ({ default: m.Tag }))) as IconComponent,
-  "phosphor.tag_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/TagSimple').then(m => ({ default: m.TagSimple }))) as IconComponent,
-  "phosphor.terminal": dynamic(() => import('@phosphor-icons/react/dist/icons/Terminal').then(m => ({ default: m.Terminal }))) as IconComponent,
-  "phosphor.terminal_window": dynamic(() => import('@phosphor-icons/react/dist/icons/TerminalWindow').then(m => ({ default: m.TerminalWindow }))) as IconComponent,
-  "phosphor.text_aa": dynamic(() => import('@phosphor-icons/react/dist/icons/TextAa').then(m => ({ default: m.TextAa }))) as IconComponent,
-  "phosphor.text_align_center": dynamic(() => import('@phosphor-icons/react/dist/icons/TextAlignCenter').then(m => ({ default: m.TextAlignCenter }))) as IconComponent,
-  "phosphor.text_align_justify": dynamic(() => import('@phosphor-icons/react/dist/icons/TextAlignJustify').then(m => ({ default: m.TextAlignJustify }))) as IconComponent,
-  "phosphor.text_align_left": dynamic(() => import('@phosphor-icons/react/dist/icons/TextAlignLeft').then(m => ({ default: m.TextAlignLeft }))) as IconComponent,
-  "phosphor.text_align_right": dynamic(() => import('@phosphor-icons/react/dist/icons/TextAlignRight').then(m => ({ default: m.TextAlignRight }))) as IconComponent,
-  "phosphor.text_b": dynamic(() => import('@phosphor-icons/react/dist/icons/TextB').then(m => ({ default: m.TextB }))) as IconComponent,
-  "phosphor.text_italic": dynamic(() => import('@phosphor-icons/react/dist/icons/TextItalic').then(m => ({ default: m.TextItalic }))) as IconComponent,
-  "phosphor.text_strikethrough": dynamic(() => import('@phosphor-icons/react/dist/icons/TextStrikethrough').then(m => ({ default: m.TextStrikethrough }))) as IconComponent,
-  "phosphor.text_t": dynamic(() => import('@phosphor-icons/react/dist/icons/TextT').then(m => ({ default: m.TextT }))) as IconComponent,
-  "phosphor.text_underline": dynamic(() => import('@phosphor-icons/react/dist/icons/TextUnderline').then(m => ({ default: m.TextUnderline }))) as IconComponent,
-  "phosphor.ticket": dynamic(() => import('@phosphor-icons/react/dist/icons/Ticket').then(m => ({ default: m.Ticket }))) as IconComponent,
-  "phosphor.toggle_left": dynamic(() => import('@phosphor-icons/react/dist/icons/ToggleLeft').then(m => ({ default: m.ToggleLeft }))) as IconComponent,
-  "phosphor.toggle_right": dynamic(() => import('@phosphor-icons/react/dist/icons/ToggleRight').then(m => ({ default: m.ToggleRight }))) as IconComponent,
-  "phosphor.trash": dynamic(() => import('@phosphor-icons/react/dist/icons/Trash').then(m => ({ default: m.Trash }))) as IconComponent,
-  "phosphor.trash_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/TrashSimple').then(m => ({ default: m.TrashSimple }))) as IconComponent,
-  "phosphor.trophy": dynamic(() => import('@phosphor-icons/react/dist/icons/Trophy').then(m => ({ default: m.Trophy }))) as IconComponent,
-  "phosphor.truck": dynamic(() => import('@phosphor-icons/react/dist/icons/Truck').then(m => ({ default: m.Truck }))) as IconComponent,
-  "phosphor.upload": dynamic(() => import('@phosphor-icons/react/dist/icons/Upload').then(m => ({ default: m.Upload }))) as IconComponent,
-  "phosphor.upload_simple": dynamic(() => import('@phosphor-icons/react/dist/icons/UploadSimple').then(m => ({ default: m.UploadSimple }))) as IconComponent,
-  "phosphor.user": dynamic(() => import('@phosphor-icons/react/dist/icons/User').then(m => ({ default: m.User }))) as IconComponent,
-  "phosphor.user_check": dynamic(() => import('@phosphor-icons/react/dist/icons/UserCheck').then(m => ({ default: m.UserCheck }))) as IconComponent,
-  "phosphor.user_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/UserCircle').then(m => ({ default: m.UserCircle }))) as IconComponent,
-  "phosphor.user_focus": dynamic(() => import('@phosphor-icons/react/dist/icons/UserFocus').then(m => ({ default: m.UserFocus }))) as IconComponent,
-  "phosphor.user_minus": dynamic(() => import('@phosphor-icons/react/dist/icons/UserMinus').then(m => ({ default: m.UserMinus }))) as IconComponent,
-  "phosphor.user_plus": dynamic(() => import('@phosphor-icons/react/dist/icons/UserPlus').then(m => ({ default: m.UserPlus }))) as IconComponent,
-  "phosphor.user_rectangle": dynamic(() => import('@phosphor-icons/react/dist/icons/UserRectangle').then(m => ({ default: m.UserRectangle }))) as IconComponent,
-  "phosphor.user_square": dynamic(() => import('@phosphor-icons/react/dist/icons/UserSquare').then(m => ({ default: m.UserSquare }))) as IconComponent,
-  "phosphor.users_four": dynamic(() => import('@phosphor-icons/react/dist/icons/UsersFour').then(m => ({ default: m.UsersFour }))) as IconComponent,
-  "phosphor.users_three": dynamic(() => import('@phosphor-icons/react/dist/icons/UsersThree').then(m => ({ default: m.UsersThree }))) as IconComponent,
-  "phosphor.video_camera": dynamic(() => import('@phosphor-icons/react/dist/icons/VideoCamera').then(m => ({ default: m.VideoCamera }))) as IconComponent,
-  "phosphor.video_camera_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/VideoCameraSlash').then(m => ({ default: m.VideoCameraSlash }))) as IconComponent,
-  "phosphor.wallet": dynamic(() => import('@phosphor-icons/react/dist/icons/Wallet').then(m => ({ default: m.Wallet }))) as IconComponent,
-  "phosphor.warehouse": dynamic(() => import('@phosphor-icons/react/dist/icons/Warehouse').then(m => ({ default: m.Warehouse }))) as IconComponent,
-  "phosphor.warning": dynamic(() => import('@phosphor-icons/react/dist/icons/Warning').then(m => ({ default: m.Warning }))) as IconComponent,
-  "phosphor.warning_circle": dynamic(() => import('@phosphor-icons/react/dist/icons/WarningCircle').then(m => ({ default: m.WarningCircle }))) as IconComponent,
-  "phosphor.warning_octagon": dynamic(() => import('@phosphor-icons/react/dist/icons/WarningOctagon').then(m => ({ default: m.WarningOctagon }))) as IconComponent,
-  "phosphor.wifi_high": dynamic(() => import('@phosphor-icons/react/dist/icons/WifiHigh').then(m => ({ default: m.WifiHigh }))) as IconComponent,
-  "phosphor.wifi_low": dynamic(() => import('@phosphor-icons/react/dist/icons/WifiLow').then(m => ({ default: m.WifiLow }))) as IconComponent,
-  "phosphor.wifi_medium": dynamic(() => import('@phosphor-icons/react/dist/icons/WifiMedium').then(m => ({ default: m.WifiMedium }))) as IconComponent,
-  "phosphor.wifi_slash": dynamic(() => import('@phosphor-icons/react/dist/icons/WifiSlash').then(m => ({ default: m.WifiSlash }))) as IconComponent,
-  "phosphor.wrench": dynamic(() => import('@phosphor-icons/react/dist/icons/Wrench').then(m => ({ default: m.Wrench }))) as IconComponent,
+  "phosphor.airplane": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Airplane").then((m) => ({
+      default: m.Airplane,
+    })),
+  ) as IconComponent,
+  "phosphor.archive": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Archive").then((m) => ({
+      default: m.Archive,
+    })),
+  ) as IconComponent,
+  "phosphor.arrow_clockwise": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowClockwise").then((m) => ({
+      default: m.ArrowClockwise,
+    })),
+  ) as IconComponent,
+  "phosphor.arrow_counter_clockwise": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowCounterClockwise").then(
+      (m) => ({ default: m.ArrowCounterClockwise }),
+    ),
+  ) as IconComponent,
+  "phosphor.arrow_down": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowDown").then((m) => ({
+      default: m.ArrowDown,
+    })),
+  ) as IconComponent,
+  "phosphor.arrow_left": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowLeft").then((m) => ({
+      default: m.ArrowLeft,
+    })),
+  ) as IconComponent,
+  "phosphor.arrow_right": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowRight").then((m) => ({
+      default: m.ArrowRight,
+    })),
+  ) as IconComponent,
+  "phosphor.arrow_up": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ArrowUp").then((m) => ({
+      default: m.ArrowUp,
+    })),
+  ) as IconComponent,
+  "phosphor.bank": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bank").then((m) => ({
+      default: m.Bank,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_charging": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryCharging").then((m) => ({
+      default: m.BatteryCharging,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_empty": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryEmpty").then((m) => ({
+      default: m.BatteryEmpty,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_full": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryFull").then((m) => ({
+      default: m.BatteryFull,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_high": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryHigh").then((m) => ({
+      default: m.BatteryHigh,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_low": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryLow").then((m) => ({
+      default: m.BatteryLow,
+    })),
+  ) as IconComponent,
+  "phosphor.battery_medium": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BatteryMedium").then((m) => ({
+      default: m.BatteryMedium,
+    })),
+  ) as IconComponent,
+  "phosphor.bell": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bell").then((m) => ({
+      default: m.Bell,
+    })),
+  ) as IconComponent,
+  "phosphor.bell_ringing": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BellRinging").then((m) => ({
+      default: m.BellRinging,
+    })),
+  ) as IconComponent,
+  "phosphor.bell_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BellSimple").then((m) => ({
+      default: m.BellSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.bell_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BellSlash").then((m) => ({
+      default: m.BellSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.bluetooth": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bluetooth").then((m) => ({
+      default: m.Bluetooth,
+    })),
+  ) as IconComponent,
+  "phosphor.bookmark": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bookmark").then((m) => ({
+      default: m.Bookmark,
+    })),
+  ) as IconComponent,
+  "phosphor.bookmark_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/BookmarkSimple").then((m) => ({
+      default: m.BookmarkSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.bug": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bug").then((m) => ({
+      default: m.Bug,
+    })),
+  ) as IconComponent,
+  "phosphor.building": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Building").then((m) => ({
+      default: m.Building,
+    })),
+  ) as IconComponent,
+  "phosphor.buildings": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Buildings").then((m) => ({
+      default: m.Buildings,
+    })),
+  ) as IconComponent,
+  "phosphor.bus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Bus").then((m) => ({
+      default: m.Bus,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Calendar").then((m) => ({
+      default: m.Calendar,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_blank": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarBlank").then((m) => ({
+      default: m.CalendarBlank,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarCheck").then((m) => ({
+      default: m.CalendarCheck,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_dot": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarDot").then((m) => ({
+      default: m.CalendarDot,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarMinus").then((m) => ({
+      default: m.CalendarMinus,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarPlus").then((m) => ({
+      default: m.CalendarPlus,
+    })),
+  ) as IconComponent,
+  "phosphor.calendar_x": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CalendarX").then((m) => ({
+      default: m.CalendarX,
+    })),
+  ) as IconComponent,
+  "phosphor.camera": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Camera").then((m) => ({
+      default: m.Camera,
+    })),
+  ) as IconComponent,
+  "phosphor.camera_rotate": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CameraRotate").then((m) => ({
+      default: m.CameraRotate,
+    })),
+  ) as IconComponent,
+  "phosphor.camera_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CameraSlash").then((m) => ({
+      default: m.CameraSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.car": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Car").then((m) => ({
+      default: m.Car,
+    })),
+  ) as IconComponent,
+  "phosphor.car_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CarSimple").then((m) => ({
+      default: m.CarSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.caret_double_left": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CaretDoubleLeft").then((m) => ({
+      default: m.CaretDoubleLeft,
+    })),
+  ) as IconComponent,
+  "phosphor.caret_double_right": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CaretDoubleRight").then((m) => ({
+      default: m.CaretDoubleRight,
+    })),
+  ) as IconComponent,
+  "phosphor.caret_down": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CaretDown").then((m) => ({
+      default: m.CaretDown,
+    })),
+  ) as IconComponent,
+  "phosphor.caret_left": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CaretLeft").then((m) => ({
+      default: m.CaretLeft,
+    })),
+  ) as IconComponent,
+  "phosphor.caret_up": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CaretUp").then((m) => ({
+      default: m.CaretUp,
+    })),
+  ) as IconComponent,
+  "phosphor.chart_bar": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChartBar").then((m) => ({
+      default: m.ChartBar,
+    })),
+  ) as IconComponent,
+  "phosphor.chart_bar_horizontal": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChartBarHorizontal").then((m) => ({
+      default: m.ChartBarHorizontal,
+    })),
+  ) as IconComponent,
+  "phosphor.chart_donut": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChartDonut").then((m) => ({
+      default: m.ChartDonut,
+    })),
+  ) as IconComponent,
+  "phosphor.chart_line": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChartLine").then((m) => ({
+      default: m.ChartLine,
+    })),
+  ) as IconComponent,
+  "phosphor.chart_line_up": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChartLineUp").then((m) => ({
+      default: m.ChartLineUp,
+    })),
+  ) as IconComponent,
+  "phosphor.chat": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Chat").then((m) => ({
+      default: m.Chat,
+    })),
+  ) as IconComponent,
+  "phosphor.chat_centered": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChatCentered").then((m) => ({
+      default: m.ChatCentered,
+    })),
+  ) as IconComponent,
+  "phosphor.chat_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChatCircle").then((m) => ({
+      default: m.ChatCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.chat_dots": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChatDots").then((m) => ({
+      default: m.ChatDots,
+    })),
+  ) as IconComponent,
+  "phosphor.chat_teardrop": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ChatTeardrop").then((m) => ({
+      default: m.ChatTeardrop,
+    })),
+  ) as IconComponent,
+  "phosphor.check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Check").then((m) => ({
+      default: m.Check,
+    })),
+  ) as IconComponent,
+  "phosphor.check_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CheckCircle").then((m) => ({
+      default: m.CheckCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.check_square": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CheckSquare").then((m) => ({
+      default: m.CheckSquare,
+    })),
+  ) as IconComponent,
+  "phosphor.checks": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Checks").then((m) => ({
+      default: m.Checks,
+    })),
+  ) as IconComponent,
+  "phosphor.clock": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Clock").then((m) => ({
+      default: m.Clock,
+    })),
+  ) as IconComponent,
+  "phosphor.clock_afternoon": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ClockAfternoon").then((m) => ({
+      default: m.ClockAfternoon,
+    })),
+  ) as IconComponent,
+  "phosphor.clock_clockwise": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ClockClockwise").then((m) => ({
+      default: m.ClockClockwise,
+    })),
+  ) as IconComponent,
+  "phosphor.clock_counter_clockwise": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ClockCounterClockwise").then(
+      (m) => ({ default: m.ClockCounterClockwise }),
+    ),
+  ) as IconComponent,
+  "phosphor.cloud": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Cloud").then((m) => ({
+      default: m.Cloud,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudCheck").then((m) => ({
+      default: m.CloudCheck,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_fog": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudFog").then((m) => ({
+      default: m.CloudFog,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_lightning": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudLightning").then((m) => ({
+      default: m.CloudLightning,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_rain": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudRain").then((m) => ({
+      default: m.CloudRain,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_snow": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudSnow").then((m) => ({
+      default: m.CloudSnow,
+    })),
+  ) as IconComponent,
+  "phosphor.cloud_sun": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CloudSun").then((m) => ({
+      default: m.CloudSun,
+    })),
+  ) as IconComponent,
+  "phosphor.code": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Code").then((m) => ({
+      default: m.Code,
+    })),
+  ) as IconComponent,
+  "phosphor.code_block": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CodeBlock").then((m) => ({
+      default: m.CodeBlock,
+    })),
+  ) as IconComponent,
+  "phosphor.code_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CodeSimple").then((m) => ({
+      default: m.CodeSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.coin": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Coin").then((m) => ({
+      default: m.Coin,
+    })),
+  ) as IconComponent,
+  "phosphor.coins": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Coins").then((m) => ({
+      default: m.Coins,
+    })),
+  ) as IconComponent,
+  "phosphor.compass": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Compass").then((m) => ({
+      default: m.Compass,
+    })),
+  ) as IconComponent,
+  "phosphor.copy": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Copy").then((m) => ({
+      default: m.Copy,
+    })),
+  ) as IconComponent,
+  "phosphor.copy_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CopySimple").then((m) => ({
+      default: m.CopySimple,
+    })),
+  ) as IconComponent,
+  "phosphor.cpu": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Cpu").then((m) => ({
+      default: m.Cpu,
+    })),
+  ) as IconComponent,
+  "phosphor.credit_card": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CreditCard").then((m) => ({
+      default: m.CreditCard,
+    })),
+  ) as IconComponent,
+  "phosphor.crown": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Crown").then((m) => ({
+      default: m.Crown,
+    })),
+  ) as IconComponent,
+  "phosphor.cube": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Cube").then((m) => ({
+      default: m.Cube,
+    })),
+  ) as IconComponent,
+  "phosphor.currency_circle_dollar": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/CurrencyCircleDollar").then(
+      (m) => ({ default: m.CurrencyCircleDollar }),
+    ),
+  ) as IconComponent,
+  "phosphor.database": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Database").then((m) => ({
+      default: m.Database,
+    })),
+  ) as IconComponent,
+  "phosphor.desktop": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Desktop").then((m) => ({
+      default: m.Desktop,
+    })),
+  ) as IconComponent,
+  "phosphor.desktop_tower": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DesktopTower").then((m) => ({
+      default: m.DesktopTower,
+    })),
+  ) as IconComponent,
+  "phosphor.device_mobile": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DeviceMobile").then((m) => ({
+      default: m.DeviceMobile,
+    })),
+  ) as IconComponent,
+  "phosphor.device_tablet": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DeviceTablet").then((m) => ({
+      default: m.DeviceTablet,
+    })),
+  ) as IconComponent,
+  "phosphor.dots_three_outline": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DotsThreeOutline").then((m) => ({
+      default: m.DotsThreeOutline,
+    })),
+  ) as IconComponent,
+  "phosphor.dots_three_outline_vertical": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DotsThreeOutlineVertical").then(
+      (m) => ({ default: m.DotsThreeOutlineVertical }),
+    ),
+  ) as IconComponent,
+  "phosphor.dots_three_vertical": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DotsThreeVertical").then((m) => ({
+      default: m.DotsThreeVertical,
+    })),
+  ) as IconComponent,
+  "phosphor.download": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Download").then((m) => ({
+      default: m.Download,
+    })),
+  ) as IconComponent,
+  "phosphor.download_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/DownloadSimple").then((m) => ({
+      default: m.DownloadSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.envelope": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Envelope").then((m) => ({
+      default: m.Envelope,
+    })),
+  ) as IconComponent,
+  "phosphor.envelope_open": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/EnvelopeOpen").then((m) => ({
+      default: m.EnvelopeOpen,
+    })),
+  ) as IconComponent,
+  "phosphor.envelope_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/EnvelopeSimple").then((m) => ({
+      default: m.EnvelopeSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.eraser": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Eraser").then((m) => ({
+      default: m.Eraser,
+    })),
+  ) as IconComponent,
+  "phosphor.eye": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Eye").then((m) => ({
+      default: m.Eye,
+    })),
+  ) as IconComponent,
+  "phosphor.eye_closed": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/EyeClosed").then((m) => ({
+      default: m.EyeClosed,
+    })),
+  ) as IconComponent,
+  "phosphor.eye_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/EyeSlash").then((m) => ({
+      default: m.EyeSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.factory": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Factory").then((m) => ({
+      default: m.Factory,
+    })),
+  ) as IconComponent,
+  "phosphor.file": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/File").then((m) => ({
+      default: m.File,
+    })),
+  ) as IconComponent,
+  "phosphor.file_code": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FileCode").then((m) => ({
+      default: m.FileCode,
+    })),
+  ) as IconComponent,
+  "phosphor.file_image": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FileImage").then((m) => ({
+      default: m.FileImage,
+    })),
+  ) as IconComponent,
+  "phosphor.file_minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FileMinus").then((m) => ({
+      default: m.FileMinus,
+    })),
+  ) as IconComponent,
+  "phosphor.file_pdf": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FilePdf").then((m) => ({
+      default: m.FilePdf,
+    })),
+  ) as IconComponent,
+  "phosphor.file_plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FilePlus").then((m) => ({
+      default: m.FilePlus,
+    })),
+  ) as IconComponent,
+  "phosphor.file_text": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FileText").then((m) => ({
+      default: m.FileText,
+    })),
+  ) as IconComponent,
+  "phosphor.fire": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Fire").then((m) => ({
+      default: m.Fire,
+    })),
+  ) as IconComponent,
+  "phosphor.flag": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Flag").then((m) => ({
+      default: m.Flag,
+    })),
+  ) as IconComponent,
+  "phosphor.flag_banner": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FlagBanner").then((m) => ({
+      default: m.FlagBanner,
+    })),
+  ) as IconComponent,
+  "phosphor.flag_pennant": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FlagPennant").then((m) => ({
+      default: m.FlagPennant,
+    })),
+  ) as IconComponent,
+  "phosphor.folder": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Folder").then((m) => ({
+      default: m.Folder,
+    })),
+  ) as IconComponent,
+  "phosphor.folder_minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FolderMinus").then((m) => ({
+      default: m.FolderMinus,
+    })),
+  ) as IconComponent,
+  "phosphor.folder_open": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FolderOpen").then((m) => ({
+      default: m.FolderOpen,
+    })),
+  ) as IconComponent,
+  "phosphor.folder_plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FolderPlus").then((m) => ({
+      default: m.FolderPlus,
+    })),
+  ) as IconComponent,
+  "phosphor.folder_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FolderSimple").then((m) => ({
+      default: m.FolderSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.funnel": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Funnel").then((m) => ({
+      default: m.Funnel,
+    })),
+  ) as IconComponent,
+  "phosphor.funnel_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/FunnelSimple").then((m) => ({
+      default: m.FunnelSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.gear_six": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/GearSix").then((m) => ({
+      default: m.GearSix,
+    })),
+  ) as IconComponent,
+  "phosphor.gift": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Gift").then((m) => ({
+      default: m.Gift,
+    })),
+  ) as IconComponent,
+  "phosphor.globe": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Globe").then((m) => ({
+      default: m.Globe,
+    })),
+  ) as IconComponent,
+  "phosphor.globe_hemisphere_west": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/GlobeHemisphereWest").then(
+      (m) => ({ default: m.GlobeHemisphereWest }),
+    ),
+  ) as IconComponent,
+  "phosphor.globe_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/GlobeSimple").then((m) => ({
+      default: m.GlobeSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.grid_four": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/GridFour").then((m) => ({
+      default: m.GridFour,
+    })),
+  ) as IconComponent,
+  "phosphor.grid_nine": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/GridNine").then((m) => ({
+      default: m.GridNine,
+    })),
+  ) as IconComponent,
+  "phosphor.headphones": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Headphones").then((m) => ({
+      default: m.Headphones,
+    })),
+  ) as IconComponent,
+  "phosphor.heart": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Heart").then((m) => ({
+      default: m.Heart,
+    })),
+  ) as IconComponent,
+  "phosphor.heart_break": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/HeartBreak").then((m) => ({
+      default: m.HeartBreak,
+    })),
+  ) as IconComponent,
+  "phosphor.heart_straight": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/HeartStraight").then((m) => ({
+      default: m.HeartStraight,
+    })),
+  ) as IconComponent,
+  "phosphor.house_line": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/HouseLine").then((m) => ({
+      default: m.HouseLine,
+    })),
+  ) as IconComponent,
+  "phosphor.house_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/HouseSimple").then((m) => ({
+      default: m.HouseSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.image": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Image").then((m) => ({
+      default: m.Image,
+    })),
+  ) as IconComponent,
+  "phosphor.image_square": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ImageSquare").then((m) => ({
+      default: m.ImageSquare,
+    })),
+  ) as IconComponent,
+  "phosphor.info": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Info").then((m) => ({
+      default: m.Info,
+    })),
+  ) as IconComponent,
+  "phosphor.key": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Key").then((m) => ({
+      default: m.Key,
+    })),
+  ) as IconComponent,
+  "phosphor.key_return": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/KeyReturn").then((m) => ({
+      default: m.KeyReturn,
+    })),
+  ) as IconComponent,
+  "phosphor.keyboard": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Keyboard").then((m) => ({
+      default: m.Keyboard,
+    })),
+  ) as IconComponent,
+  "phosphor.laptop": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Laptop").then((m) => ({
+      default: m.Laptop,
+    })),
+  ) as IconComponent,
+  "phosphor.lightning": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Lightning").then((m) => ({
+      default: m.Lightning,
+    })),
+  ) as IconComponent,
+  "phosphor.lightning_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LightningSlash").then((m) => ({
+      default: m.LightningSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.link": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Link").then((m) => ({
+      default: m.Link,
+    })),
+  ) as IconComponent,
+  "phosphor.link_break": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LinkBreak").then((m) => ({
+      default: m.LinkBreak,
+    })),
+  ) as IconComponent,
+  "phosphor.link_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LinkSimple").then((m) => ({
+      default: m.LinkSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.list": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/List").then((m) => ({
+      default: m.List,
+    })),
+  ) as IconComponent,
+  "phosphor.list_bullets": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ListBullets").then((m) => ({
+      default: m.ListBullets,
+    })),
+  ) as IconComponent,
+  "phosphor.list_checks": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ListChecks").then((m) => ({
+      default: m.ListChecks,
+    })),
+  ) as IconComponent,
+  "phosphor.list_dashes": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ListDashes").then((m) => ({
+      default: m.ListDashes,
+    })),
+  ) as IconComponent,
+  "phosphor.list_numbers": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ListNumbers").then((m) => ({
+      default: m.ListNumbers,
+    })),
+  ) as IconComponent,
+  "phosphor.lock": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Lock").then((m) => ({
+      default: m.Lock,
+    })),
+  ) as IconComponent,
+  "phosphor.lock_key": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LockKey").then((m) => ({
+      default: m.LockKey,
+    })),
+  ) as IconComponent,
+  "phosphor.lock_open": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LockOpen").then((m) => ({
+      default: m.LockOpen,
+    })),
+  ) as IconComponent,
+  "phosphor.lock_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/LockSimple").then((m) => ({
+      default: m.LockSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.magnifying_glass": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MagnifyingGlass").then((m) => ({
+      default: m.MagnifyingGlass,
+    })),
+  ) as IconComponent,
+  "phosphor.magnifying_glass_minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MagnifyingGlassMinus").then(
+      (m) => ({ default: m.MagnifyingGlassMinus }),
+    ),
+  ) as IconComponent,
+  "phosphor.magnifying_glass_plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MagnifyingGlassPlus").then(
+      (m) => ({ default: m.MagnifyingGlassPlus }),
+    ),
+  ) as IconComponent,
+  "phosphor.map_pin": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MapPin").then((m) => ({
+      default: m.MapPin,
+    })),
+  ) as IconComponent,
+  "phosphor.map_pin_line": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MapPinLine").then((m) => ({
+      default: m.MapPinLine,
+    })),
+  ) as IconComponent,
+  "phosphor.map_pin_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MapPinSimple").then((m) => ({
+      default: m.MapPinSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.map_trifold": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MapTrifold").then((m) => ({
+      default: m.MapTrifold,
+    })),
+  ) as IconComponent,
+  "phosphor.medal": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Medal").then((m) => ({
+      default: m.Medal,
+    })),
+  ) as IconComponent,
+  "phosphor.microphone": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Microphone").then((m) => ({
+      default: m.Microphone,
+    })),
+  ) as IconComponent,
+  "phosphor.microphone_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MicrophoneSlash").then((m) => ({
+      default: m.MicrophoneSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Minus").then((m) => ({
+      default: m.Minus,
+    })),
+  ) as IconComponent,
+  "phosphor.minus_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MinusCircle").then((m) => ({
+      default: m.MinusCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.money": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Money").then((m) => ({
+      default: m.Money,
+    })),
+  ) as IconComponent,
+  "phosphor.monitor": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Monitor").then((m) => ({
+      default: m.Monitor,
+    })),
+  ) as IconComponent,
+  "phosphor.moon": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Moon").then((m) => ({
+      default: m.Moon,
+    })),
+  ) as IconComponent,
+  "phosphor.moon_stars": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MoonStars").then((m) => ({
+      default: m.MoonStars,
+    })),
+  ) as IconComponent,
+  "phosphor.mouse": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Mouse").then((m) => ({
+      default: m.Mouse,
+    })),
+  ) as IconComponent,
+  "phosphor.mouse_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MouseSimple").then((m) => ({
+      default: m.MouseSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.music_note": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MusicNote").then((m) => ({
+      default: m.MusicNote,
+    })),
+  ) as IconComponent,
+  "phosphor.music_note_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MusicNoteSimple").then((m) => ({
+      default: m.MusicNoteSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.music_notes": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/MusicNotes").then((m) => ({
+      default: m.MusicNotes,
+    })),
+  ) as IconComponent,
+  "phosphor.navigation_arrow": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/NavigationArrow").then((m) => ({
+      default: m.NavigationArrow,
+    })),
+  ) as IconComponent,
+  "phosphor.notification": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Notification").then((m) => ({
+      default: m.Notification,
+    })),
+  ) as IconComponent,
+  "phosphor.paint_brush": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PaintBrush").then((m) => ({
+      default: m.PaintBrush,
+    })),
+  ) as IconComponent,
+  "phosphor.paint_brush_broad": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PaintBrushBroad").then((m) => ({
+      default: m.PaintBrushBroad,
+    })),
+  ) as IconComponent,
+  "phosphor.paint_bucket": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PaintBucket").then((m) => ({
+      default: m.PaintBucket,
+    })),
+  ) as IconComponent,
+  "phosphor.palette": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Palette").then((m) => ({
+      default: m.Palette,
+    })),
+  ) as IconComponent,
+  "phosphor.paper_plane_right": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PaperPlaneRight").then((m) => ({
+      default: m.PaperPlaneRight,
+    })),
+  ) as IconComponent,
+  "phosphor.pause": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Pause").then((m) => ({
+      default: m.Pause,
+    })),
+  ) as IconComponent,
+  "phosphor.pencil": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Pencil").then((m) => ({
+      default: m.Pencil,
+    })),
+  ) as IconComponent,
+  "phosphor.pencil_line": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PencilLine").then((m) => ({
+      default: m.PencilLine,
+    })),
+  ) as IconComponent,
+  "phosphor.pencil_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PencilSimple").then((m) => ({
+      default: m.PencilSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.phone": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Phone").then((m) => ({
+      default: m.Phone,
+    })),
+  ) as IconComponent,
+  "phosphor.phone_call": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PhoneCall").then((m) => ({
+      default: m.PhoneCall,
+    })),
+  ) as IconComponent,
+  "phosphor.phone_incoming": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PhoneIncoming").then((m) => ({
+      default: m.PhoneIncoming,
+    })),
+  ) as IconComponent,
+  "phosphor.phone_outgoing": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PhoneOutgoing").then((m) => ({
+      default: m.PhoneOutgoing,
+    })),
+  ) as IconComponent,
+  "phosphor.play": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Play").then((m) => ({
+      default: m.Play,
+    })),
+  ) as IconComponent,
+  "phosphor.plug": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Plug").then((m) => ({
+      default: m.Plug,
+    })),
+  ) as IconComponent,
+  "phosphor.plug_charging": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PlugCharging").then((m) => ({
+      default: m.PlugCharging,
+    })),
+  ) as IconComponent,
+  "phosphor.plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Plus").then((m) => ({
+      default: m.Plus,
+    })),
+  ) as IconComponent,
+  "phosphor.plus_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PlusCircle").then((m) => ({
+      default: m.PlusCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.plus_square": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/PlusSquare").then((m) => ({
+      default: m.PlusSquare,
+    })),
+  ) as IconComponent,
+  "phosphor.power": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Power").then((m) => ({
+      default: m.Power,
+    })),
+  ) as IconComponent,
+  "phosphor.printer": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Printer").then((m) => ({
+      default: m.Printer,
+    })),
+  ) as IconComponent,
+  "phosphor.qr_code": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/QrCode").then((m) => ({
+      default: m.QrCode,
+    })),
+  ) as IconComponent,
+  "phosphor.question": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Question").then((m) => ({
+      default: m.Question,
+    })),
+  ) as IconComponent,
+  "phosphor.rainbow": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Rainbow").then((m) => ({
+      default: m.Rainbow,
+    })),
+  ) as IconComponent,
+  "phosphor.receipt": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Receipt").then((m) => ({
+      default: m.Receipt,
+    })),
+  ) as IconComponent,
+  "phosphor.rocket": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Rocket").then((m) => ({
+      default: m.Rocket,
+    })),
+  ) as IconComponent,
+  "phosphor.scan": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Scan").then((m) => ({
+      default: m.Scan,
+    })),
+  ) as IconComponent,
+  "phosphor.scissors": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Scissors").then((m) => ({
+      default: m.Scissors,
+    })),
+  ) as IconComponent,
+  "phosphor.seal_check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SealCheck").then((m) => ({
+      default: m.SealCheck,
+    })),
+  ) as IconComponent,
+  "phosphor.share": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Share").then((m) => ({
+      default: m.Share,
+    })),
+  ) as IconComponent,
+  "phosphor.share_fat": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShareFat").then((m) => ({
+      default: m.ShareFat,
+    })),
+  ) as IconComponent,
+  "phosphor.share_network": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShareNetwork").then((m) => ({
+      default: m.ShareNetwork,
+    })),
+  ) as IconComponent,
+  "phosphor.shield": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Shield").then((m) => ({
+      default: m.Shield,
+    })),
+  ) as IconComponent,
+  "phosphor.shield_check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShieldCheck").then((m) => ({
+      default: m.ShieldCheck,
+    })),
+  ) as IconComponent,
+  "phosphor.shield_star": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShieldStar").then((m) => ({
+      default: m.ShieldStar,
+    })),
+  ) as IconComponent,
+  "phosphor.shield_warning": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShieldWarning").then((m) => ({
+      default: m.ShieldWarning,
+    })),
+  ) as IconComponent,
+  "phosphor.shopping_bag": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShoppingBag").then((m) => ({
+      default: m.ShoppingBag,
+    })),
+  ) as IconComponent,
+  "phosphor.shopping_bag_open": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShoppingBagOpen").then((m) => ({
+      default: m.ShoppingBagOpen,
+    })),
+  ) as IconComponent,
+  "phosphor.shopping_cart": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ShoppingCart").then((m) => ({
+      default: m.ShoppingCart,
+    })),
+  ) as IconComponent,
+  "phosphor.sidebar": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Sidebar").then((m) => ({
+      default: m.Sidebar,
+    })),
+  ) as IconComponent,
+  "phosphor.sign_in": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SignIn").then((m) => ({
+      default: m.SignIn,
+    })),
+  ) as IconComponent,
+  "phosphor.skip_back": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SkipBack").then((m) => ({
+      default: m.SkipBack,
+    })),
+  ) as IconComponent,
+  "phosphor.skip_forward": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SkipForward").then((m) => ({
+      default: m.SkipForward,
+    })),
+  ) as IconComponent,
+  "phosphor.sliders": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Sliders").then((m) => ({
+      default: m.Sliders,
+    })),
+  ) as IconComponent,
+  "phosphor.sliders_horizontal": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SlidersHorizontal").then((m) => ({
+      default: m.SlidersHorizontal,
+    })),
+  ) as IconComponent,
+  "phosphor.speaker_high": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SpeakerHigh").then((m) => ({
+      default: m.SpeakerHigh,
+    })),
+  ) as IconComponent,
+  "phosphor.speaker_low": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SpeakerLow").then((m) => ({
+      default: m.SpeakerLow,
+    })),
+  ) as IconComponent,
+  "phosphor.speaker_none": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SpeakerNone").then((m) => ({
+      default: m.SpeakerNone,
+    })),
+  ) as IconComponent,
+  "phosphor.speaker_x": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SpeakerX").then((m) => ({
+      default: m.SpeakerX,
+    })),
+  ) as IconComponent,
+  "phosphor.stack": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Stack").then((m) => ({
+      default: m.Stack,
+    })),
+  ) as IconComponent,
+  "phosphor.stack_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/StackSimple").then((m) => ({
+      default: m.StackSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.star": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Star").then((m) => ({
+      default: m.Star,
+    })),
+  ) as IconComponent,
+  "phosphor.star_four": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/StarFour").then((m) => ({
+      default: m.StarFour,
+    })),
+  ) as IconComponent,
+  "phosphor.star_half": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/StarHalf").then((m) => ({
+      default: m.StarHalf,
+    })),
+  ) as IconComponent,
+  "phosphor.stop": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Stop").then((m) => ({
+      default: m.Stop,
+    })),
+  ) as IconComponent,
+  "phosphor.storefront": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Storefront").then((m) => ({
+      default: m.Storefront,
+    })),
+  ) as IconComponent,
+  "phosphor.sun": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Sun").then((m) => ({
+      default: m.Sun,
+    })),
+  ) as IconComponent,
+  "phosphor.sun_dim": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SunDim").then((m) => ({
+      default: m.SunDim,
+    })),
+  ) as IconComponent,
+  "phosphor.sun_horizon": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/SunHorizon").then((m) => ({
+      default: m.SunHorizon,
+    })),
+  ) as IconComponent,
+  "phosphor.swatches": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Swatches").then((m) => ({
+      default: m.Swatches,
+    })),
+  ) as IconComponent,
+  "phosphor.table": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Table").then((m) => ({
+      default: m.Table,
+    })),
+  ) as IconComponent,
+  "phosphor.tag": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Tag").then((m) => ({
+      default: m.Tag,
+    })),
+  ) as IconComponent,
+  "phosphor.tag_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TagSimple").then((m) => ({
+      default: m.TagSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.terminal": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Terminal").then((m) => ({
+      default: m.Terminal,
+    })),
+  ) as IconComponent,
+  "phosphor.terminal_window": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TerminalWindow").then((m) => ({
+      default: m.TerminalWindow,
+    })),
+  ) as IconComponent,
+  "phosphor.text_aa": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextAa").then((m) => ({
+      default: m.TextAa,
+    })),
+  ) as IconComponent,
+  "phosphor.text_align_center": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextAlignCenter").then((m) => ({
+      default: m.TextAlignCenter,
+    })),
+  ) as IconComponent,
+  "phosphor.text_align_justify": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextAlignJustify").then((m) => ({
+      default: m.TextAlignJustify,
+    })),
+  ) as IconComponent,
+  "phosphor.text_align_left": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextAlignLeft").then((m) => ({
+      default: m.TextAlignLeft,
+    })),
+  ) as IconComponent,
+  "phosphor.text_align_right": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextAlignRight").then((m) => ({
+      default: m.TextAlignRight,
+    })),
+  ) as IconComponent,
+  "phosphor.text_b": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextB").then((m) => ({
+      default: m.TextB,
+    })),
+  ) as IconComponent,
+  "phosphor.text_italic": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextItalic").then((m) => ({
+      default: m.TextItalic,
+    })),
+  ) as IconComponent,
+  "phosphor.text_strikethrough": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextStrikethrough").then((m) => ({
+      default: m.TextStrikethrough,
+    })),
+  ) as IconComponent,
+  "phosphor.text_t": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextT").then((m) => ({
+      default: m.TextT,
+    })),
+  ) as IconComponent,
+  "phosphor.text_underline": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TextUnderline").then((m) => ({
+      default: m.TextUnderline,
+    })),
+  ) as IconComponent,
+  "phosphor.ticket": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Ticket").then((m) => ({
+      default: m.Ticket,
+    })),
+  ) as IconComponent,
+  "phosphor.toggle_left": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ToggleLeft").then((m) => ({
+      default: m.ToggleLeft,
+    })),
+  ) as IconComponent,
+  "phosphor.toggle_right": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/ToggleRight").then((m) => ({
+      default: m.ToggleRight,
+    })),
+  ) as IconComponent,
+  "phosphor.trash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Trash").then((m) => ({
+      default: m.Trash,
+    })),
+  ) as IconComponent,
+  "phosphor.trash_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/TrashSimple").then((m) => ({
+      default: m.TrashSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.trophy": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Trophy").then((m) => ({
+      default: m.Trophy,
+    })),
+  ) as IconComponent,
+  "phosphor.truck": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Truck").then((m) => ({
+      default: m.Truck,
+    })),
+  ) as IconComponent,
+  "phosphor.upload": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Upload").then((m) => ({
+      default: m.Upload,
+    })),
+  ) as IconComponent,
+  "phosphor.upload_simple": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UploadSimple").then((m) => ({
+      default: m.UploadSimple,
+    })),
+  ) as IconComponent,
+  "phosphor.user": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/User").then((m) => ({
+      default: m.User,
+    })),
+  ) as IconComponent,
+  "phosphor.user_check": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserCheck").then((m) => ({
+      default: m.UserCheck,
+    })),
+  ) as IconComponent,
+  "phosphor.user_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserCircle").then((m) => ({
+      default: m.UserCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.user_focus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserFocus").then((m) => ({
+      default: m.UserFocus,
+    })),
+  ) as IconComponent,
+  "phosphor.user_minus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserMinus").then((m) => ({
+      default: m.UserMinus,
+    })),
+  ) as IconComponent,
+  "phosphor.user_plus": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserPlus").then((m) => ({
+      default: m.UserPlus,
+    })),
+  ) as IconComponent,
+  "phosphor.user_rectangle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserRectangle").then((m) => ({
+      default: m.UserRectangle,
+    })),
+  ) as IconComponent,
+  "phosphor.user_square": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UserSquare").then((m) => ({
+      default: m.UserSquare,
+    })),
+  ) as IconComponent,
+  "phosphor.users_four": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UsersFour").then((m) => ({
+      default: m.UsersFour,
+    })),
+  ) as IconComponent,
+  "phosphor.users_three": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/UsersThree").then((m) => ({
+      default: m.UsersThree,
+    })),
+  ) as IconComponent,
+  "phosphor.video_camera": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/VideoCamera").then((m) => ({
+      default: m.VideoCamera,
+    })),
+  ) as IconComponent,
+  "phosphor.video_camera_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/VideoCameraSlash").then((m) => ({
+      default: m.VideoCameraSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.wallet": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Wallet").then((m) => ({
+      default: m.Wallet,
+    })),
+  ) as IconComponent,
+  "phosphor.warehouse": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Warehouse").then((m) => ({
+      default: m.Warehouse,
+    })),
+  ) as IconComponent,
+  "phosphor.warning": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Warning").then((m) => ({
+      default: m.Warning,
+    })),
+  ) as IconComponent,
+  "phosphor.warning_circle": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WarningCircle").then((m) => ({
+      default: m.WarningCircle,
+    })),
+  ) as IconComponent,
+  "phosphor.warning_octagon": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WarningOctagon").then((m) => ({
+      default: m.WarningOctagon,
+    })),
+  ) as IconComponent,
+  "phosphor.wifi_high": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WifiHigh").then((m) => ({
+      default: m.WifiHigh,
+    })),
+  ) as IconComponent,
+  "phosphor.wifi_low": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WifiLow").then((m) => ({
+      default: m.WifiLow,
+    })),
+  ) as IconComponent,
+  "phosphor.wifi_medium": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WifiMedium").then((m) => ({
+      default: m.WifiMedium,
+    })),
+  ) as IconComponent,
+  "phosphor.wifi_slash": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/WifiSlash").then((m) => ({
+      default: m.WifiSlash,
+    })),
+  ) as IconComponent,
+  "phosphor.wrench": dynamic(() =>
+    import("@phosphor-icons/react/dist/icons/Wrench").then((m) => ({
+      default: m.Wrench,
+    })),
+  ) as IconComponent,
 };

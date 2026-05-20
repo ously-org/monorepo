@@ -4,7 +4,9 @@ import { Link } from "../Link";
 
 vi.mock("next/link", () => ({
   default: ({ children, href, ...props }: any) => (
-    <a href={href} {...props}>{children}</a>
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -23,12 +25,20 @@ describe("Link", () => {
   });
 
   it("renders children when title is not provided", () => {
-    render(<Link href="/test"><span data-testid="child">Child</span></Link>);
+    render(
+      <Link href="/test">
+        <span data-testid="child">Child</span>
+      </Link>,
+    );
     expect(screen.getByTestId("child")).toBeInTheDocument();
   });
 
   it("applies target and rel attributes", () => {
-    render(<Link href="/external" target="_blank" rel="noopener">External</Link>);
+    render(
+      <Link href="/external" target="_blank" rel="noopener">
+        External
+      </Link>,
+    );
     const link = screen.getByRole("link", { name: /external/i });
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener");

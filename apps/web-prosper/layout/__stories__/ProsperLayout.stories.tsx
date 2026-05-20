@@ -41,7 +41,11 @@ const meta: Meta<typeof ProsperLayout> = {
             isActive: true,
           },
           { title: "Campaigns", href: "/campaigns", icon: "phosphor.sparkle" },
-          { title: "Analytics", href: "/analytics", icon: "phosphor.chart_pie" },
+          {
+            title: "Analytics",
+            href: "/analytics",
+            icon: "phosphor.chart_pie",
+          },
         ],
       },
       {
@@ -52,7 +56,9 @@ const meta: Meta<typeof ProsperLayout> = {
         ],
       },
     ],
-    footerNav: [{ title: "Logout", href: "/logout", icon: "phosphor.sign_out" }],
+    footerNav: [
+      { title: "Logout", href: "/logout", icon: "phosphor.sign_out" },
+    ],
   },
 };
 

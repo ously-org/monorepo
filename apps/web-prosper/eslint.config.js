@@ -9,7 +9,7 @@ const config = [
     },
   },
   {
-    ignores: [".next/*", "dist/*", "node_modules/*", "storybook-static/*"],
+    ignores: [".next/*", ".vercel/*", "dist/*", "node_modules/*", "storybook-static/*"],
   },
 ];
 

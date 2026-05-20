@@ -63,6 +63,7 @@ This guide defines the architectural standards and coding conventions for the Ou
 
 - **Convention**: All pending work or technical debt MUST be marked with `// TODO(ISSUE-XXX): <description>`.
 - **Requirement**: Every TODO must link to a valid GitHub Issue ID. If an issue doesn't exist, one must be created before adding the comment.
+
 ### 4. File-Level Header Annotation
 
 All source files should include a header annotation with pipe-separated columns. Extend the existing format with 2 additional columns for AI tool and model attribution.

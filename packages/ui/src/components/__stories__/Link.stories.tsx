@@ -56,11 +56,31 @@ export const CustomChildren: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
-      <Link href="#" variant="default" title="Default Variant" icon="phosphor.house" />
-      <Link href="#" variant="primary" title="Primary Variant" icon="phosphor.user" />
-      <Link href="#" variant="muted" title="Muted Variant" icon="phosphor.gear" />
+      <Link
+        href="#"
+        variant="default"
+        title="Default Variant"
+        icon="phosphor.house"
+      />
+      <Link
+        href="#"
+        variant="primary"
+        title="Primary Variant"
+        icon="phosphor.user"
+      />
+      <Link
+        href="#"
+        variant="muted"
+        title="Muted Variant"
+        icon="phosphor.gear"
+      />
       <Link href="#" variant="underline" title="Underline Variant" />
-      <Link href="#" variant="ghost" title="Ghost Variant" icon="phosphor.gear" />
+      <Link
+        href="#"
+        variant="ghost"
+        title="Ghost Variant"
+        icon="phosphor.gear"
+      />
     </div>
   ),
 };
@@ -69,7 +89,12 @@ export const Sizes: Story = {
   render: () => (
     <div className="flex flex-col gap-4">
       <Link href="#" size="lg" title="Large Link" icon="phosphor.house" />
-      <Link href="#" size="default" title="Default Link" icon="phosphor.house" />
+      <Link
+        href="#"
+        size="default"
+        title="Default Link"
+        icon="phosphor.house"
+      />
       <Link href="#" size="sm" title="Small Link" icon="phosphor.house" />
     </div>
   ),
