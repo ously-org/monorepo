@@ -58,7 +58,10 @@ function ThemeDecorator({
   }, [themeClass, otherThemeClass, isDark]);
 
   return (
-    <div className={`${themeClass}${isDark ? " dark" : ""} font-mono`} data-mode={mode}>
+    <div
+      className={`${themeClass}${isDark ? " dark" : ""} font-mono`}
+      data-mode={mode}
+    >
       {children}
     </div>
   );

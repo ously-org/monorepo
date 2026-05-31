@@ -1,5 +1,6 @@
 "use client";
 // ISSUE_#none | 2026-05-31 | Rename LoginPage to SignInPage | antigravity | gemini-3.5-flash
+// ISSUE_#none | 2026-05-31 | Replace raw span with Box in SignInPage | antigravity | gemini-3.5-flash
 
 import * as React from "react";
 import { Box } from "../../components/Box";
@@ -70,20 +71,25 @@ function SignInPage({
         maxWidth="sm"
         width="full"
       >
-        {logoImage && (
-          <OuslyImage
-            src={logoImage}
-            alt={logoAlt}
-            size="xxl"
-          />
-        )}
+        {logoImage && <OuslyImage src={logoImage} alt={logoAlt} size="xxl" />}
 
-        <Box display="flex" direction="col" align="center" justify="center" gap="xs">
+        <Box
+          display="flex"
+          direction="col"
+          align="center"
+          justify="center"
+          gap="xs"
+        >
           <Typography variant="no-style" size="2xl" weight="bold">
             Welcome to
           </Typography>
           {appName && (
-            <Typography variant="no-style" size="3xl" color="primary" weight="bold">
+            <Typography
+              variant="no-style"
+              size="3xl"
+              color="primary"
+              weight="bold"
+            >
               {appName}
             </Typography>
           )}
@@ -107,17 +113,17 @@ function SignInPage({
           <Box textAlign="center">
             <Typography variant="no-style" size="xs" color="natural">
               Accept{" "}
-              <span onClick={(e) => e.stopPropagation()}>
+              <Box display="inline" onClick={(e) => e.stopPropagation()}>
                 <Link variant="underline" size="sm" href="#">
                   Terms of Service
                 </Link>
-              </span>
-              {" "}and{" "}
-              <span onClick={(e) => e.stopPropagation()}>
+              </Box>{" "}
+              and{" "}
+              <Box display="inline" onClick={(e) => e.stopPropagation()}>
                 <Link variant="underline" size="sm" href="#">
                   Privacy Policy
                 </Link>
-              </span>
+              </Box>
             </Typography>
           </Box>
         </Box>
@@ -127,7 +133,11 @@ function SignInPage({
             variant="outline"
             size="lg"
             disabled={!accepted}
-            style={{ width: "100%", padding: "0.75rem 1.5rem", fontSize: "1rem" }}
+            style={{
+              width: "100%",
+              padding: "0.75rem 1.5rem",
+              fontSize: "1rem",
+            }}
             onClick={() => {
               window.location.href = signInUrl;
             }}

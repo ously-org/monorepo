@@ -1,6 +1,11 @@
 // ISSUE_#85 | 2026-05-13 | Profile API endpoints (GET /me, PATCH /me) | opencode | deepseek-v4-flash
 
-import { OpenAPIHono, createRoute, extendZodWithOpenApi, z } from "@hono/zod-openapi";
+import {
+  OpenAPIHono,
+  createRoute,
+  extendZodWithOpenApi,
+  z,
+} from "@hono/zod-openapi";
 import { drizzle } from "drizzle-orm/d1";
 import { eq } from "drizzle-orm";
 import * as schema from "@ously/db";

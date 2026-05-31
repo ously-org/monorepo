@@ -65,18 +65,15 @@ function RatioDonutCompareInternal({
   const circumference = 2 * Math.PI * radius;
   const center = viewBox / 2;
 
-  const handleMouseMove = React.useCallback(
-    (e: React.MouseEvent) => {
-      const rect = svgRef.current?.getBoundingClientRect();
-      if (rect) {
-        setMousePos({
-          x: e.clientX - rect.left,
-          y: e.clientY - rect.top,
-        });
-      }
-    },
-    [],
-  );
+  const handleMouseMove = React.useCallback((e: React.MouseEvent) => {
+    const rect = svgRef.current?.getBoundingClientRect();
+    if (rect) {
+      setMousePos({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    }
+  }, []);
 
   const handleMouseLeave = React.useCallback(() => {
     setHoveredIndex(null);
@@ -85,17 +82,22 @@ function RatioDonutCompareInternal({
   const hasSegments = segments.length > 0;
 
   const segmentData = React.useMemo(() => {
-    const lengths = segments.map(
-      (s) => circumference * (s.percentage / 100),
-    );
-    const offsets = lengths.map((_, i) =>
-      -lengths.slice(0, i).reduce((a, b) => a + b, 0),
+    const lengths = segments.map((s) => circumference * (s.percentage / 100));
+    const offsets = lengths.map(
+      (_, i) => -lengths.slice(0, i).reduce((a, b) => a + b, 0),
     );
     return { lengths, offsets };
   }, [segments, circumference]);
 
   const txt = textSizeMap[textSize];
-  const txtXs = textSize === "xs" ? "text-[9px]" : textSize === "sm" ? "text-[10px]" : textSize === "lg" ? "text-xs" : "text-[11px]";
+  const txtXs =
+    textSize === "xs"
+      ? "text-[9px]"
+      : textSize === "sm"
+        ? "text-[10px]"
+        : textSize === "lg"
+          ? "text-xs"
+          : "text-[11px]";
 
   const donutSection = (
     <div
@@ -152,7 +154,8 @@ function RatioDonutCompareInternal({
       {showTotal && hasSegments && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <span className={cn("font-medium text-foreground", txt)}>
-            {prefix ?? ""}{grandTotal}
+            {prefix ?? ""}
+            {grandTotal}
           </span>
         </div>
       )}
@@ -177,52 +180,54 @@ function RatioDonutCompareInternal({
     </div>
   );
 
-  const detailSection = showDetail && hasSegments ? (
-    <div
-      className="flex flex-col gap-1.5 pt-1"
-      onMouseLeave={handleMouseLeave}
-    >
-      <div className={cn("font-medium text-foreground", txt)}>
-        {prefix ?? ""}{grandTotal}
-      </div>
-      {segments.map((seg, i) => {
-        const isHovered = hoveredIndex === i;
-        const isDimmed = hoveredIndex !== null && !isHovered;
+  const detailSection =
+    showDetail && hasSegments ? (
+      <div
+        className="flex flex-col gap-1.5 pt-1"
+        onMouseLeave={handleMouseLeave}
+      >
+        <div className={cn("font-medium text-foreground", txt)}>
+          {prefix ?? ""}
+          {grandTotal}
+        </div>
+        {segments.map((seg, i) => {
+          const isHovered = hoveredIndex === i;
+          const isDimmed = hoveredIndex !== null && !isHovered;
 
-        return (
-          <div
-            key={i}
-            onMouseEnter={() => {
-              setHoveredIndex(i);
-              svgRef.current?.dispatchEvent(
-                new MouseEvent("mousemove", { bubbles: false }),
-              );
-            }}
-            className={cn(
-              "flex cursor-pointer items-center gap-2 transition-all duration-200",
-              isDimmed && "opacity-30",
-              isHovered && "opacity-100",
-              txt,
-            )}
-          >
-            <span
-              className="size-2 shrink-0 rounded-full"
-              style={{ backgroundColor: seg.color }}
-            />
-            {seg.iconId && renderIcon && (
-              <span className="text-muted-foreground">
-                {renderIcon(seg.iconId)}
+          return (
+            <div
+              key={i}
+              onMouseEnter={() => {
+                setHoveredIndex(i);
+                svgRef.current?.dispatchEvent(
+                  new MouseEvent("mousemove", { bubbles: false }),
+                );
+              }}
+              className={cn(
+                "flex cursor-pointer items-center gap-2 transition-all duration-200",
+                isDimmed && "opacity-30",
+                isHovered && "opacity-100",
+                txt,
+              )}
+            >
+              <span
+                className="size-2 shrink-0 rounded-full"
+                style={{ backgroundColor: seg.color }}
+              />
+              {seg.iconId && renderIcon && (
+                <span className="text-muted-foreground">
+                  {renderIcon(seg.iconId)}
+                </span>
+              )}
+              <span className="text-foreground">{seg.name}</span>
+              <span className={cn("ml-auto text-muted-foreground", txtXs)}>
+                {Math.round(seg.percentage)}%
               </span>
-            )}
-            <span className="text-foreground">{seg.name}</span>
-            <span className={cn("ml-auto text-muted-foreground", txtXs)}>
-              {Math.round(seg.percentage)}%
-            </span>
-          </div>
-        );
-      })}
-    </div>
-  ) : null;
+            </div>
+          );
+        })}
+      </div>
+    ) : null;
 
   if (showDetail) {
     return (
@@ -263,10 +268,7 @@ function TooltipContent({
         </div>
         <div className="mt-0.5 flex flex-col gap-0.5 border-t border-background/20 pt-1">
           {segment.subItems.map((sub, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between gap-3"
-            >
+            <div key={i} className="flex items-center justify-between gap-3">
               <div className="flex items-center gap-1">
                 {sub.iconId && renderIcon && (
                   <span className="text-background/60">
@@ -294,9 +296,7 @@ function TooltipContent({
         <span>{segment.name}</span>
       </div>
       {segment.description && (
-        <span className="text-background/60">
-          {segment.description}
-        </span>
+        <span className="text-background/60">{segment.description}</span>
       )}
       <span className="mt-0.5 text-background/80">
         {segment.value} / {total} ({Math.round(segment.percentage)}%)

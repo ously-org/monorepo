@@ -27,9 +27,7 @@ export const defaultNavGroups: NavGroup[] = [
   },
   {
     label: "Sandbox",
-    items: [
-      { title: "Branches", href: "/branches", icon: "phosphor.stack" },
-    ],
+    items: [{ title: "Branches", href: "/branches", icon: "phosphor.stack" }],
   },
 ];
 

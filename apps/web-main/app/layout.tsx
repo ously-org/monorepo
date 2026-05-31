@@ -24,7 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-mono", jetbrainsMono.variable, inter.variable)}>
+    <html
+      lang="en"
+      className={cn("font-mono", jetbrainsMono.variable, inter.variable)}
+    >
       <body className="theme-ously">{children}</body>
     </html>
   );

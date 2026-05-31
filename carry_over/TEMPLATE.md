@@ -26,6 +26,7 @@ Example: `2026-05-31-google-auth-better-auth.md`
 ## What Was Done
 
 Bullet list of completed work:
+
 - dependency changes (packages installed, removed, upgraded)
 - files created or modified (table with File | What columns)
 - architecture decisions made
@@ -41,28 +42,30 @@ Brief explanation of the feature/flow for context (2-4 paragraphs).
 
 ### For human
 
-| Priority | Task |
-|---|---|
-| 🔴 High | ... |
-| 🟡 Medium | ... |
-| 🟢 Low | ... |
+| Priority  | Task |
+| --------- | ---- |
+| 🔴 High   | ...  |
+| 🟡 Medium | ...  |
+| 🟢 Low    | ...  |
 
 ### For AI
 
-| Priority | Task |
-|---|---|
-| 🔴 High | ... |
-| 🟡 Medium | ... |
-| 🟢 Low | ... |
+| Priority  | Task |
+| --------- | ---- |
+| 🔴 High   | ...  |
+| 🟡 Medium | ...  |
+| 🟢 Low    | ...  |
 
 ---
 
 ## Key File Paths
-
 ```
+
 path/to/
 ├── relevant-file.ts
 └── another-dir/
-    └── file.ts
+└── file.ts
+
 ```
+
 ```

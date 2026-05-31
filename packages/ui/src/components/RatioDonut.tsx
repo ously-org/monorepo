@@ -46,8 +46,9 @@ const sizeConfig = {
   lg: { thickness: 10, label: "text-lg" },
 } as const;
 
-export interface RatioDonutProps
-  extends VariantProps<typeof ratioDonutVariants> {
+export interface RatioDonutProps extends VariantProps<
+  typeof ratioDonutVariants
+> {
   value: number;
   max?: number;
   color?: RatioDonutColor;
@@ -86,9 +87,4 @@ function RatioDonut({
   );
 }
 
-export {
-  RatioDonut,
-  ratioDonutVariants,
-  type RatioDonutColor,
-  COLOR_VARIANTS,
-};
+export { RatioDonut, ratioDonutVariants, type RatioDonutColor, COLOR_VARIANTS };

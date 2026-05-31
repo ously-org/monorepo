@@ -11,7 +11,12 @@ export interface CheckboxProps {
   variant?: "default" | "important";
 }
 
-function Checkbox({ id, checked, onCheckedChange, variant = "default" }: CheckboxProps) {
+function Checkbox({
+  id,
+  checked,
+  onCheckedChange,
+  variant = "default",
+}: CheckboxProps) {
   return (
     <CheckboxPrimitive.Root
       id={id}
@@ -22,8 +27,10 @@ function Checkbox({ id, checked, onCheckedChange, variant = "default" }: Checkbo
         "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
         "disabled:cursor-not-allowed disabled:opacity-50",
         "data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground",
-        variant === "default" && "bg-muted data-[state=unchecked]:hover:bg-accent",
-        variant === "important" && "bg-[color-mix(in_oklch,var(--primary)_20%,transparent)] data-[state=unchecked]:hover:bg-[color-mix(in_oklch,var(--primary)_30%,transparent)]",
+        variant === "default" &&
+          "bg-muted data-[state=unchecked]:hover:bg-accent",
+        variant === "important" &&
+          "bg-[color-mix(in_oklch,var(--primary)_20%,transparent)] data-[state=unchecked]:hover:bg-[color-mix(in_oklch,var(--primary)_30%,transparent)]",
       )}
     >
       <CheckboxPrimitive.Indicator className="flex items-center justify-center text-current">

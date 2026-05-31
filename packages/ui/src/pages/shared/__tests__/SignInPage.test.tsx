@@ -10,9 +10,7 @@ describe("SignInPage", () => {
     expect(
       screen.getByRole("button", { name: /sign in with google/i }),
     ).toBeInTheDocument();
-    expect(
-      screen.getByText(/accept/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/accept/i)).toBeInTheDocument();
   });
 
   it("renders appName when provided", () => {
@@ -22,7 +20,10 @@ describe("SignInPage", () => {
 
   it("renders logo image when provided", () => {
     render(
-      <SignInPage signInUrl="/auth/google" logoImage="https://example.com/logo.png" />,
+      <SignInPage
+        signInUrl="/auth/google"
+        logoImage="https://example.com/logo.png"
+      />,
     );
     const img = screen.getByAltText("App Logo");
     expect(img).toBeInTheDocument();

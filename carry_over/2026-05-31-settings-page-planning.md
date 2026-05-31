@@ -14,24 +14,24 @@
 
 ### Files examined
 
-| Path | What |
-|---|---|
-| `packages/domain/src/user.ts` | `User`, `UserGender`, `UserCurrency`, `UserSubscriptionStatus` types |
-| `packages/validation/src/index.ts` | `UserSchema`, `ProfileUpdateSchema` |
-| `packages/db/src/schema.ts` | `users` table with `gender`, `currency`, `subscriptionStatus` columns |
-| `packages/ui/src/internal/` | 17 existing shadcn primitives (avatar, card, input, button, dropdown-menu, separator, skeleton, tooltip, etc.) |
-| `packages/ui/src/components/` | 8 public wrappers (Button, Box, Typography, Link, Icon, OuslyImage, RatioDonut, RatioDonutCompare) — CVA + Radix Slot pattern |
-| `packages/ui/src/pages/shared/LoginPage.tsx` | OAuth redirect auth pattern (window.location.href to signInUrl) |
-| `packages/ui/src/hooks/` | Only `use-mobile.ts` exists. No auth hooks/providers. |
-| `packages/ui/src/themes.css` | Full dark mode via `.dark` / `[data-mode="dark"]` selectors, `.theme-ously` + `.theme-prosper` themes |
-| `packages/ui/tailwind-preset.ts` | Shared preset mapping CSS vars to Tailwind colors |
-| `apps/web-main/app/layout.tsx` | Minimal — no AppLayout, no AuthProvider. TODO(ISSUE-125) for Global Auth Provider |
-| `apps/web-main/app/page.tsx` | Home page with TODO comments for ISSUE-84/86/87/88/89 |
-| `apps/api/src/auth.ts` | Better Auth setup with Google OAuth, session/cookie-based |
-| `apps/api/src/routes/auth.ts` | `POST /auth/signout`, `GET /auth/session`, etc. |
-| `apps/api/src/routes/profile.ts` | `GET /me`, `PATCH /me` (validated via ProfileUpdateSchema) |
-| `apps/web-main/next.config.mjs` | Not checked — API proxying unknown |
-| `apps/web-main/components.json` | shadcn config, uses `@ously/ui/internal` alias |
+| Path                                         | What                                                                                                                          |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `packages/domain/src/user.ts`                | `User`, `UserGender`, `UserCurrency`, `UserSubscriptionStatus` types                                                          |
+| `packages/validation/src/index.ts`           | `UserSchema`, `ProfileUpdateSchema`                                                                                           |
+| `packages/db/src/schema.ts`                  | `users` table with `gender`, `currency`, `subscriptionStatus` columns                                                         |
+| `packages/ui/src/internal/`                  | 17 existing shadcn primitives (avatar, card, input, button, dropdown-menu, separator, skeleton, tooltip, etc.)                |
+| `packages/ui/src/components/`                | 8 public wrappers (Button, Box, Typography, Link, Icon, OuslyImage, RatioDonut, RatioDonutCompare) — CVA + Radix Slot pattern |
+| `packages/ui/src/pages/shared/LoginPage.tsx` | OAuth redirect auth pattern (window.location.href to signInUrl)                                                               |
+| `packages/ui/src/hooks/`                     | Only `use-mobile.ts` exists. No auth hooks/providers.                                                                         |
+| `packages/ui/src/themes.css`                 | Full dark mode via `.dark` / `[data-mode="dark"]` selectors, `.theme-ously` + `.theme-prosper` themes                         |
+| `packages/ui/tailwind-preset.ts`             | Shared preset mapping CSS vars to Tailwind colors                                                                             |
+| `apps/web-main/app/layout.tsx`               | Minimal — no AppLayout, no AuthProvider. TODO(ISSUE-125) for Global Auth Provider                                             |
+| `apps/web-main/app/page.tsx`                 | Home page with TODO comments for ISSUE-84/86/87/88/89                                                                         |
+| `apps/api/src/auth.ts`                       | Better Auth setup with Google OAuth, session/cookie-based                                                                     |
+| `apps/api/src/routes/auth.ts`                | `POST /auth/signout`, `GET /auth/session`, etc.                                                                               |
+| `apps/api/src/routes/profile.ts`             | `GET /me`, `PATCH /me` (validated via ProfileUpdateSchema)                                                                    |
+| `apps/web-main/next.config.mjs`              | Not checked — API proxying unknown                                                                                            |
+| `apps/web-main/components.json`              | shadcn config, uses `@ously/ui/internal` alias                                                                                |
 
 ---
 
@@ -58,23 +58,23 @@ Public wrapper components in `@ously/ui` wrap internal shadcn/radix primitives f
 
 ### For human
 
-| Priority | Task |
-|---|---|
+| Priority  | Task                                                                                              |
+| --------- | ------------------------------------------------------------------------------------------------- |
 | 🟡 Medium | Clarify how the API base URL is resolved: `AuthProvider` prop (`apiBaseUrl`) or Next.js rewrites? |
-| 🟢 Low | Review and approve the implementation plan |
+| 🟢 Low    | Review and approve the implementation plan                                                        |
 
 ### For AI
 
-| Priority | Task |
-|---|---|
-| 🔴 High | **Add 5 missing shadcn internal primitives**: `label.tsx`, `select.tsx`, `progress.tsx`, `toggle.tsx`, `toggle-group.tsx` to `packages/ui/src/internal/` |
-| 🔴 High | **Create 7 public wrapper components** in `packages/ui/src/components/`: `Avatar`, `Input`, `Card`, `Select`, `Label`, `Progress`, `ToggleGroup` |
-| 🔴 High | **Create auth infrastructure**: `packages/ui/src/hooks/use-auth.tsx` (AuthProvider + useAuth + useUser) |
-| 🔴 High | **Create settings page**: `apps/web-main/app/settings/page.tsx` with 4 sections |
-| 🟡 Medium | Update `apps/web-main/app/layout.tsx` to wrap children with `<AuthProvider>` |
-| 🟡 Medium | Update `packages/ui/src/components/index.ts` and `packages/ui/src/hooks/index.ts` for exports |
-| 🟢 Low | Update `packages/ui/src/index.ts` if needed for new exports |
-| 🟢 Low | Run `pnpm lint` and `pnpm typecheck` after all changes |
+| Priority  | Task                                                                                                                                                     |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🔴 High   | **Add 5 missing shadcn internal primitives**: `label.tsx`, `select.tsx`, `progress.tsx`, `toggle.tsx`, `toggle-group.tsx` to `packages/ui/src/internal/` |
+| 🔴 High   | **Create 7 public wrapper components** in `packages/ui/src/components/`: `Avatar`, `Input`, `Card`, `Select`, `Label`, `Progress`, `ToggleGroup`         |
+| 🔴 High   | **Create auth infrastructure**: `packages/ui/src/hooks/use-auth.tsx` (AuthProvider + useAuth + useUser)                                                  |
+| 🔴 High   | **Create settings page**: `apps/web-main/app/settings/page.tsx` with 4 sections                                                                          |
+| 🟡 Medium | Update `apps/web-main/app/layout.tsx` to wrap children with `<AuthProvider>`                                                                             |
+| 🟡 Medium | Update `packages/ui/src/components/index.ts` and `packages/ui/src/hooks/index.ts` for exports                                                            |
+| 🟢 Low    | Update `packages/ui/src/index.ts` if needed for new exports                                                                                              |
+| 🟢 Low    | Run `pnpm lint` and `pnpm typecheck` after all changes                                                                                                   |
 
 ---
 

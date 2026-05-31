@@ -11,9 +11,7 @@ const sampleItems: RatioDonutCompareItem[] = [
 
 describe("RatioDonutCompare", () => {
   it("renders an SVG element", () => {
-    const { container } = render(
-      <RatioDonutCompare items={sampleItems} />,
-    );
+    const { container } = render(<RatioDonutCompare items={sampleItems} />);
     expect(container.querySelector("svg")).toBeInTheDocument();
   });
 
@@ -50,9 +48,7 @@ describe("RatioDonutCompare", () => {
   });
 
   it("handles empty items gracefully", () => {
-    const { container } = render(
-      <RatioDonutCompare items={[]} />,
-    );
+    const { container } = render(<RatioDonutCompare items={[]} />);
     const circles = container.querySelectorAll("svg circle");
     expect(circles.length).toBe(1);
   });
@@ -77,9 +73,7 @@ describe("RatioDonutCompare", () => {
   });
 
   it("shows center total by default", () => {
-    const { getByText } = render(
-      <RatioDonutCompare items={sampleItems} />,
-    );
+    const { getByText } = render(<RatioDonutCompare items={sampleItems} />);
     expect(getByText("100")).toBeInTheDocument();
   });
 
@@ -92,10 +86,7 @@ describe("RatioDonutCompare", () => {
 
   it("renders prefix with center total", () => {
     const { getByText } = render(
-      <RatioDonutCompare
-        items={sampleItems}
-        prefix="$"
-      />,
+      <RatioDonutCompare items={sampleItems} prefix="$" />,
     );
     expect(getByText("$100")).toBeInTheDocument();
   });

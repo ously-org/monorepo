@@ -28,14 +28,28 @@ function Button({
 }: ButtonProps) {
   if (asChild) {
     return (
-      <InternalButton asChild variant={variant} size={size} type={type} disabled={disabled} onClick={onClick}>
+      <InternalButton
+        asChild
+        variant={variant}
+        size={size}
+        type={type}
+        disabled={disabled}
+        onClick={onClick}
+      >
         {children}
       </InternalButton>
     );
   }
 
   return (
-    <InternalButton variant={variant} size={size} type={type} disabled={disabled} onClick={onClick} style={style}>
+    <InternalButton
+      variant={variant}
+      size={size}
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+      style={style}
+    >
       {icon && <Icon id={icon} data-icon="inline-start" />}
       {children}
     </InternalButton>

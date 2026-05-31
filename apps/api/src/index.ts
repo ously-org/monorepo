@@ -1,4 +1,9 @@
-import { OpenAPIHono, createRoute, extendZodWithOpenApi, z } from "@hono/zod-openapi";
+import {
+  OpenAPIHono,
+  createRoute,
+  extendZodWithOpenApi,
+  z,
+} from "@hono/zod-openapi";
 import { swaggerUI } from "@hono/swagger-ui";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "@ously/db";

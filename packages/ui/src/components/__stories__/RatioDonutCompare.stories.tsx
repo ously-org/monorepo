@@ -37,10 +37,25 @@ export default meta;
 type Story = StoryObj<typeof RatioDonutCompare>;
 
 const sampleItems = [
-  { name: "Housing", description: "Monthly rent & utilities", iconId: "phosphor.house" as const, value: 40 },
+  {
+    name: "Housing",
+    description: "Monthly rent & utilities",
+    iconId: "phosphor.house" as const,
+    value: 40,
+  },
   { name: "Food", description: "Groceries & dining", value: 25 },
-  { name: "Transport", description: "Gas & transit", iconId: "phosphor.car" as const, value: 15 },
-  { name: "Savings", description: "Emergency fund", iconId: "phosphor.coin" as const, value: 12 },
+  {
+    name: "Transport",
+    description: "Gas & transit",
+    iconId: "phosphor.car" as const,
+    value: 15,
+  },
+  {
+    name: "Savings",
+    description: "Emergency fund",
+    iconId: "phosphor.coin" as const,
+    value: 12,
+  },
   { name: "Entertainment", description: "Streaming & hobbies", value: 5 },
   { name: "Other", value: 3 },
 ];
@@ -76,8 +91,18 @@ export const NoSmallThreshold: Story = {
 export const TwoItems: Story = {
   args: {
     items: [
-      { name: "Paid", description: "Invoices paid on time", iconId: "phosphor.check_circle" as const, value: 84 },
-      { name: "Overdue", description: "Past due invoices", iconId: "phosphor.warning_circle" as const, value: 16 },
+      {
+        name: "Paid",
+        description: "Invoices paid on time",
+        iconId: "phosphor.check_circle" as const,
+        value: 84,
+      },
+      {
+        name: "Overdue",
+        description: "Past due invoices",
+        iconId: "phosphor.warning_circle" as const,
+        value: 16,
+      },
     ],
     size: "lg",
   },
@@ -85,9 +110,7 @@ export const TwoItems: Story = {
 
 export const SingleItem: Story = {
   args: {
-    items: [
-      { name: "Complete", value: 100 },
-    ],
+    items: [{ name: "Complete", value: 100 }],
   },
 };
 

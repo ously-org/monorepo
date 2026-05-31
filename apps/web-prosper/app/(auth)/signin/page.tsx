@@ -4,7 +4,10 @@ import { getImageUrl } from "@ously/ui/lib/image";
 import prosperIcon from "@asset/prosper-icon.svg";
 
 export default function SignIn() {
-  const apiUrl = (process.env as { [key: string]: string | undefined })["NEXT_PUBLIC_API_URL"] ?? "http://localhost:8787";
+  const apiUrl =
+    (process.env as { [key: string]: string | undefined })[
+      "NEXT_PUBLIC_API_URL"
+    ] ?? "http://localhost:8787";
 
   return (
     <SignInPage

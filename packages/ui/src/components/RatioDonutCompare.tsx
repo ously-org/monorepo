@@ -49,8 +49,9 @@ export interface RatioDonutCompareItem {
   value: number;
 }
 
-export interface RatioDonutCompareProps
-  extends VariantProps<typeof ratioDonutCompareVariants> {
+export interface RatioDonutCompareProps extends VariantProps<
+  typeof ratioDonutCompareVariants
+> {
   items: RatioDonutCompareItem[];
   smallPercentageThreshold?: number;
   barSize?: "sm" | "md" | "lg";

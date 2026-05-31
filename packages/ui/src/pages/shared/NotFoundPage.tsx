@@ -36,9 +36,21 @@ function NotFoundPage({
       </Typography>
       <Typography variant="h2">{heading}</Typography>
       <Typography variant="lead">{message}</Typography>
-      <Box display="flex" gap="md" align="center" justify="center" width="full" maxWidth="sm">
+      <Box
+        display="flex"
+        gap="md"
+        align="center"
+        justify="center"
+        width="full"
+        maxWidth="sm"
+      >
         <Button variant="ghost">Contact Support</Button>
-        <Button icon="phosphor.house" onClick={() => window.location.href = actionHref}>{actionLabel}</Button>
+        <Button
+          icon="phosphor.house"
+          onClick={() => (window.location.href = actionHref)}
+        >
+          {actionLabel}
+        </Button>
       </Box>
     </Box>
   );

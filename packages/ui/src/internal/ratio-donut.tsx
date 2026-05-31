@@ -29,7 +29,12 @@ function RatioDonutInternal({
   const center = viewBox / 2;
 
   return (
-    <div className={cn("relative inline-flex shrink-0 items-center justify-center", className)}>
+    <div
+      className={cn(
+        "relative inline-flex shrink-0 items-center justify-center",
+        className,
+      )}
+    >
       <svg
         viewBox={`0 0 ${viewBox} ${viewBox}`}
         className="size-full -rotate-90"
