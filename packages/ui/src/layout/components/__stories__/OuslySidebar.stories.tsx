@@ -1,18 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { OuslySidebar } from "../OuslySidebar";
-import { SidebarProvider, SidebarInset } from "../../internal/sidebar";
-import { TooltipProvider } from "../../internal/tooltip";
+import { SidebarProvider, SidebarInset } from "../../../internal/sidebar";
+import { TooltipProvider } from "../../../internal/tooltip";
 import { Header } from "../Header";
-import {
-  Home,
-  Settings,
-  Users,
-  Bell,
-  Search,
-  LayoutDashboard,
-  User,
-  HelpCircle,
-} from "lucide-react";
 
 const meta: Meta<typeof OuslySidebar> = {
   title: "ODS/Layout/OuslySidebar",
@@ -56,13 +46,13 @@ export const Default: Story = {
           {
             title: "Dashboard",
             href: "/dashboard",
-            icon: LayoutDashboard,
+            icon: "phosphor.layout",
             isActive: true,
           },
           {
             title: "Search",
             href: "/search",
-            icon: Search,
+            icon: "phosphor.magnifying_glass",
           },
         ],
       },
@@ -72,13 +62,13 @@ export const Default: Story = {
           {
             title: "Users",
             href: "/users",
-            icon: Users,
+            icon: "phosphor.users",
             tooltip: "Manage your users",
           },
           {
             title: "Notifications",
             href: "/notifications",
-            icon: Bell,
+            icon: "phosphor.bell",
           },
         ],
       },
@@ -88,7 +78,7 @@ export const Default: Story = {
           {
             title: "General",
             href: "/settings",
-            icon: Settings,
+            icon: "phosphor.gear",
           },
         ],
       },
@@ -97,13 +87,13 @@ export const Default: Story = {
       {
         title: "John Doe",
         href: "/profile",
-        icon: User,
+        icon: "phosphor.user",
         tooltip: "User Profile",
       },
       {
         title: "Help",
         href: "/help",
-        icon: HelpCircle,
+        icon: "phosphor.question",
         tooltip: "Help & Support",
       },
     ],
@@ -119,7 +109,7 @@ export const Minimal: Story = {
           {
             title: "Home",
             href: "/",
-            icon: Home,
+            icon: "phosphor.house",
           },
         ],
       },

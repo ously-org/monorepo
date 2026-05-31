@@ -74,6 +74,7 @@ const config = [
     files: ["src/internal/**"],
     rules: {
       "ously/no-raw-html-outside-internal": "off",
+      "@next/next/no-img-element": "off",
     },
   },
   {
