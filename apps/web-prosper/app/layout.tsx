@@ -9,7 +9,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export const metadata: Metadata = {
   title: "Prosper",
@@ -22,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-mono", jetbrainsMono.variable)}>
-      <body className={cn(inter.className, "theme-prosper")}>
+    <html lang="en" className={cn("font-mono", jetbrainsMono.variable, inter.variable)}>
+      <body className="theme-prosper">
         <ProsperLayout>{children}</ProsperLayout>
       </body>
     </html>

@@ -12,7 +12,7 @@ const linkVariants = cva("", {
       default: "text-foreground hover:text-primary",
       primary: "text-primary hover:text-primary/80",
       muted: "text-muted-foreground hover:text-foreground",
-      underline: "text-primary underline-offset-4 hover:underline",
+      underline: "text-primary underline underline-offset-4",
       ghost: "hover:bg-accent hover:text-accent-foreground p-1 rounded-none",
       sidebar:
         "flex w-full items-center gap-2 overflow-hidden rounded-none p-2 text-left text-xs transition-[width,height,padding] group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! group-data-[collapsible=icon]:justify-center hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground [&_svg]:size-4 [&_svg]:shrink-0 [&>span:last-child]:truncate",

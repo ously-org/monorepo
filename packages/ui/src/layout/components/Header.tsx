@@ -30,7 +30,7 @@ function HeaderBreadcrumb({ pathname }: { pathname: string | null }) {
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        <BreadcrumbItem className="hidden md:block">
+        <BreadcrumbItem>
           <BreadcrumbLink asChild>
             <Link href="/">Home</Link>
           </BreadcrumbLink>
@@ -44,7 +44,7 @@ function HeaderBreadcrumb({ pathname }: { pathname: string | null }) {
 
           return (
             <React.Fragment key={href}>
-              <BreadcrumbSeparator className="hidden md:block" />
+              <BreadcrumbSeparator />
               <BreadcrumbItem>
                 {isLast ? (
                   <BreadcrumbPage>{label}</BreadcrumbPage>
@@ -73,11 +73,10 @@ export function Header({ pathname: manualPathname, ...props }: HeaderProps) {
       className="h-16 shrink-0 border-b px-4 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12"
       {...props}
     >
-      <Box display="flex" align="center" gap="sm">
-        <SidebarTrigger className="-ml-1" />
-        <Separator orientation="vertical" className="mr-2 h-4" />
-        <HeaderBreadcrumb pathname={pathname} />
-      </Box>
+      <SidebarTrigger className="-ml-1 hidden md:flex" />
+      <Separator orientation="vertical" className="mr-2 hidden md:block" />
+      <HeaderBreadcrumb pathname={pathname} />
+      <SidebarTrigger className="ml-auto flex md:hidden" />
     </Box>
   );
 }

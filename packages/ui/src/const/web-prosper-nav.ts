@@ -2,27 +2,38 @@ import type { NavGroup, NavItem } from "../layout/components/OuslySidebar";
 
 export const defaultNavGroups: NavGroup[] = [
   {
-    label: "Platform",
+    label: "Overview",
     items: [
+      { title: "Home", href: "/", icon: "phosphor.house" },
       {
         title: "Dashboard",
         href: "/dashboard",
         icon: "phosphor.layout",
         isActive: true,
       },
-      { title: "Campaigns", href: "/campaigns", icon: "phosphor.sparkle" },
-      { title: "Analytics", href: "/analytics", icon: "phosphor.chart_pie" },
     ],
   },
   {
-    label: "Management",
+    label: "Financial",
     items: [
-      { title: "Team", href: "/team", icon: "phosphor.users" },
-      { title: "Settings", href: "/settings", icon: "phosphor.gear" },
+      { title: "Accounts", href: "/accounts", icon: "phosphor.bank" },
+      {
+        title: "Transactions",
+        href: "/transactions",
+        icon: "phosphor.arrow_clockwise",
+      },
+      { title: "Assets", href: "/assets", icon: "phosphor.chart_line_up" },
+    ],
+  },
+  {
+    label: "Sandbox",
+    items: [
+      { title: "Branches", href: "/branches", icon: "phosphor.stack" },
     ],
   },
 ];
 
 export const defaultFooterNav: NavItem[] = [
-  { title: "Logout", href: "/logout", icon: "phosphor.sign_out" },
+  { title: "Account", href: "/account", icon: "phosphor.user_circle" },
+  { title: "Settings", href: "/settings", icon: "phosphor.gear" },
 ];

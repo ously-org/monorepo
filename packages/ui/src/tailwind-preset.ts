@@ -4,6 +4,11 @@ import animate from "tailwindcss-animate";
 const config: Omit<Config, "content"> = {
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)"],
+        mono: ["var(--font-mono)"],
+        heading: ["var(--font-heading)"],
+      },
       colors: {
         border: "var(--border)",
         input: "var(--input)",
@@ -37,6 +42,13 @@ const config: Omit<Config, "content"> = {
         card: {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
+        },
+        chart: {
+          1: "var(--chart-1)",
+          2: "var(--chart-2)",
+          3: "var(--chart-3)",
+          4: "var(--chart-4)",
+          5: "var(--chart-5)",
         },
         sidebar: {
           DEFAULT: "var(--sidebar-background)",

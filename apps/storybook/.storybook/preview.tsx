@@ -46,6 +46,7 @@ function ThemeDecorator({
     // Apply background/foreground to body for portaled content
     body.style.backgroundColor = "var(--background)";
     body.style.color = "var(--foreground)";
+    root.style.setProperty("--font-mono", '"JetBrains Mono", monospace');
 
     return () => {
       root.classList.remove(themeClass, "dark");
@@ -57,7 +58,7 @@ function ThemeDecorator({
   }, [themeClass, otherThemeClass, isDark]);
 
   return (
-    <div className={`${themeClass}${isDark ? " dark" : ""}`} data-mode={mode}>
+    <div className={`${themeClass}${isDark ? " dark" : ""} font-mono`} data-mode={mode}>
       {children}
     </div>
   );

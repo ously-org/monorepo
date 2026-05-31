@@ -10,9 +10,15 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.6.13",
+    "@hono/swagger-ui": "^0.6.1",
+    "@hono/zod-openapi": "^0.18.4",
     "@ously/db": "workspace:*",
+    "@ously/domain": "workspace:*",
     "@ously/validation": "workspace:*",
-    "drizzle-orm": "^0.30.10",
+    "better-auth": "^1.6.13",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
     "hono": "^4.4.7"
   },
   "devDependencies": {

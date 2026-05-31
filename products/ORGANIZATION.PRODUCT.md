@@ -19,8 +19,8 @@ The ultimate goal for Ously's AI infrastructure is **End-to-End Autonomy**.
 - **Infrastructure**: CI/CD pipelines and automated scaling on Cloudflare/Vercel.
 - **Documentation**: Maintaining the "Source of Truth" in the `products/` folder to feed the agents perfect context.
 
-## 🗺 Epic Mapping
+## 🗺 Feature Mapping
 
-- **[EPIC] Developer Experience (#54)**
-- **[EPIC] Deployment (#53)**
-- **[EPIC] Document (#56)**
+- **Feature: Developer Experience (#54)**
+- **Feature: Deployment (#53)**
+- **Feature: Document (#56)**

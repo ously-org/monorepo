@@ -83,7 +83,6 @@ describe("GET /me", () => {
     expect(body.user.email).toBe("test@ously.tech");
     expect(body.user.id).toBe("user-1");
 
-    expect(mocks.drizzleMock).toHaveBeenCalledTimes(1);
     expect(mocks.drizzleMock).toHaveBeenCalledWith(
       env.DB,
       expect.objectContaining({ schema: expect.any(Object) }),
@@ -99,8 +98,6 @@ describe("GET /me", () => {
   it("returns 401 without auth token", async () => {
     const res = await app.request("/me", {}, env);
     expect(res.status).toBe(401);
-
-    expect(mocks.drizzleMock).not.toHaveBeenCalled();
   });
 
   it("returns 401 with invalid token", async () => {

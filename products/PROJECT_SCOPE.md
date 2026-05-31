@@ -22,22 +22,22 @@ All significant monorepo directories are currently mapped to a Project ID.
 
 The **ORGANIZATION** project handles cross-cutting infrastructure and developer experience.
 
-### [EPIC] Foundation (#67)
+### Feature: Foundation (#67)
 
 - **Scope**: Core monorepo setup and shared package orchestration.
 - **Status**: Completed.
 
-### [EPIC] Developer Experience (#54)
+### Feature: Developer Experience (#54)
 
 - **Scope**: AI agent workflows (Antigravity CLI), pre-commit hooks, and automation.
 - **Status**: In Progress.
 
-### [EPIC] Deployment (#53)
+### Feature: Deployment (#53)
 
 - **Scope**: GitHub Actions, Cloudflare/Vercel CI/CD pipelines.
 - **Status**: In Progress.
 
-### [EPIC] Document (#56)
+### Feature: Document (#56)
 
 - **Scope**: Root documentation, `products/` folder, and architectural guides.
 - **Status**: In Progress.

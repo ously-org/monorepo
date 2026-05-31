@@ -11,13 +11,13 @@ export const UserSchema = match<User>()(
   z.object({
     id: z.string(),
     email: z.string().email(),
-    name: z.string().optional(),
-    image: z.string().optional(),
-    gender: z.enum(["male", "female", "other", "prefer_not_to_say"]).optional(),
-    currency: z.enum(["USD", "EUR", "GBP"]).optional(),
+    name: z.string().nullable(),
+    image: z.string().nullable(),
+    gender: z.enum(["male", "female", "other", "prefer_not_to_say"]).nullable(),
+    currency: z.enum(["USD", "EUR", "GBP"]).nullable(),
     subscriptionStatus: z
       .enum(["active", "inactive", "past_due", "canceled", "trialing"])
-      .optional(),
+      .nullable(),
     emailVerified: z.boolean(),
     createdAt: z.date(),
     updatedAt: z.date(),

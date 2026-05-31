@@ -22,6 +22,6 @@ This agent is responsible for ensuring the consistency between the local product
 When invoked, the agent should:
 
 - Fetch all open `[EPIC]` issues using the `gh` CLI.
-- Read `products/ROADMAP.md`, `products/SOURCE_OF_TRUTH.md`, and the relevant `{PRODUCT_NAME}.PRODUCT.md` or `{PRODUCT_NAME}.SPEC.md` files.
+- Read `products/ROADMAP.md`, and the relevant `{PRODUCT_NAME}.PRODUCT.md` or `{PRODUCT_NAME}.SPEC.md` files.
 - Identify any "drift" between the local plan and remote execution.
 - Propose `replace` calls to update local docs or `gh issue edit` commands to update GitHub.

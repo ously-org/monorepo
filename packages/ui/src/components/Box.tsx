@@ -66,6 +66,28 @@ const boxVariants = cva("", {
       lg: "gap-4",
       xl: "gap-5",
     },
+    textAlign: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+    },
+    height: {
+      full: "h-full",
+    },
+    minHeight: {
+      "60vh": "min-h-[60vh]",
+      screen: "min-h-screen",
+    },
+    width: {
+      full: "w-full",
+    },
+    maxWidth: {
+      xs: "max-w-xs",
+      sm: "max-w-sm",
+      md: "max-w-md",
+      lg: "max-w-lg",
+      xl: "max-w-xl",
+    },
   },
   defaultVariants: {
     display: "block",
@@ -94,6 +116,11 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
       columns,
       padding,
       gap,
+      textAlign,
+      height,
+      minHeight,
+      width,
+      maxWidth,
       asChild = false,
       className,
       ...props
@@ -114,6 +141,11 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
             columns,
             padding,
             gap,
+            textAlign,
+            height,
+            minHeight,
+            width,
+            maxWidth,
           }),
           className,
         )}

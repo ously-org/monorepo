@@ -16,6 +16,39 @@ const RAW_HTML_TAGS = new Set([
   "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr",
 ]);
 
+const noClassNameOutsideInternalAndComponents = {
+  meta: {
+    type: "suggestion",
+    docs: {
+      description:
+        "Disallow className prop outside of src/internal/ and src/components/",
+    },
+    messages: {
+      noClassName:
+        "className prop is not allowed outside of 'src/internal/' and 'src/components/'. Use component props instead.",
+    },
+    schema: [],
+  },
+  create(context) {
+    return {
+      JSXAttribute(node) {
+        if (node.name.name !== "className") return;
+
+        const filename = context.filename || context.getFilename();
+        if (filename.includes("/internal/")) return;
+        if (filename.includes("/components/")) return;
+        if (filename.includes("/__stories__/")) return;
+        if (filename.includes("/__tests__/")) return;
+
+        context.report({
+          node,
+          messageId: "noClassName",
+        });
+      },
+    };
+  },
+};
+
 const noRawHtmlOutsideInternal = {
   meta: {
     type: "suggestion",
@@ -63,17 +96,21 @@ const config = [
       ously: {
         rules: {
           "no-raw-html-outside-internal": noRawHtmlOutsideInternal,
+          "no-classname-outside-internal-and-components":
+            noClassNameOutsideInternalAndComponents,
         },
       },
     },
     rules: {
       "ously/no-raw-html-outside-internal": "error",
+      "ously/no-classname-outside-internal-and-components": "error",
     },
   },
   {
-    files: ["src/internal/**"],
+    files: ["src/internal/**", "src/components/**"],
     rules: {
       "ously/no-raw-html-outside-internal": "off",
+      "ously/no-classname-outside-internal-and-components": "off",
       "@next/next/no-img-element": "off",
     },
   },

@@ -8,6 +8,12 @@ binding = "DB"
 database_name = "ously-db"
 database_id = "50d47be8-dd12-4755-af1f-eee54743a3a1"
 
+[vars]
+GOOGLE_CLIENT_ID = ""
+GOOGLE_CLIENT_SECRET = ""
+BETTER_AUTH_URL = ""
+BETTER_AUTH_SECRET = ""
+
 [env.production]
 name = "api-prod"
 routes = [

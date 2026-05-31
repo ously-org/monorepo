@@ -4,3 +4,6 @@ export * from "./Button";
 export * from "./Link";
 export * from "./OuslyImage";
 export * from "./Icon";
+export * from "./RatioDonut";
+export * from "./RatioDonutCompare";
+export * from "./Checkbox";

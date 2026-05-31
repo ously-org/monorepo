@@ -6,7 +6,6 @@
 @layer base {
   .theme {
     --font-heading: var(--font-mono);
-    --font-mono: var(--font-mono);
   }
 
   * {

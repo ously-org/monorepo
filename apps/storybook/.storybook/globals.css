@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "../../../packages/ui/src/themes.css";
 @tailwind base;
 @tailwind components;
@@ -9,5 +10,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  :root {
+    --font-mono: "JetBrains Mono", monospace;
   }
 }

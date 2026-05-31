@@ -14,11 +14,11 @@ export type UserSubscriptionStatus =
 export interface User {
   id: string;
   email: string;
-  name?: string;
-  image?: string;
-  gender?: UserGender;
-  currency?: UserCurrency;
-  subscriptionStatus?: UserSubscriptionStatus;
+  name: string | null;
+  image: string | null;
+  gender: UserGender | null;
+  currency: UserCurrency | null;
+  subscriptionStatus: UserSubscriptionStatus | null;
   emailVerified: boolean;
   createdAt: Date;
   updatedAt: Date;
