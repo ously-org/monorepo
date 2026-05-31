@@ -1,6 +1,9 @@
+// ISSUE_#85 | 2026-05-13 | Profile API endpoints (GET /me, PATCH /me) | opencode | deepseek-v4-flash
+
 import { Hono } from "hono";
 import { drizzle } from "drizzle-orm/d1";
 import * as schema from "@ously/db";
+import profileRoutes from "./routes/profile";
 
 type Bindings = {
   DB: D1Database;
@@ -21,7 +24,8 @@ app.get("/users", async (c) => {
   return c.json({ users });
 });
 
-// TODO(ISSUE-85): Implement Profile API endpoints (GET/PATCH)
+app.route("/me", profileRoutes);
+
 // TODO(ISSUE-89): Implement Account Deletion workflow
 // TODO(ISSUE-124): Integrate Better Auth middleware and session handling
 
