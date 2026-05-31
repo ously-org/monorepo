@@ -1,11 +1,11 @@
 ---
 name: agent-creator
-description: Create and manage specialized Gemini CLI agents in .gemini/agents/. Use when adding new personas, optimizing model assignments, or refactoring agent responsibilities.
+description: Create and manage specialized Antigravity CLI agents in .agents/agents/. Use when adding new personas, optimizing model assignments, or refactoring agent responsibilities.
 ---
 
 # Agent Creator
 
-Use this skill to scaffold and configure specialized agents in the `.gemini/agents/` directory.
+Use this skill to scaffold and configure specialized agents in the `.agents/agents/` directory.
 
 ## Agent Structure
 
@@ -35,6 +35,6 @@ Choose the right model based on the agent's complexity:
 
 1. **Define Purpose**: Determine the agent's primary goal and domain of responsibility.
 2. **Assign Model**: Use the guidelines above to select the most efficient model.
-3. **Scaffold File**: Create `.gemini/agents/<name>.md`.
+3. **Scaffold File**: Create `.agents/agents/<name>.md`.
 4. **Mandatory Frontmatter**: Ensure the file starts with `---` and includes `name`, `description`, `tools`, and `model`.
 5. **Detailed SOP**: Provide a clear "Standard Operating Procedure" in the Markdown body.

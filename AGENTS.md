@@ -91,16 +91,16 @@ Project management is handled via the `po` (Product Owner) skill and specialized
 
 ---
 
-## 🤖 Dual-Tool Workflow (Gemini CLI + OpenCode)
+## 🤖 Dual-Tool Workflow (Antigravity CLI + OpenCode)
 
 This repository uses **two AI coding tools** with distinct responsibilities:
 
-### 🔷 Gemini CLI — Planning & Task Management
+### 🔷 Antigravity CLI — Planning & Task Management
 
 - **Primary role**: Specification creation, task breakdown, issue management
 - **When to use**: Analyzing GitHub issues, creating specs, breaking Epics into subtasks, opening PRs
 - **Key agents**: `@issue_fetcher`, `@scope_analyzer`, `@pr_opener`
-- **Config**: `.gemini/`
+- **Config**: `.agents/`
 
 ### 🔶 OpenCode — Code Execution
 
@@ -113,15 +113,15 @@ This repository uses **two AI coding tools** with distinct responsibilities:
 
 ```
 Issue arrives
-  → Gemini CLI: @issue_fetcher → @scope_analyzer → Master Plan
+  → Antigravity CLI: @issue_fetcher → @scope_analyzer → Master Plan
   → OpenCode: @code-explorer → @backend-coder / @frontend-coder / @ui-architect
   → OpenCode: @precommit-checker (format + lint + build)
-  → Gemini CLI: @pr_opener (gh pr create)
+  → Antigravity CLI: @pr_opener (gh pr create)
 ```
 
 ### Agent Mapping
 
-| Task                    | Gemini CLI           | OpenCode                    |
+| Task                    | Antigravity CLI      | OpenCode                    |
 | ----------------------- | -------------------- | --------------------------- |
 | Fetch issue/PR context  | `@issue_fetcher`     | `@code-explorer` (_gh_ CLI) |
 | Scope/impact analysis   | `@scope_analyzer`    | `@code-explorer`            |
@@ -130,10 +130,10 @@ Issue arrives
 | UI/Design system        | `@ods_architect`     | `@ui-architect`             |
 | Storybook docs          | `@storybook_creator` | `@storybook-writer`         |
 | Pre-commit checks       | `@precommit_check`   | `@precommit-checker`        |
-| PR creation             | `@pr_opener`         | N/A (Gemini only)           |
+| PR creation             | `@pr_opener`         | N/A (Antigravity only)      |
 
 ---
 
-## 🤖 Gemini CLI Usage
+## 🤖 Antigravity CLI Usage
 
-This `GEMINI.md` file serves as your primary context. For specific sub-tasks, refer to the local `GEMINI.md` files in each app or package directory for more granular rules.
+This `AGENTS.md` (or `ANTIGRAVITY.md`) file serves as your primary context. For specific sub-tasks, refer to the local `AGENTS.md` files in each app or package directory for more granular rules.

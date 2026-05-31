@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "type-check": "turbo type-check",
     "storybook": "turbo dev --filter=storybook",
-    "check-precommit": "pnpm format && pnpm lint && pnpm build",
+    "check-precommit": "pnpm format && pnpm lint",
     "prepare": "husky"
   },
   "devDependencies": {

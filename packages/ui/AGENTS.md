@@ -9,7 +9,7 @@ Shared UI components (Internal shadcn components wrapped for public use).
 - Components MUST be abstract and theme-injected.
 - Expose components as needed.
 - No direct database or API calls in this package.
-- **Review Policy**: Gemini Code Assist MUST ignore reviewing files within the `src/internal/` directory as these are considered implementation details.
+- **Review Policy**: Antigravity Code Assist MUST ignore reviewing files within the `src/internal/` directory as these are considered implementation details.
 - **DropdownMenu**: DO NOT use `DropdownMenu` (or any `radix-ui` dropdown primitive) in new components without asking the user first. Exception: `AccountSidebarButton` is pre-approved.
 - **Story Mandate**: Every new component MUST have a corresponding Storybook story created in `src/components/__stories__/`. This is non-negotiable.
 

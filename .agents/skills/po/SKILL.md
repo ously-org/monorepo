@@ -31,10 +31,10 @@ To manage the current sprint or backlog:
 
 ## 🛠 Delegation Guide
 
-- **Roadmap / Features / Epics**: `invoke_agent(agent_name="ous_pm", ...)`
-- **Product Sync / SoT Alignment**: `invoke_agent(agent_name="sync_spec", ...)`
-- **Architecture / Tasks / Domain**: `invoke_agent(agent_name="ous_analyst", ...)`
-- **Sprints / Estimates / Status**: `invoke_agent(agent_name="ous_scrum", ...)`
+- **Roadmap / Features / Epics**: `invoke_subagent` (spawn subagent with `TypeName: "ous_pm"`)
+- **Product Sync / SoT Alignment**: `invoke_subagent` (spawn subagent with `TypeName: "sync_spec"`)
+- **Architecture / Tasks / Domain**: `invoke_subagent` (spawn subagent with `TypeName: "ous_analyst"`)
+- **Sprints / Estimates / Status**: `invoke_subagent` (spawn subagent with `TypeName: "ous_scrum"`)
 
 ## 📜 Mandates
 

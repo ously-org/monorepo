@@ -1,11 +1,11 @@
 ---
 name: orchestrator
-description: High-level coordination of the Ously workflow. Provides SOPs for issue discovery, scope analysis, and task distribution across Gemini CLI and OpenCode. Use when a GitHub link (Issue, PR, or Comment) is provided.
+description: High-level coordination of the Ously workflow. Provides SOPs for issue discovery, scope analysis, and task distribution across Antigravity CLI and OpenCode. Use when a GitHub link (Issue, PR, or Comment) is provided.
 ---
 
 # Orchestrator Strategic Lead
 
-This skill provides a standard operating procedure for coordinating multi-step workflows using BOTH Gemini CLI (planning) and OpenCode (execution).
+This skill provides a standard operating procedure for coordinating multi-step workflows using BOTH Antigravity CLI (planning) and OpenCode (execution).
 
 ### 🎯 Primary Goal
 
@@ -18,10 +18,10 @@ When a GitHub link (Issue, PR, or Comment) is provided:
 #### Phase 1: Planning
 
 1. **Context Fetching**:
-   - **Gemini CLI**: Invoke `@issue_fetcher` to get full context
+   - **Antigravity CLI**: Invoke `@issue_fetcher` to get full context
    - **OpenCode**: Use `@code-explorer` to search relevant code
 2. **Scope Analysis**:
-   - **Gemini CLI**: Invoke `@scope_analyzer` to determine affected apps/packages
+   - **Antigravity CLI**: Invoke `@scope_analyzer` to determine affected apps/packages
    - **OpenCode**: Use `@code-explorer` to verify impact across the codebase
 3. **Identify Owners**: Read `.github/CODEOWNERS` to map affected paths to domains
 4. **Draft Tasks**: Create clear, actionable tasks for each affected domain
@@ -39,17 +39,17 @@ When a GitHub link (Issue, PR, or Comment) is provided:
 
 7. **Storybook Check** (mandatory):
    - Verify every newly created component has a corresponding story file (`*.stories.tsx` / `*.stories.ts`).
-   - If missing, route to OpenCode `@storybook-writer` or Gemini CLI `@storybook_creator`.
+   - If missing, route to OpenCode `@storybook-writer` or Antigravity CLI `@storybook_creator`.
 8. **Quality Gates**:
    - **OpenCode**: Run `@precommit-checker` (format + lint + build)
-   - **Gemini CLI**: Run `@precommit_check` as backup
-9. **PR Creation** (Gemini CLI):
+   - **Antigravity CLI**: Run `@precommit_check` as backup
+9. **PR Creation** (Antigravity CLI):
    - **New Issue**: Use `@pr_opener` to create the PR
    - **PR Comment**: Use `gh pr comment` to reply
 
-### 🚀 Agent Mapping (Gemini CLI ↔ OpenCode)
+### 🚀 Agent Mapping (Antigravity CLI ↔ OpenCode)
 
-| Task                    | Gemini CLI           | OpenCode                  |
+| Task                    | Antigravity CLI      | OpenCode                  |
 | ----------------------- | -------------------- | ------------------------- |
 | Fetch issue/PR context  | `@issue_fetcher`     | `@code-explorer` (gh CLI) |
 | Scope/impact analysis   | `@scope_analyzer`    | `@code-explorer`          |
@@ -58,7 +58,7 @@ When a GitHub link (Issue, PR, or Comment) is provided:
 | UI/Design system        | `@ods_architect`     | `@ui-architect`           |
 | Storybook docs          | `@storybook_creator` | `@storybook-writer`       |
 | Pre-commit checks       | `@precommit_check`   | `@precommit-checker`      |
-| PR creation             | `@pr_opener`         | N/A (Gemini only)         |
+| PR creation             | `@pr_opener`         | N/A (Antigravity only)    |
 
 ### 📦 Output
 
@@ -66,5 +66,5 @@ The agent using this skill should output a **Master Plan** with:
 
 1. Context summary
 2. Affected packages/paths
-3. Task assignments per tool (Gemini vs OpenCode)
+3. Task assignments per tool (Antigravity vs OpenCode)
 4. Execution order and parallel opportunities

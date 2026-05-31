@@ -29,7 +29,7 @@ The **ORGANIZATION** project handles cross-cutting infrastructure and developer 
 
 ### [EPIC] Developer Experience (#54)
 
-- **Scope**: AI agent workflows (Gemini CLI), pre-commit hooks, and automation.
+- **Scope**: AI agent workflows (Antigravity CLI), pre-commit hooks, and automation.
 - **Status**: In Progress.
 
 ### [EPIC] Deployment (#53)
